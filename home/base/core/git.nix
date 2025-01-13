@@ -1,4 +1,10 @@
-{myvars, ...}: {
+{myvars, lib, pkgs, ...}:
+let 
+  opGpgProgram =
+    if pkgs.stdenv.isLinux
+    then "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}"
+    else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+in {
   programs.git = {
     enable = true;
     lfs.enable = true;
@@ -6,10 +12,23 @@
     userName = myvars.userfullname;
     userEmail = myvars.useremail;
 
+    signing = {
+      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQiodjunhvMZl0GRixXNkML0iFZsXgax3PjmVLV+0AJ";
+      signByDefault = true;
+    };
+
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       pull.rebase = true;
+
+      gpg = {
+        format = "ssh";
+      };
+
+      "gpg \"ssh\"" = {
+        program = opGpgProgram;
+      };
     };
 
     # A syntax-highlighting pager in Rust(2019 ~ Now)

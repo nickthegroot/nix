@@ -18,7 +18,7 @@ inputs: let
   };
 
   darwinSystems = {
-    # TODO: Darwin Systems
+    aarch64-darwin = import ./aarch64-darwin (args // {system = "aarch64-darwin";});
   };
 
   nixosSystemValues = builtins.attrValues nixosSystems;

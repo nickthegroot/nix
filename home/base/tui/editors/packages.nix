@@ -4,6 +4,8 @@
     [
       #-- nix
       nil
+      statix # Lints and suggestions for the nix programming language
+      deadnix # Find and remove unused code in .nix source files
       alejandra # Nix Code Formatter
 
       #-- json like
@@ -26,6 +28,9 @@
     ++
     #-*- General Purpose Languages -*-#
     [
+      # c/c++ compiler, required by nvim-treesitter!
+      gcc
+
       #-- python
       pyright # python language server
       (python311.withPackages (

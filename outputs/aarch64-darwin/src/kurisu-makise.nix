@@ -40,3 +40,34 @@
 
 # Main Personal Laptop, 2021 M1 MacBook Pro
 
+{
+  inputs,
+  lib,
+  mylib,
+  myvars,
+  system,
+  genSpecialArgs,
+  ...
+} @ args: let
+  name = "kurisu-makise";
+
+  modules = {
+    darwin-modules =
+      (map mylib.relativeToRoot [
+        # common
+        "modules/darwin"
+        # host specific
+        "hosts/${name}"
+      ])
+      ++ [];
+    home-modules = map mylib.relativeToRoot [
+      "hosts/${name}/home.nix"
+      "home/darwin"
+    ];
+  };
+
+  systemArgs = modules // args;
+in {
+  # macOS's configuration
+  darwinConfigurations.${name} = mylib.macosSystem systemArgs;
+}

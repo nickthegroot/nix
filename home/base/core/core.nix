@@ -7,7 +7,6 @@
     neofetch
 
     # Modern cli tools, replacement of grep/sed/...
-
     # Interactively filter its input using fuzzy searching, not limit to filenames.
     fzf
     # search for files by name, faster than find
@@ -37,6 +36,12 @@
     # A command-line fuzzy finder
     fzf = {
       enable = true;
+    };
+
+    # A .tool-versions compatible tool downloader/switcher
+    mise = {
+      enable = true;
+      enableFishIntegration = true;
     };
 
     # zoxide is a smarter cd command, inspired by z and autojump.

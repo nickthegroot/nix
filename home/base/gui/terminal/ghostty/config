@@ -2,10 +2,10 @@ font-family = "JetBrainsMono Nerd Font"
 
 theme = catppuccin-mocha
 background-opacity = 0.93
-# only supported on macOS
-background-blur-radius = 10
 
 scrollback-limit = 20000
 confirm-close-surface = false
 
-window-decoration = false
+# only supported on macOS
+background-blur-radius = 10
+macos-titlebar-style = hidden

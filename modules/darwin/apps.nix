@@ -30,11 +30,6 @@
       cleanup = "zap";
     };
 
-    brews = [
-      # `brew install`
-      "httpie" # http client
-    ];
-
     # `brew install --cask`
     casks = [
       "firefox"
@@ -43,6 +38,7 @@
       "visual-studio-code"
       "zed" # zed editor
       "ghostty"
+      "docker"
 
       "notion-calendar"
       "notion"

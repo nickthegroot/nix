@@ -14,5 +14,6 @@
     graphviz
 
     yt-dlp
+    ani-cli
   ];
 }

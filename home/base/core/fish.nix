@@ -2,17 +2,7 @@
   pkgs,
   lib,
   ...
-}: let
-  shellAliases = {
-    dc = "docker compose";
-    ld = "lazydocker";
-    lg = "lazygit";
-
-    cat = "bat";
-  };
-in {
-  home.shellAliases = shellAliases;
-
+}: {
   # required for greeting
   home.packages = with pkgs; [
     fortune
@@ -38,7 +28,6 @@ in {
         inherit (tide) src;
       }
     ];
-    inherit shellAliases;
   };
 
   home.activation.configure-tide = lib.hm.dag.entryAfter ["writeBoundary"] ''
@@ -59,9 +48,4 @@ in {
     --icons='Many icons' \
     --transient=No"
   '';
-
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-  };
 }

@@ -70,5 +70,8 @@ in {
     ghc = "gh pr checkout";
     ghp = "gh pr create";
     gha = "gh workflow run --ref (git rev-parse --abbr-ref HEAD)";
+
+    # Lazygit
+    lg = "lazygit";
   };
 }

@@ -4,7 +4,7 @@
     tldr
     gnupg
     gnumake
-    neofetch
+    fastfetch
 
     # Modern cli tools, replacement of grep/sed/...
     # Interactively filter its input using fuzzy searching, not limit to filenames.
@@ -21,7 +21,6 @@
 
   programs = {
     # A modern replacement for ‘ls’
-    # useful in bash/zsh prompt, not in nushell.
     eza = {
       enable = true;
       git = true;
@@ -65,5 +64,9 @@
       enable = true;
       enableFishIntegration = true;
     };
+  };
+
+  home.shellAliases = {
+    cat = "bat";
   };
 }

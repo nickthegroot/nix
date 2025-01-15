@@ -26,6 +26,12 @@ in {
     historyLimit = 50000;
     escapeTime = 0;
     terminal = "tmux-256color";
+    extraConfig = ''
+      set -g renumber-windows on
+      bind  c  new-window      -c "#{pane_current_path}"
+      bind  %  split-window -h -c "#{pane_current_path}"
+      bind '"' split-window -v -c "#{pane_current_path}"
+    '';
     plugins = [
       {
         plugin = vim-tmux-navigation;
@@ -51,6 +57,7 @@ in {
             set -agF status-right "#{E:@catppuccin_status_weather}"
           '';
         }
+        fzf-tmux-url
     ]);
   };
 

@@ -21,20 +21,45 @@ in {
     enable = true;
     keyMode = "vi";
     mouse = true;
-    extraConfig = ''
-      set -g base-index 1
-      setw -g pane-base-index 1
-      set -g renumber-windows on
-
-      unbind C-b
-      set -g prefix C-a
-
-      set -g history-limit 102400
-    '';
+    prefix = "C-a";
+    baseIndex = 1;
+    historyLimit = 50000;
+    escapeTime = 0;
+    terminal = "tmux-256color";
     plugins = [
       {
         plugin = vim-tmux-navigation;
       }
-    ];
+    ] ++ (with pkgs.tmuxPlugins; [
+        {
+          plugin = cpu;
+          extraConfig = ''
+            set -agF status-right "#{E:@catppuccin_status_cpu}"
+          '';
+        }
+        {
+          plugin = battery;
+          extraConfig = ''
+            set -agF status-right "#{E:@catppuccin_status_battery}"
+          '';
+        }
+        {
+          plugin = weather;
+          # WHAT THE FUCK IS A KILOMETER 🦅
+          extraConfig = ''
+            set-option -g @tmux-weather-units "u" 
+            set -agF status-right "#{E:@catppuccin_status_weather}"
+          '';
+        }
+    ]);
   };
+
+  catppuccin.tmux.extraConfig = ''
+    set -g @catppuccin_window_status_style "rounded"
+    set -g status-right-length 100
+    set -g status-left-length 100
+    set -g status-left ""
+    set -g status-right "#{E:@catppuccin_status_application}"
+    set -ag status-right "#{E:@catppuccin_status_session}"
+  '';
 }

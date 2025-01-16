@@ -4,5 +4,6 @@ _: {
     "linear-linear"
     "loom"
     "around"
+    "figma"
   ];
 }

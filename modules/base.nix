@@ -23,6 +23,7 @@
     zip
     xz
     unzip
+    p7zip
 
     # Text Processing
     jq # A lightweight and flexible command-line JSON processor

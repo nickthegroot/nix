@@ -3,5 +3,6 @@ _: {
     "slack"
     "linear-linear"
     "loom"
+    "around"
   ];
 }

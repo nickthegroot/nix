@@ -65,6 +65,7 @@ in {
     gcm = "git commit -m";
     gaa = "git add -A";
     gd = "git diff";
+    gdc = "git diff --cached";
 
     # GitHub
     ghc = "gh pr checkout";

@@ -7,8 +7,7 @@ in {
   programs.ssh = {
     enable = true;
     extraConfig = ''
-      Host *
-          IdentityAgent ${opPath}
+      IdentityAgent ${opPath}
     '';
   };
 }

@@ -1,4 +1,6 @@
 {
+  # Note: should be kept in sync with home/linux/gui/hyprland/conf/hyprland.conf
+  
   services.yabai = {
     enable = true;
     enableScriptingAddition = true;
@@ -19,11 +21,11 @@
 
       # general space settings
       layout = "bsp";
-      top_padding = "4";
-      bottom_padding = "4";
-      left_padding = "4";
-      right_padding = "4";
-      window_gap = "4";
+      top_padding = "5";
+      bottom_padding = "5";
+      left_padding = "5";
+      right_padding = "5";
+      window_gap = "10";
       external_bar = "all:32:0";
     };
     
@@ -37,7 +39,7 @@
   services.jankyborders = {
     enable = true;
     
-    width = 6.0;
+    width = 4.0;
     active_color = "0xFFB4A1DB";
     inactive_color = "0xFF343A40";
   };

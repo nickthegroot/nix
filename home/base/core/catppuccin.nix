@@ -1,5 +1,5 @@
 {catppuccin, ...}: {
-  imports = [ catppuccin.homeManagerModules.catppuccin ];
+  imports = [catppuccin.homeManagerModules.catppuccin];
 
   catppuccin.flavor = "mocha";
   catppuccin.enable = true;

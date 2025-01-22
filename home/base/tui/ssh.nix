@@ -1,4 +1,4 @@
-{ pkgs, ... }: let
+{pkgs, ...}: let
   opPath =
     if pkgs.stdenv.isLinux
     then "~/.1password/agent.sock"

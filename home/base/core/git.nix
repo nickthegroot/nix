@@ -1,5 +1,9 @@
-{myvars, lib, pkgs, ...}:
-let 
+{
+  myvars,
+  lib,
+  pkgs,
+  ...
+}: let
   opGpgProgram =
     if pkgs.stdenv.isLinux
     then "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}"

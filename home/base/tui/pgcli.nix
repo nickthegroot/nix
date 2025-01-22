@@ -3,4 +3,3 @@
     pgcli # Better pgadmin
   ];
 }
-

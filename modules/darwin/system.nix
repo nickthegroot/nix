@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
   # Add ability to used TouchID for sudo authentication
   security.pam.enableSudoTouchIdAuth = true;
 
@@ -14,7 +13,7 @@
     '';
 
     defaults = {
-      menuExtraClock.Show24Hour = false; 
+      menuExtraClock.Show24Hour = false;
 
       # customize dock
       dock = {

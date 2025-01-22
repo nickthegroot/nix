@@ -15,7 +15,7 @@
       window_animation_duration = 0.5;
       window_animation_easing = "ease_out_quint";
       window_opacity_duration = 0.2;
-      
+
       # Opacity
       window_opacity = "on";
 
@@ -28,7 +28,7 @@
       window_gap = 10;
       external_bar = "all:32:0";
     };
-    
+
     extraConfig = ''
       # Required until https://github.com/LnL7/nix-darwin/issues/1224 is resolved
       yabai -m signal --add event=dock_did_restart action='sudo yabai --load-sa'
@@ -38,7 +38,7 @@
 
   services.jankyborders = {
     enable = true;
-    
+
     width = 8.0;
     active_color = "0xFFB4A1DB";
     inactive_color = "0xFF343A40";

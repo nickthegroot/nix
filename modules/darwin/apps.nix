@@ -49,5 +49,9 @@
       "raycast" # (HotKey: alt/option + space)search, calculate and run scripts(with many plugins)
       "1password"
     ];
+
+    masApps = {
+      Xcode = 497799835;
+    };
   };
 }

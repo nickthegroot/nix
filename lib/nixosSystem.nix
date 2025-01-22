@@ -9,15 +9,12 @@
   myvars,
   ...
 }: let
-  inherit (inputs) nixpkgs home-manager catppuccin;
+  inherit (inputs) nixpkgs home-manager;
 in
   nixpkgs.lib.nixosSystem {
     inherit system specialArgs;
     modules =
       nixos-modules
-      ++ [
-        catppuccin.nixosModules.catppuccin
-      ]
       ++ (
         lib.optionals ((lib.lists.length home-modules) > 0)
         [
@@ -28,7 +25,7 @@ in
             home-manager.backupFileExtension = "home-manager.backup";
 
             home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users."${myvars.username}".imports = home-modules ++ [catppuccin.homeManagerModules.catppuccin];
+            home-manager.users."${myvars.username}".imports = home-modules;
           }
         ]
       );

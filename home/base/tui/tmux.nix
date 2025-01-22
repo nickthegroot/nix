@@ -21,12 +21,6 @@
     '';
     plugins = with pkgs.tmuxPlugins; [
         {
-          plugin = cpu;
-          extraConfig = ''
-            set -agF status-right "#{E:@catppuccin_status_cpu}"
-          '';
-        }
-        {
           plugin = battery;
           extraConfig = ''
             set -agF status-right "#{E:@catppuccin_status_battery}"

@@ -9,7 +9,7 @@
   specialArgs ? (genSpecialArgs system),
   ...
 }: let
-  inherit (inputs) nixpkgs home-manager nix-darwin catppuccin;
+  inherit (inputs) nixpkgs home-manager nix-darwin;
 in
   nix-darwin.lib.darwinSystem {
     inherit system specialArgs;
@@ -25,7 +25,7 @@ in
             home-manager.backupFileExtension = "home-manager.backup";
 
             home-manager.extraSpecialArgs = specialArgs;
-            home-manager.users."${myvars.username}".imports = home-modules ++ [catppuccin.homeManagerModules.catppuccin];
+            home-manager.users."${myvars.username}".imports = home-modules;
           }
         ]
       );

@@ -48,6 +48,7 @@
       "iina" # video player
       "raycast" # (HotKey: alt/option + space)search, calculate and run scripts(with many plugins)
       "1password"
+      "discord"
     ];
 
     masApps = {

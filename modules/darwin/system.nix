@@ -34,6 +34,13 @@
         ShowStatusBar = true; # show status bar
       };
 
+      # customize trackpad
+      trackpad = {
+        Clicking = true; # enable tap to click
+        TrackpadRightClick = true; # enable two finger right click
+        TrackpadThreeFingerDrag = false; # use three finger for switching desktop spaces
+      };
+
       # customize macOS
       NSGlobalDomain = {
         # `defaults read NSGlobalDomain "xxx"`

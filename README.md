@@ -19,3 +19,4 @@ Other dotfiles that inspired me:
 
 - [ryan4yin/nix-config](https://github.com/ryan4yin/nix-config)
 - [vasujain275/rudra](https://github.com/vasujain275/rudra)
+- [spector700/Akari](https://github.com/spector700/Akari)

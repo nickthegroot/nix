@@ -12,6 +12,17 @@
       alt - o: yabai -m window --focus next
       alt - i: yabai -m window --focus prev
 
+      # focus space
+      shift - alt - 1: yabai -m space --focus 1
+      shift - alt - 2: yabai -m space --focus 2
+      shift - alt - 3: yabai -m space --focus 3
+      shift - alt - 4: yabai -m space --focus 4
+      shift - alt - 5: yabai -m space --focus 5
+      shift - alt - 6: yabai -m space --focus 6
+      shift - alt - 7: yabai -m space --focus 7
+      shift - alt - 8: yabai -m space --focus 8
+      shift - alt - 9: yabai -m space --focus 9
+
       # move window to space
       shift + ctrl - 1: yabai -m window --space 1 --focus
       shift + ctrl - 2: yabai -m window --space 2 --focus

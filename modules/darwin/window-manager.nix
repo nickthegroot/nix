@@ -1,6 +1,7 @@
-{
+{pkgs-stable, ...}: {
   services.yabai = {
     enable = true;
+    package = pkgs-stable.yabai;
     enableScriptingAddition = true;
     config = {
       mouse_follows_focus = "on";

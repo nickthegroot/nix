@@ -14,6 +14,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # lock down some mission critical pkgs
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
@@ -33,7 +35,6 @@
     catppuccin.url = "github:catppuccin/nix";
 
     # == App-based ==
-    ghostty.url = "github:ghostty-org/ghostty";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     anyrun = {
       url = "github:Kirottu/anyrun";

@@ -13,8 +13,6 @@
     '';
 
     defaults = {
-      menuExtraClock.Show24Hour = false;
-
       # customize dock
       dock = {
         autohide = true; # automatically hide and show the dock
@@ -36,7 +34,7 @@
 
       # customize trackpad
       trackpad = {
-        Clicking = true; # enable tap to click
+        Clicking = false; # require full click (vs. tap)
         TrackpadRightClick = true; # enable two finger right click
         TrackpadThreeFingerDrag = false; # use three finger for switching desktop spaces
       };

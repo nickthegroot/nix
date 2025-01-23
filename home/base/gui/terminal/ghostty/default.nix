@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ghostty,
-  ...
-}:
+{pkgs, ...}:
 ###########################################################
 #
 # Ghostty Configuration
@@ -16,6 +10,6 @@
   # Flake is only supported on NixOS, install with brew otherwise
   home.packages =
     if pkgs.stdenv.isLinux
-    then [ghostty.packages.${pkgs.system}.default]
+    then [pkgs.ghostty]
     else [];
 }

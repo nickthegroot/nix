@@ -9,6 +9,10 @@ inputs: let
     inputs
     // {
       inherit mylib myvars;
+      pkgs-stable = import inputs.nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
     };
 
   args = {inherit inputs lib mylib myvars genSpecialArgs;};

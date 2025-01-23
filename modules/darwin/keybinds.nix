@@ -1,6 +1,7 @@
-{
+{pkgs-stable, ...}: {
   services.skhd = {
     enable = true;
+    package = pkgs-stable.skhd;
     skhdConfig = ''
       # focus window
       alt - h: yabai -m window --focus west
@@ -11,17 +12,6 @@
       # focus next/prev
       alt - o: yabai -m window --focus next
       alt - i: yabai -m window --focus prev
-
-      # focus space
-      shift - alt - 1: yabai -m space --focus 1
-      shift - alt - 2: yabai -m space --focus 2
-      shift - alt - 3: yabai -m space --focus 3
-      shift - alt - 4: yabai -m space --focus 4
-      shift - alt - 5: yabai -m space --focus 5
-      shift - alt - 6: yabai -m space --focus 6
-      shift - alt - 7: yabai -m space --focus 7
-      shift - alt - 8: yabai -m space --focus 8
-      shift - alt - 9: yabai -m space --focus 9
 
       # move window to space
       shift + ctrl - 1: yabai -m window --space 1 --focus
@@ -50,25 +40,7 @@
   };
 
   system.keyboard = {
-    enableKeyMapping = true; # enable key mapping so that we can use `option` as `control`
-
-    # NOTE: do NOT support remap capslock to both control and escape at the same time
-    remapCapsLockToControl = false; # remap caps lock to control, useful for emac users
-    remapCapsLockToEscape = true; # remap caps lock to escape, useful for vim users
-
-    # swap left command and left alt
-    # so it matches common keyboard layout: `ctrl | command | alt`
-    #
-    # disabled, caused only problems!
-    swapLeftCommandAndLeftAlt = false;
-
-    userKeyMapping = [
-      # remap escape to caps lock
-      # so we swap caps lock and escape, then we can use caps lock as escape
-      {
-        HIDKeyboardModifierMappingSrc = 30064771113;
-        HIDKeyboardModifierMappingDst = 30064771129;
-      }
-    ];
+    enableKeyMapping = true;
+    remapCapsLockToEscape = true;
   };
 }

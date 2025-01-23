@@ -58,6 +58,18 @@
         action = "<cmd>FzfLua diagnostics_workspace<cr>";
         options.desc = "Workspace Diagnostics";
       }
+      {
+        mode = "n";
+        key = "gd";
+        action = "<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>";
+        options.desc = "Goto Definition";
+      }
+      {
+        mode = "n";
+        key = "gr";
+        action = "<cmd>FzfLua lsp_references      jump_to_single_result=true ignore_current_line=true<cr>";
+        options.desc = "Goto References";
+      }
     ];
   };
 }

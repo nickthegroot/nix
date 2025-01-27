@@ -6,18 +6,19 @@
   programs.nixvim = {
     plugins = {
       conform-nvim.settings = {
-        formatters_by_ft.css = [
-          "prettierd"
-          "prettier"
-        ];
-
-        formatters = {
-          prettierd.command = "${pkgs.prettierd}/bin/prettierd";
-          prettier.command = "${pkgs.nodePackages.prettier}/bin/prettier";
+        formatters_by_ft = {
+          css = ["biome"];
         };
       };
 
       lsp.servers = {
+        biome = {
+          enable = true;
+          filetypes = [
+            "css"
+          ];
+        };
+
         cssls = {
           enable = true;
           cmd = [

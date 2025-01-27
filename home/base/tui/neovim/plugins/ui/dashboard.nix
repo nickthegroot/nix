@@ -22,10 +22,10 @@ in {
                   {
                     icon = " ",
                     title = "Open PRs",
-                    cmd = "gh pr list -S \"involves:@me -review:approved\" -L 3",
+                    cmd = "gh pr list -S \"review-requested:@me\" -L 3",
                     key = "p",
                     action = function()
-                      vim.fn.jobstart("gh pr list --web", { detach = true })
+                      vim.fn.jobstart("gh pr list -S \"review-requested:@me\" --web", { detach = true })
                     end,
                     height = 7,
                   },

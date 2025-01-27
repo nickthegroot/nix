@@ -3,17 +3,16 @@
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          json = ["biome"];
+          graphql = ["biome"];
         };
       };
 
       lsp.servers = {
-        jsonls.enable = true;
+        graphql.enable = true;
         biome = {
           enable = true;
           filetypes = [
-            "json"
-            "jsonc"
+            "graphql"
           ];
         };
       };

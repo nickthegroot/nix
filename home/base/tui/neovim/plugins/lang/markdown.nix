@@ -1,9 +1,7 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      markdown-preview = {
-        enable = true;
-      };
+      markdown-preview.enable = true;
 
       lsp.servers = {
         marksman.enable = true;

@@ -3,22 +3,22 @@
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          javascript = ["eslint_d"];
-          javascriptreact = ["eslint_d"];
-          typescript = ["eslint_d"];
-          typescriptreact = ["eslint_d"];
-          svelte = ["eslint_d"];
+          javascript = ["biome"];
+          javascriptreact = ["biome"];
+          typescript = ["biome"];
+          typescriptreact = ["biome"];
+          svelte = ["biome"];
         };
 
-        formatters.eslint_d = {
-          command = "${pkgs.eslint_d}/bin/eslint_d";
+        formatters.biome = {
+          command = "${pkgs.biome}/bin/biome";
         };
       };
 
       lsp.servers = {
         svelte.enable = true;
 
-        eslint = {
+        biome = {
           enable = true;
           filetypes = [
             "javascript"
@@ -28,25 +28,11 @@
             "typescriptreact"
             "typescript.tsx"
             "vue"
-            "html"
-            "markdown"
-            "json"
-            "jsonc"
-            "yaml"
-            "toml"
-            "xml"
-            "gql"
-            "graphql"
             "svelte"
-            "css"
-            "less"
-            "scss"
-            "pcss"
-            "postcss"
           ];
         };
 
-        ts_ls = {
+        vtsls = {
           enable = true;
           filetypes = [
             "javascript"

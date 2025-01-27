@@ -3,30 +3,26 @@
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          json = ["jq"];
+          json = ["biome"];
         };
 
-        formatters = {
-          jq = {
-            command = "${pkgs.jq}/bin/jq";
-          };
+        formatters.biome = {
+          command = "${pkgs.biome}/bin/biome";
         };
       };
 
-      lint = {
-        lintersByFt = {
-          json = ["jsonlint"];
+      lsp.servers = {
+        biome = {
+          enable = true;
+          filetypes = [
+            "json"
+            "jsonc"
+          ];
         };
 
-        linters = {
-          jsonlint = {
-            cmd = "${pkgs.nodePackages_latest.jsonlint}/bin/jsonlint";
-          };
+        jsonls = {
+          enable = true;
         };
-      };
-
-      lsp.servers.jsonls = {
-        enable = true;
       };
     };
   };

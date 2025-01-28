@@ -85,46 +85,31 @@
         end
 
         require("lualine").setup({
-            sections = {
-              lualine_c = {
-                  {
-                    "diagnostics",
-                    symbols = {
-                      error = "${myvars.icons.diagnostics.Error}",
-                      warn  = "${myvars.icons.diagnostics.Warning}",
-                      hint  = "${myvars.icons.diagnostics.Hint}",
-                      info  = "${myvars.icons.diagnostics.BoldInformation}",
-                    },
-                  },
-                  { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-                  { ui.pretty_path() },
+          sections = {
+            lualine_c = {
+              {
+                "diagnostics",
+                symbols = {
+                  error = "${myvars.icons.diagnostics.Error}",
+                  warn  = "${myvars.icons.diagnostics.Warning}",
+                  hint  = "${myvars.icons.diagnostics.Hint}",
+                  info  = "${myvars.icons.diagnostics.BoldInformation}",
                 },
-              lualine_x = {
-            {
-              function() return require("noice").api.status.command.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
-              color = ui.fg("Statement"),
-            },
-            {
-              function() return require("noice").api.status.mode.get() end,
-              cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-              color = ui.fg("Constant"),
-            },
-            {
-              function() return "${myvars.icons.diagnostics.Debug}" .. require("dap").status() end,
-              cond = function () return package.loaded["dap"] and require("dap").status() ~= "" end,
-              color = ui.fg("Debug"),
-            },
-            {
-            "diff",
-            symbols = {
-              added = "${myvars.icons.git.LineAdded}",
-              modified = "${myvars.icons.git.LineModified}",
-              removed= "${myvars.icons.git.LineRemoved}",
               },
+              { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+              { ui.pretty_path() },
             },
+            lualine_x = {
+              {
+                "diff",
+                symbols = {
+                  added = "${myvars.icons.git.LineAdded}",
+                  modified = "${myvars.icons.git.LineModified}",
+                  removed= "${myvars.icons.git.LineRemoved}",
+                },
+              },
+            }
           }
-        }
       })
     '';
   };

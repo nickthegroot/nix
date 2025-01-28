@@ -1,23 +1,39 @@
-{config, ...}: let
-  inherit (config.lib.nixvim) mkRaw;
+{
+  config,
+  pkgs,
+  ...
+}: let
+  # inherit (config.lib.nixvim) mkRaw;
 in {
   programs.nixvim = {
+    # Waiting on https://github.com/nix-community/nixvim/issues/2915
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        pname = "blink-copilot";
+        version = "2025-01-27";
+        src = pkgs.fetchFromGitHub {
+          owner = "fang2hou";
+          repo = "blink-copilot";
+          rev = "7e63f20b8e96191e5c87bf96fc35da3547993be2";
+          sha256 = "10lm90xa7w3ww94acivshnzkp4q2bfrq9zff2z5amrp3cxlga0rf";
+        };
+        meta.homepage = "https://github.com/fang2hou/blink-copilot/";
+      })
+    ];
+
     plugins = {
       copilot-lua = {
         enable = true;
         settings = {
-          suggestion = {
-            enabled = false;
-            autoTrigger = true;
-            keymap = {
-              accept = false;
-            };
-          };
+          suggestion.enabled = false;
           panel.enabled = false;
+          filetypes = {
+            markdown = true;
+            help = true;
+          };
         };
       };
 
-      blink-cmp-copilot.enable = true;
       blink-cmp = {
         enable = true;
         settings = {
@@ -25,22 +41,14 @@ in {
             default = ["copilot"];
             providers = {
               copilot = {
-                async = true;
-                module = "blink-cmp-copilot";
                 name = "copilot";
+                module = "blink-copilot";
                 score_offset = 100;
-
-                transform_items = mkRaw ''
-                  function(_, items)
-                    local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-                    local kind_idx = #CompletionItemKind + 1
-                    CompletionItemKind[kind_idx] = "Copilot"
-                    for _, item in ipairs(items) do
-                      item.kind = kind_idx
-                    end
-                    return items
-                  end
-                '';
+                async = true;
+                opts = {
+                  max_completions = 3;
+                  max_attempts = 4;
+                };
               };
             };
           };

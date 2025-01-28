@@ -17,6 +17,9 @@
     sad # CLI search and replace, just like sed, but with diff preview.
     gping # ping, but with a graph(TUI)
     du-dust # A more intuitive version of `du` in rust
+
+    # common essentials
+    clang
   ];
 
   programs = {

@@ -40,5 +40,31 @@
         };
       };
     };
+
+    # Venv Selector
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "venv-selector";
+        src = pkgs.fetchFromGitHub {
+          # use fork until https://github.com/linux-cultist/venv-selector.nvim/pull/188 is merged
+          owner = "stefanboca";
+          repo = "venv-selector.nvim";
+          rev = "e7b8c42c1cdd60d70d24463b5108231d695cf67e";
+          hash = "sha256-bfuZVJ7NnveU+jFA+HAb/buAOmMAHNg5tKfYNtBAy6Q=";
+        };
+        nvimSkipModule = ["venv-selector.cached_venv"];
+      })
+    ];
+    extraConfigLua = ''
+      require('venv-selector').setup()
+    '';
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>cv";
+        action = "<cmd>:VenvSelect<cr>";
+        options.desc = "Select VirtualEnv";
+      }
+    ];
   };
 }

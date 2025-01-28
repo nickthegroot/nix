@@ -1,7 +1,10 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      markdown-preview.enable = true;
+      markdown-preview = {
+        enable = true;
+        settings.filetypes = ["markdown"];
+      };
 
       lsp.servers = {
         marksman.enable = true;

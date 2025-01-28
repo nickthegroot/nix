@@ -68,5 +68,6 @@
         };
       };
     };
+    blink-compat.enable = true;
   };
 }

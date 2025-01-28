@@ -50,15 +50,6 @@ in {
           };
         };
       };
-
-      # which-key.settings.spec = [
-      #   {
-      #     __unkeyed-1 = "<leader>a";
-      #     mode = "n";
-      #     icon = "󰚩";
-      #     group = "+ai";
-      #   }
-      # ];
     };
   };
 }

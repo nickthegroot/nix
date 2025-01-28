@@ -4,25 +4,27 @@
     package = pkgs-stable.skhd;
     skhdConfig = ''
       # focus window
-      alt - h: yabai -m window --focus west
-      alt - j: yabai -m window --focus south
-      alt - k: yabai -m window --focus north
-      alt - l: yabai -m window --focus east
+      cmd - left: yabai -m window --focus west
+      cmd - down: yabai -m window --focus south
+      cmd - up: yabai -m window --focus north
+      cmd - right: yabai -m window --focus east
 
-      # focus next/prev
-      alt - o: yabai -m window --focus next
-      alt - i: yabai -m window --focus prev
+      # shift window
+      cmd + shift - left: yabai -m window --swap west
+      cmd + shift - down: yabai -m window --swap south
+      cmd + shift - up: yabai -m window --swap north
+      cmd + shift - right: yabai -m window --swap east
 
       # move window to space
-      shift + ctrl - 1: yabai -m window --space 1 --focus
-      shift + ctrl - 2: yabai -m window --space 2 --focus
-      shift + ctrl - 3: yabai -m window --space 3 --focus
-      shift + ctrl - 4: yabai -m window --space 4 --focus
-      shift + ctrl - 5: yabai -m window --space 5 --focus
-      shift + ctrl - 6: yabai -m window --space 6 --focus
-      shift + ctrl - 7: yabai -m window --space 7 --focus
-      shift + ctrl - 8: yabai -m window --space 8 --focus
-      shift + ctrl - 9: yabai -m window --space 9 --focus
+      cmd + shift - 1: yabai -m window --space 1 --focus
+      cmd + shift - 2: yabai -m window --space 2 --focus
+      cmd + shift - 3: yabai -m window --space 3 --focus
+      cmd + shift - 4: yabai -m window --space 4 --focus
+      cmd + shift - 5: yabai -m window --space 5 --focus
+      cmd + shift - 6: yabai -m window --space 6 --focus
+      cmd + shift - 7: yabai -m window --space 7 --focus
+      cmd + shift - 8: yabai -m window --space 8 --focus
+      cmd + shift - 9: yabai -m window --space 9 --focus
 
       # common apps
       alt - return: open -a "Ghostty"

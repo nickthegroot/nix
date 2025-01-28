@@ -43,5 +43,9 @@
     width = 8.0;
     active_color = "0xFFB4A1DB";
     inactive_color = "0xFF343A40";
+
+    blacklist = [
+      "Loom"
+    ];
   };
 }

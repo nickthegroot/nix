@@ -23,19 +23,19 @@
         enable = true;
         gotoNextStart = {
           "]m" = "@function.outer";
-          "]]" = "@class.outer";
+          "]c" = "@class.outer";
         };
         gotoNextEnd = {
           "]M" = "@function.outer";
-          "][" = "@class.outer";
+          "]C" = "@class.outer";
         };
         gotoPreviousStart = {
           "[m" = "@function.outer";
-          "[[" = "@class.outer";
+          "[c" = "@class.outer";
         };
         gotoPreviousEnd = {
           "[M" = "@function.outer";
-          "[]" = "@class.outer";
+          "[C" = "@class.outer";
         };
       };
       swap = {

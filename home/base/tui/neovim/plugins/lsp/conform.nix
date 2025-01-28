@@ -1,8 +1,4 @@
 {
-  pkgs,
-  lib,
-  ...
-}: {
   programs.nixvim = {
     plugins.conform-nvim = {
       enable = true;

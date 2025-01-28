@@ -44,6 +44,8 @@
       "notion"
       "obsidian"
 
+      "blender"
+
       # Misc
       "iina" # video player
       "raycast" # (HotKey: alt/option + space)search, calculate and run scripts(with many plugins)

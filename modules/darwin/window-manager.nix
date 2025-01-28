@@ -13,7 +13,7 @@
       auto_balance = "off";
 
       # Animation
-      window_animation_duration = 0.5;
+      window_animation_duration = 0.2;
       window_animation_easing = "ease_out_quint";
       window_opacity_duration = 0.2;
 

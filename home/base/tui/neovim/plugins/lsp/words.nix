@@ -5,7 +5,7 @@ in {
     plugins.snacks = {
       enable = true;
       settings = {
-        words = {};
+        words.enabled = true;
       };
     };
 

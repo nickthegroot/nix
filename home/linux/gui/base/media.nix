@@ -14,6 +14,8 @@
     vdpauinfo
     vulkan-tools
     glxinfo
+
+    youtube-music
   ];
 
   programs = {

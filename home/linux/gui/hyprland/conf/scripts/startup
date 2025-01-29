@@ -9,9 +9,9 @@ ln -s $XDG_RUNTIME_DIR/hypr /tmp/hypr
 # Kill already running process
 _ps=(waybar mako mpd)
 for _prs in "${_ps[@]}"; do
-	if [[ $(pidof ${_prs}) ]]; then
-		killall -9 ${_prs}
-	fi
+  if [[ $(pidof ${_prs}) ]]; then
+    killall -9 ${_prs}
+  fi
 done
 
 # Set wallpaper via a wallpaper.service
@@ -26,3 +26,6 @@ done
 
 # Start mpd
 exec mpd &
+
+# Start 1password
+exec 1password --silent &

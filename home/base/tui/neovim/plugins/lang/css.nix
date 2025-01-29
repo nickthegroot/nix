@@ -7,18 +7,15 @@
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          css = ["biome"];
+          css = ["prettierd"];
+        };
+
+        formatters.prettierd = {
+          command = "${pkgs.prettierd}/bin/prettierd";
         };
       };
 
       lsp.servers = {
-        biome = {
-          enable = true;
-          filetypes = [
-            "css"
-          ];
-        };
-
         cssls = {
           enable = true;
           cmd = [

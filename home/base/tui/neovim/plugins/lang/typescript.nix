@@ -3,27 +3,19 @@
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          javascript = ["biome"];
-          javascriptreact = ["biome"];
-          typescript = ["biome"];
-          typescriptreact = ["biome"];
-          svelte = ["biome"];
+          javascript = ["prettierd"];
+          javascriptreact = ["prettierd"];
+          typescript = ["prettierd"];
+          typescriptreact = ["prettierd"];
+          svelte = ["prettierd"];
+        };
+
+        formatters.prettierd = {
+          command = "${pkgs.prettierd}/bin/prettierd";
         };
       };
 
       lsp.servers = {
-        biome = {
-          enable = true;
-          filetypes = [
-            "javascript"
-            "javascriptreact"
-            "javascript.jsx"
-            "typescript"
-            "typescriptreact"
-            "typescript.tsx"
-          ];
-        };
-
         vtsls = {
           enable = true;
           filetypes = [

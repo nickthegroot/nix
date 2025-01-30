@@ -21,6 +21,18 @@ in {
       signByDefault = true;
     };
 
+    includes = [
+      {
+        # use different email for work
+        condition = "gitdir:~/Work/";
+        contents = {
+          user = {
+            email = myvars.workemail;
+          };
+        };
+      }
+    ];
+
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;

@@ -30,6 +30,18 @@
           desc = "Format";
         };
       }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>co";
+        action = "<cmd>lua vim.lsp.buf.code_action({ apply = true, context = { only = { 'source.organizeImports' }, diagnostics = {} } })<cr>";
+        options = {
+          silent = true;
+          desc = "Organize Imports";
+        };
+      }
     ];
   };
 }

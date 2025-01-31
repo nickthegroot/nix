@@ -9,62 +9,70 @@
     then "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}"
     else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
 in {
-  programs.git = {
-    enable = true;
-    lfs.enable = true;
-
-    userName = myvars.userfullname;
-    userEmail = myvars.useremail;
-
-    signing = {
-      key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQiodjunhvMZl0GRixXNkML0iFZsXgax3PjmVLV+0AJ";
-      signByDefault = true;
-    };
-
-    includes = [
-      {
-        # use different email for work
-        condition = "gitdir:~/Work/";
-        contents = {
-          user = {
-            email = myvars.workemail;
-          };
-        };
-      }
-    ];
-
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      pull.rebase = true;
-
-      gpg = {
-        format = "ssh";
-      };
-
-      "gpg \"ssh\"" = {
-        program = opGpgProgram;
-      };
-    };
-
-    # A syntax-highlighting pager in Rust(2019 ~ Now)
-    delta = {
+  programs = {
+    git = {
       enable = true;
-      options = {
-        diff-so-fancy = true;
-        line-numbers = true;
-        true-color = "always";
-        # features => named groups of settings, used to keep related settings organized
-        # features = "";
+      lfs.enable = true;
+
+      userName = myvars.userfullname;
+      userEmail = myvars.useremail;
+
+      signing = {
+        key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQiodjunhvMZl0GRixXNkML0iFZsXgax3PjmVLV+0AJ";
+        signByDefault = true;
+      };
+
+      includes = [
+        {
+          # use different email for work
+          condition = "gitdir:~/Work/";
+          contents = {
+            user = {
+              email = myvars.workemail;
+            };
+          };
+        }
+      ];
+
+      extraConfig = {
+        init.defaultBranch = "main";
+        push.autoSetupRemote = true;
+        pull.rebase = true;
+
+        gpg = {
+          format = "ssh";
+        };
+
+        "gpg \"ssh\"" = {
+          program = opGpgProgram;
+        };
+      };
+
+      # A syntax-highlighting pager in Rust(2019 ~ Now)
+      delta = {
+        enable = true;
+        options = {
+          diff-so-fancy = true;
+          line-numbers = true;
+          true-color = "always";
+          # features => named groups of settings, used to keep related settings organized
+          # features = "";
+        };
       };
     };
-  };
 
-  programs.gh.enable = true;
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      promptToReturnFromSubprocess = false;
+    gh = {
+      enable = true;
+      extensions = with pkgs; [
+        gh-notify
+        gh-dash
+      ];
+    };
+    lazygit = {
+      enable = true;
+      settings = {
+        promptToReturnFromSubprocess = false;
+      };
     };
   };
 

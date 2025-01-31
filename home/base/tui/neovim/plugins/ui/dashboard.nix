@@ -6,6 +6,7 @@ in {
       enable = true;
       settings = {
         dashboard = {
+          width = 100;
           sections = [
             {section = "header";}
             {
@@ -15,10 +16,28 @@ in {
               indent = 3;
               padding = 1;
             }
+            {
+              icon = " ";
+              desc = "Browse Repo";
+              padding = 1;
+              key = "b";
+              action = ":lua Snacks.gitbrowse()";
+            }
             (mkRaw ''
               function()
                 local in_git = Snacks.git.get_root() ~= nil
                 local cmds = {
+                  {
+                    title = "Notifications",
+                    cmd = "gh notify -s -a -n5",
+                    action = function()
+                      vim.ui.open("https://github.com/notifications")
+                    end,
+                    key = "n",
+                    icon = " ",
+                    height = 5,
+                    enabled = true,
+                  },
                   {
                     icon = " ",
                     title = "Open PRs",

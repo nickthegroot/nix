@@ -30,6 +30,11 @@
       cleanup = "zap";
     };
 
+    # required for contributing
+    taps = [
+      "homebrew/cask"
+    ];
+
     # `brew install`
     brews = [
       # Switch to nix version once https://github.com/NixOS/nixpkgs/pull/353386 is merged

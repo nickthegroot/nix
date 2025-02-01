@@ -42,6 +42,10 @@
 _: let
   hostName = "kurisu-makise";
 in {
+  imports = [
+    ./personal-apps.nix
+  ];
+
   networking.hostName = hostName;
   networking.computerName = hostName;
   system.defaults.smb.NetBIOSName = hostName;

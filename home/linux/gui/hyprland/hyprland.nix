@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{pkgs, ...}: let
   package = pkgs.hyprland;
 in {
   # NOTE:
@@ -25,7 +21,7 @@ in {
         "GDK_BACKEND,wayland"
       ];
     };
-    extraConfig = builtins.readFile ../conf/hyprland.conf;
+    extraConfig = builtins.readFile ./conf/hyprland.conf;
     # gammastep/wallpaper-switcher need this to be enabled.
     systemd = {
       enable = true;
@@ -43,25 +39,11 @@ in {
   # hyprland configs, based on https://github.com/notwidow/hyprland
   xdg.configFile = {
     "hypr/mako" = {
-      source = ../conf/mako;
+      source = ./conf/mako;
       recursive = true;
     };
     "hypr/scripts" = {
-      source = ../conf/scripts;
-      recursive = true;
-    };
-    "hypr/waybar" = {
-      source = ../conf/waybar;
-      recursive = true;
-    };
-    "hypr/wlogout" = {
-      source = ../conf/wlogout;
-      recursive = true;
-    };
-
-    # music player - mpd
-    "mpd" = {
-      source = ../conf/mpd;
+      source = ./conf/scripts;
       recursive = true;
     };
   };

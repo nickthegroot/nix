@@ -14,7 +14,6 @@
   #     https://nixos.wiki/wiki/PipeWire
   services.pipewire = {
     enable = true;
-    # package = pkgs-unstable.pipewire;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
@@ -25,7 +24,7 @@
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   # Disable pulseaudio, it conflicts with pipewire too.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
 
   #============================= Bluetooth =============================
 

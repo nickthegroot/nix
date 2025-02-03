@@ -9,7 +9,7 @@
 
   programs = {
     # source code: https://github.com/nix-community/home-manager/blob/master/modules/programs/chromium.nix
-    google-chrome = {
+    chromium = {
       enable = true;
 
       # https://wiki.archlinux.org/title/Chromium#Native_Wayland_support

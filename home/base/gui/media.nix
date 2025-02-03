@@ -9,7 +9,7 @@
     ffmpeg-full
 
     # images
-    viu # Terminal image viewer with native support for iTerm and Kitty
+    viu # Terminal image viewer
     imagemagick
     graphviz
 

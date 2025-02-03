@@ -6,10 +6,8 @@
     pavucontrol
     playerctl
     pulsemixer
-    imv # simple image viewer
 
     # video/audio tools
-    # cava # for visualizing audio
     libva-utils
     vdpauinfo
     vulkan-tools
@@ -24,6 +22,10 @@
       defaultProfiles = ["gpu-hq"];
       scripts = [pkgs.mpvScripts.mpris];
     };
+
+    imv.enable = true;
+
+    cava.enable = true;
   };
 
   services = {

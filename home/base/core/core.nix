@@ -5,6 +5,7 @@
     gnupg
     gnumake
     fastfetch
+    jwt-cli
 
     # Modern cli tools, replacement of grep/sed/...
     # Interactively filter its input using fuzzy searching, not limit to filenames.

@@ -4,16 +4,16 @@
     package = pkgs-stable.skhd;
     skhdConfig = ''
       # focus window
-      cmd - left: yabai -m window --focus west
-      cmd - down: yabai -m window --focus south
-      cmd - up: yabai -m window --focus north
-      cmd - right: yabai -m window --focus east
+      cmd + shift - left: yabai -m window --focus west
+      cmd + shift - down: yabai -m window --focus south
+      cmd + shift - up: yabai -m window --focus north
+      cmd + shift - right: yabai -m window --focus east
 
       # shift window
-      cmd + shift - left: yabai -m window --swap west
-      cmd + shift - down: yabai -m window --swap south
-      cmd + shift - up: yabai -m window --swap north
-      cmd + shift - right: yabai -m window --swap east
+      cmd + ctrl - left: yabai -m window --swap west
+      cmd + ctrl - down: yabai -m window --swap south
+      cmd + ctrl - up: yabai -m window --swap north
+      cmd + ctrl - right: yabai -m window --swap east
 
       # move window to space
       cmd + shift - 1: yabai -m window --space 1 --focus

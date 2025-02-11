@@ -42,6 +42,7 @@
 
             typescript = {
               updateImportsOnFileMove.enabled = "always";
+              preferences.importModuleSpecifier = "non-relative";
               suggest = {
                 completeFunctionCalls = true;
               };

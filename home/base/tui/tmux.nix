@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     tmuxinator.enable = true;
@@ -20,20 +16,6 @@
       bind '"' split-window -v -c "#{pane_current_path}"
     '';
     plugins = with pkgs.tmuxPlugins; [
-      {
-        plugin = battery;
-        extraConfig = ''
-          set -agF status-right "#{E:@catppuccin_status_battery}"
-        '';
-      }
-      {
-        plugin = weather;
-        # WHAT THE FUCK IS A KILOMETER 🦅
-        extraConfig = ''
-          set-option -g @tmux-weather-units "u"
-          set -agF status-right "#{E:@catppuccin_status_weather}"
-        '';
-      }
       tmux-fzf
       fzf-tmux-url
       vim-tmux-navigator

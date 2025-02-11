@@ -1,8 +1,8 @@
 {
   programs.nixvim = {
-    plugins.mini = {
+    plugins.snacks = {
       enable = true;
-      modules.indent = {};
+      settings.indent.enabled = true;
     };
   };
 }

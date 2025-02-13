@@ -14,10 +14,6 @@
     enable = true;
     interactiveShellInit = ''
       fish_vi_key_bindings
-
-      if not set -q TMUX
-        tmux new-session -A -s main
-      end
     '';
     functions = {
       fish_greeting = "fortune | cowsay | lolcat";

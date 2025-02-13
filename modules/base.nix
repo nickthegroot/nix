@@ -2,7 +2,7 @@
   pkgs,
   myvars,
   ...
-} @ args: {
+}: {
   # auto upgrade nix to the unstable version
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284
   nix.package = pkgs.nixVersions.latest;
@@ -13,7 +13,6 @@
 
   environment.systemPackages = with pkgs; [
     # core tools
-    fastfetch
     neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git # used by nix flakes
     git-lfs # used by huggingface models
@@ -30,7 +29,6 @@
     # networking tools
     wget
     curl
-    httpie
 
     # misc
     which
@@ -39,10 +37,11 @@
     rsync
   ];
 
+  # Install completion scripts
+  programs.fish.enable = true;
+
   users.users.${myvars.username} = {
     description = myvars.userfullname;
-    shell = pkgs.fish;
-    ignoreShellProgramCheck = true; # configured via home-manager
   };
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

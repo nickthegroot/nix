@@ -65,9 +65,10 @@ in {
       enable = true;
       extensions = with pkgs; [
         gh-notify
-        gh-dash
       ];
     };
+    gh-dash.enable = true;
+
     lazygit = {
       enable = true;
       settings = {

@@ -4,7 +4,6 @@
     tldr
     gnupg
     gnumake
-    fastfetch
     jwt-cli
 
     # Modern cli tools, replacement of grep/sed/...
@@ -14,13 +13,15 @@
     fd
     # search for files by its content, replacement of grep
     (ripgrep.override {withPCRE2 = true;})
+    # better curl
+    httpie
 
-    sad # CLI search and replace, just like sed, but with diff preview.
-    gping # ping, but with a graph(TUI)
     du-dust # A more intuitive version of `du` in rust
   ];
 
   programs = {
+    fastfetch.enable = true;
+
     # A modern replacement for ‘ls’
     eza = {
       enable = true;
@@ -29,14 +30,10 @@
     };
 
     # a cat(1) clone with syntax highlighting and Git integration.
-    bat = {
-      enable = true;
-    };
+    bat.enable = true;
 
     # A command-line fuzzy finder
-    fzf = {
-      enable = true;
-    };
+    fzf.enable = true;
 
     # A .tool-versions compatible tool downloader/switcher
     mise = {

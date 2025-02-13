@@ -20,6 +20,8 @@ in {
 
       # only supported on Linux
       gtk-titlebar = false;
+
+      command = "${pkgs.tmux}/bin/tmux new-session -A -s main";
     };
   };
 }

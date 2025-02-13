@@ -1,17 +1,11 @@
 {pkgs, ...}: {
   # Add ability to used TouchID for sudo authentication
-  security.pam.enableSudoTouchIdAuth = true;
+  # Not currently working within tmux, https://github.com/LnL7/nix-darwin/issues/985
+  # security.pam.enableSudoTouchIdAuth = true;
 
   time.timeZone = "America/Los_Angeles";
 
   system = {
-    # activationScripts are executed every time you boot the system or run `nixos-rebuild` / `darwin-rebuild`.
-    activationScripts.postUserActivation.text = ''
-      # activateSettings -u will reload the settings from the database and apply them to the current session,
-      # so we do not need to logout and login again to make the changes take effect.
-      /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-    '';
-
     defaults = {
       # customize dock
       dock = {
@@ -24,7 +18,7 @@
 
       # customize finder
       finder = {
-        _FXShowPosixPathInTitle = true; # show full path in finder title
+        _FXShowPosixPathInTitle = false; # show full path in finder title
         AppleShowAllExtensions = true; # show all file extensions
         FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
         QuitMenuItem = true; # enable quit menu item
@@ -112,11 +106,6 @@
         # Prevent Photos from opening automatically when devices are plugged in
         "com.apple.ImageCapture".disableHotPlug = true;
       };
-
-      loginwindow = {
-        GuestEnabled = false; # disable guest user
-        SHOWFULLNAME = false; # show full name in login window
-      };
     };
   };
 
@@ -126,7 +115,6 @@
       # icon fonts
       material-design-icons
       sketchybar-app-font
-      font-awesome
 
       noto-fonts-emoji
       source-sans

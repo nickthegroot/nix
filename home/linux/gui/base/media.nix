@@ -12,6 +12,7 @@
     vdpauinfo
     vulkan-tools
     glxinfo
+    gimp
 
     youtube-music
   ];

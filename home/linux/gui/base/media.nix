@@ -21,7 +21,15 @@
     mpv = {
       enable = true;
       defaultProfiles = ["gpu-hq"];
-      scripts = [pkgs.mpvScripts.mpris];
+      config = {
+        keep-open = "yes";
+      };
+      scripts = with pkgs.mpvScripts; [
+        mpris
+        modernz
+        thumbfast
+        vr-reversal
+      ];
     };
 
     imv.enable = true;

@@ -12,19 +12,17 @@
   environment.variables.EDITOR = "nvim --clean";
 
   environment.systemPackages = with pkgs; [
-    # core tools
-    neovim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    git # used by nix flakes
-    git-lfs # used by huggingface models
+    neovim
+    git
+    git-lfs
 
     # archives
     zip
-    xz
     unzip
     p7zip
 
     # Text Processing
-    jq # A lightweight and flexible command-line JSON processor
+    jq
 
     # networking tools
     wget

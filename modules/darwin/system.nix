@@ -1,7 +1,10 @@
 {pkgs, ...}: {
   # Add ability to used TouchID for sudo authentication
-  # Not currently working within tmux, https://github.com/LnL7/nix-darwin/issues/985
-  # security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local = {
+    enable = true;
+    reattach = true; # Required for tmux usage
+    touchIdAuth = true;
+  };
 
   time.timeZone = "America/Los_Angeles";
 
@@ -14,13 +17,21 @@
         # do not automatically rearrange spaces based on most recent use.
         mru-spaces = false;
         expose-group-apps = true; # Group windows by application
+
+        # hot corners
+        wvous-bl-corner = 1; # disabled
+        wvous-br-corner = 1; # disabled
+        wvous-tl-corner = 1; # disabled
+        wvous-tr-corner = 1; # disabled
       };
 
       # customize finder
       finder = {
         _FXShowPosixPathInTitle = false; # show full path in finder title
         AppleShowAllExtensions = true; # show all file extensions
+        AppleShowAllFiles = true; # show all files
         FXEnableExtensionChangeWarning = false; # disable warning when changing file extension
+        FXDefaultSearchScope = "SCcf"; # search current folder by default
         QuitMenuItem = true; # enable quit menu item
         ShowPathbar = true; # show path bar
         ShowStatusBar = true; # show status bar
@@ -35,15 +46,19 @@
 
       # customize macOS
       NSGlobalDomain = {
-        # `defaults read NSGlobalDomain "xxx"`
         "com.apple.swipescrolldirection" = false; # enable natural scrolling(default to true)
         "com.apple.sound.beep.feedback" = 0; # disable beep sound when pressing volume up/down key
 
         # Appearance
         AppleInterfaceStyle = "Dark"; # dark mode
 
-        AppleKeyboardUIMode = 3; # Mode 3 enables full keyboard control.
+        AppleEnableMouseSwipeNavigateWithScrolls = false; # Disable swipe to navigate (e.g. in browser)
+        AppleEnableSwipeNavigateWithScrolls = false; # Disable swipe to navigate (e.g. in browser)
         ApplePressAndHoldEnabled = false; # enable press and hold
+
+        AppleSpacesSwitchOnActivate = true; # Auto switch to active application's Space
+
+        _HIHideMenuBar = true; # Autohide menu bar
 
         # If you press and hold certain keyboard keys when in a text area, the key’s character begins to repeat.
         # This is very useful for vim users, they use `hjkl` to move cursor.
@@ -60,52 +75,6 @@
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
       };
-
-      # customize settings that not supported by nix-darwin directly
-      # Incomplete list of macOS `defaults` commands :
-      #   https://github.com/yannbertrand/macos-defaults
-      CustomUserPreferences = {
-        NSGlobalDomain = {
-          # Add a context menu item for showing the Web Inspector in web views
-          WebKitDeveloperExtras = true;
-        };
-        "com.apple.finder" = {
-          AppleShowAllFiles = true;
-          ShowExternalHardDrivesOnDesktop = true;
-          ShowHardDrivesOnDesktop = false;
-          ShowMountedServersOnDesktop = true;
-          ShowRemovableMediaOnDesktop = true;
-          _FXSortFoldersFirst = true;
-          # When performing a search, search the current folder by default
-          FXDefaultSearchScope = "SCcf";
-        };
-        "com.apple.desktopservices" = {
-          # Avoid creating .DS_Store files on network or USB volumes
-          DSDontWriteNetworkStores = true;
-          DSDontWriteUSBStores = true;
-        };
-        "com.apple.WindowManager" = {
-          EnableStandardClickToShowDesktop = 0; # Click wallpaper to reveal desktop
-          StandardHideDesktopIcons = 0; # Show items on desktop
-          HideDesktop = 0; # Do not hide items on desktop & stage manager
-          StageManagerHideWidgets = 0;
-          StandardHideWidgets = 0;
-        };
-        "com.apple.screensaver" = {
-          # Require password immediately after sleep or screen saver begins
-          askForPassword = 1;
-          askForPasswordDelay = 0;
-        };
-        "com.apple.screencapture" = {
-          location = "~/Desktop";
-          type = "png";
-        };
-        "com.apple.AdLib" = {
-          allowApplePersonalizedAdvertising = false;
-        };
-        # Prevent Photos from opening automatically when devices are plugged in
-        "com.apple.ImageCapture".disableHotPlug = true;
-      };
     };
   };
 
@@ -114,7 +83,6 @@
     packages = with pkgs; [
       # icon fonts
       material-design-icons
-      sketchybar-app-font
 
       noto-fonts-emoji
       source-sans

@@ -1,35 +1,36 @@
 {pkgs-stable, ...}: {
   services.skhd = {
     enable = true;
-    package = pkgs-stable.skhd;
+    # package = pkgs-stable.skhd;
     skhdConfig = ''
       # focus window
-      cmd + shift - left: yabai -m window --focus west
-      cmd + shift - down: yabai -m window --focus south
-      cmd + shift - up: yabai -m window --focus north
-      cmd + shift - right: yabai -m window --focus east
+      alt - h: yabai -m window --focus west
+      alt - j: yabai -m window --focus south
+      alt - k: yabai -m window --focus north
+      alt - l: yabai -m window --focus east
 
       # shift window
-      cmd + ctrl - left: yabai -m window --swap west
-      cmd + ctrl - down: yabai -m window --swap south
-      cmd + ctrl - up: yabai -m window --swap north
-      cmd + ctrl - right: yabai -m window --swap east
+      alt + shift - h: yabai -m window --swap west
+      alt + shift - j: yabai -m window --swap south
+      alt + shift - k: yabai -m window --swap north
+      alt + shift - l: yabai -m window --swap east
 
       # move window to space
-      cmd + shift - 1: yabai -m window --space 1 --focus
-      cmd + shift - 2: yabai -m window --space 2 --focus
-      cmd + shift - 3: yabai -m window --space 3 --focus
-      cmd + shift - 4: yabai -m window --space 4 --focus
-      cmd + shift - 5: yabai -m window --space 5 --focus
-      cmd + shift - 6: yabai -m window --space 6 --focus
-      cmd + shift - 7: yabai -m window --space 7 --focus
-      cmd + shift - 8: yabai -m window --space 8 --focus
-      cmd + shift - 9: yabai -m window --space 9 --focus
+      alt + shift - 1: yabai -m window --space 1 --focus
+      alt + shift - 2: yabai -m window --space 2 --focus
+      alt + shift - 3: yabai -m window --space 3 --focus
+      alt + shift - 4: yabai -m window --space 4 --focus
+      alt + shift - 5: yabai -m window --space 5 --focus
+      alt + shift - 6: yabai -m window --space 6 --focus
+      alt + shift - 7: yabai -m window --space 7 --focus
+      alt + shift - 8: yabai -m window --space 8 --focus
+      alt + shift - 9: yabai -m window --space 9 --focus
 
       # common apps
       alt - return: open -a "Ghostty"
-      meh - return: open -a "Visual Studio Code"
-      meh - space: open -a "Arc"
+      alt - space: open -a "Arc"
+
+      # less common, but still important
       meh - m: open -a "YouTube Music"
       meh - o: open -a "Obsidian"
       meh - s: open -a "Slack"
@@ -37,7 +38,6 @@
       meh - c: open -a "Notion Calendar"
       meh - l: open -a "Linear"
       meh - x: open -a "Xcode"
-      meh - a: yabai -m window --focus (yabai -m query --windows |jq '.[] | select (.app  == "Around") | .id');
     '';
   };
 

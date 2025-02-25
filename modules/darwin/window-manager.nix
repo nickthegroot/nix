@@ -2,7 +2,7 @@
   services.yabai = {
     enable = true;
     package = pkgs-stable.yabai;
-    enableScriptingAddition = true;
+    enableScriptingAddition = false;
     config = {
       mouse_follows_focus = "on";
       window_placement = "second_child";
@@ -27,14 +27,14 @@
       left_padding = 10;
       right_padding = 10;
       window_gap = 10;
-      external_bar = "all:32:0";
+      external_bar = "all:30:0";
     };
 
-    extraConfig = ''
-      # Required until https://github.com/LnL7/nix-darwin/issues/1224 is resolved
-      yabai -m signal --add event=dock_did_restart action='sudo yabai --load-sa'
-      sudo yabai --load-sa
-    '';
+    # extraConfig = ''
+    #   # Required until https://github.com/LnL7/nix-darwin/issues/1224 is resolved
+    #   yabai -m signal --add event=dock_did_restart action='sudo yabai --load-sa'
+    #   sudo yabai --load-sa
+    # '';
   };
 
   services.jankyborders = {

@@ -17,12 +17,6 @@
       cleanup = "zap";
     };
 
-    # `brew install`
-    brews = [
-      # Switch to nix version once https://github.com/NixOS/nixpkgs/pull/353386 is merged
-      "posting"
-    ];
-
     # `brew install --cask`
     casks = [
       "arc"
@@ -34,8 +28,6 @@
       "notion-calendar"
       "notion"
       "obsidian"
-
-      "blender"
 
       # Misc
       "iina" # video player

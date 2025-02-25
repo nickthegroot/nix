@@ -1,8 +1,3 @@
-{pkgs, ...}: {
-  services.sketchybar = {
-    enable = true;
-    extraPackages = with pkgs; [
-      lua5_4
-    ];
-  };
+{
+  services.sketchybar.enable = true;
 }

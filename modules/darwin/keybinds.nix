@@ -1,7 +1,6 @@
-{pkgs-stable, ...}: {
+{
   services.skhd = {
     enable = true;
-    # package = pkgs-stable.skhd;
     skhdConfig = ''
       # focus window
       alt - h: yabai -m window --focus west

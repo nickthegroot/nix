@@ -11,9 +11,10 @@
         };
       };
 
-      lsp.servers = {
-        graphql.enable = true;
-      };
+      # Dependent on https://github.com/NixOS/nixpkgs/pull/384397
+      # lsp.servers = {
+      #   graphql.enable = true;
+      # };
     };
   };
 }

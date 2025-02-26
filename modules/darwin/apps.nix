@@ -17,9 +17,14 @@
       cleanup = "zap";
     };
 
+    taps = [
+      "th-ch/youtube-music"
+    ];
+
     # `brew install --cask`
     casks = [
       "arc"
+      "zen-browser"
 
       "visual-studio-code"
       "ghostty"
@@ -30,10 +35,11 @@
       "obsidian"
 
       # Misc
-      "iina" # video player
-      "raycast" # (HotKey: alt/option + space)search, calculate and run scripts(with many plugins)
+      "iina" # better mpv for macos
+      "raycast"
       "1password"
       "discord"
+      "th-ch/youtube-music/youtube-music"
     ];
 
     masApps = {

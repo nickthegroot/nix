@@ -30,7 +30,6 @@
             mode = "n";
             group = "+find/file";
           }
-
           {
             __unkeyed-1 = "<leader>g";
             mode = [
@@ -39,25 +38,21 @@
             ];
             group = "+git";
           }
-
           {
             __unkeyed-1 = "<leader>q";
             mode = "n";
             group = "+quit/session";
           }
-
           {
             __unkeyed-1 = "<leader>s";
             mode = "n";
             group = "+search";
           }
-
           {
             __unkeyed-1 = "<leader>u";
             mode = "n";
             group = "+ui";
           }
-
           {
             __unkeyed-1 = "<leader>w";
             mode = "n";

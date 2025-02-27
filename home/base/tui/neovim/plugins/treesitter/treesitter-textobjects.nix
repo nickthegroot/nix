@@ -6,16 +6,14 @@
         enable = true;
         lookahead = true;
         keymaps = {
-          "aa" = "@parameter.outer";
-          "ia" = "@parameter.inner";
+          "aa" = "@assignment.outer";
+          "ia" = "@assignment.inner";
+          "ab" = "@block.outer";
+          "ib" = "@block.inner";
           "af" = "@function.outer";
           "if" = "@function.inner";
-          "ac" = "@class.outer";
-          "ic" = "@class.inner";
-          "ii" = "@conditional.inner";
-          "ai" = "@conditional.outer";
-          "il" = "@loop.inner";
-          "al" = "@loop.outer";
+          "aC" = "@class.outer";
+          "iC" = "@class.inner";
           "at" = "@comment.outer";
         };
       };
@@ -23,28 +21,19 @@
         enable = true;
         gotoNextStart = {
           "]m" = "@function.outer";
-          "]c" = "@class.outer";
+          "]b" = "@block.outer";
         };
         gotoNextEnd = {
           "]M" = "@function.outer";
-          "]C" = "@class.outer";
+          "]B" = "@block.outer";
         };
         gotoPreviousStart = {
           "[m" = "@function.outer";
-          "[c" = "@class.outer";
+          "[b" = "@block.outer";
         };
         gotoPreviousEnd = {
           "[M" = "@function.outer";
-          "[C" = "@class.outer";
-        };
-      };
-      swap = {
-        enable = true;
-        swapNext = {
-          "<leader>a" = "@parameters.inner";
-        };
-        swapPrevious = {
-          "<leader>A" = "@parameter.outer";
+          "[B" = "@block.outer";
         };
       };
     };

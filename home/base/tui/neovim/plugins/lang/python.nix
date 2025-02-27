@@ -1,5 +1,23 @@
 {pkgs, ...}: {
   programs.nixvim = {
+    extraPlugins = [
+      (pkgs.vimUtils.buildVimPlugin {
+        name = "venv-selector";
+        nvimSkipModule = [
+          "venv-selector.cached_venv"
+        ];
+        src = pkgs.fetchFromGitHub {
+          owner = "stefanboca";
+          repo = "venv-selector.nvim";
+          rev = "e7b8c42c1cdd60d70d24463b5108231d695cf67e";
+          hash = "sha256-bfuZVJ7NnveU+jFA+HAb/buAOmMAHNg5tKfYNtBAy6Q=";
+        };
+      })
+    ];
+    extraConfigLua = ''
+      require("venv-selector").setup()
+    '';
+
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft.python = [
@@ -40,5 +58,19 @@
         };
       };
     };
+
+    keymaps = [
+      {
+        mode = [
+          "n"
+        ];
+        key = "<leader>rv";
+        action = ":VenvSelect<CR>";
+        options = {
+          silent = true;
+          desc = "Select python environment";
+        };
+      }
+    ];
   };
 }

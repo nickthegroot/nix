@@ -14,6 +14,10 @@
       bind  c  new-window      -c "#{pane_current_path}"
       bind  %  split-window -h -c "#{pane_current_path}"
       bind '"' split-window -v -c "#{pane_current_path}"
+
+      # Required for image.nvim
+      set -gq allow-passthrough on
+      set -g visual-activity off
     '';
     shell = "${pkgs.fish}/bin/fish";
     plugins = with pkgs.tmuxPlugins; [

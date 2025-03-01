@@ -37,6 +37,6 @@
     };
   };
 
-  # fix https://github.com/ryan4yin/nix-config/issues/10
-  security.pam.services.swaylock = {};
+  # https://mynixos.com/home-manager/option/programs.hyprlock.enable
+  security.pam.services.hyprlock = {};
 }

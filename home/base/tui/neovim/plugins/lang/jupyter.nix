@@ -157,11 +157,11 @@
         mode = [
           "n"
         ];
-        key = "<C-o>";
-        action = ":noautocmd MoltenEnterOutput<CR>";
+        key = "<leader>rh";
+        action = ":noautocmd MoltenHideOutput<CR>";
         options = {
           silent = true;
-          desc = "Enter output";
+          desc = "Hide output";
         };
       }
 

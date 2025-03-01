@@ -6,4 +6,7 @@ _: {
     "figma"
     "zoom"
   ];
+  homebrew.brews = [
+    "basti"
+  ];
 }

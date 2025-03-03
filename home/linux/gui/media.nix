@@ -3,18 +3,12 @@
 {
   home.packages = with pkgs; [
     # audio control
-    pavucontrol
     playerctl
-    pulsemixer
-
-    # video/audio tools
-    libva-utils
-    vdpauinfo
-    vulkan-tools
-    glxinfo
-    gimp
+    pavucontrol # gui for audio io
+    alsa-utils # provides amixer/alsamixer/...
 
     youtube-music
+    gimp
   ];
 
   programs = {

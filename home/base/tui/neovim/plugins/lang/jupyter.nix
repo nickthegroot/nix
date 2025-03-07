@@ -9,7 +9,7 @@
         enable = true;
         backend = "kitty";
         maxWidth = 100;
-        maxHeight = 12;
+        maxHeight = 25;
         maxHeightWindowPercentage = 9999;
         maxWidthWindowPercentage = 9999;
         windowOverlapClearEnabled = true;
@@ -19,7 +19,7 @@
         settings = {
           # https://github.com/benlubas/molten-nvim/blob/main/docs/Not-So-Quick-Start-Guide.md
           image_provider = "image.nvim";
-          output_win_max_height = 20;
+          output_win_max_height = 25;
           wrap_output = true;
         };
       };

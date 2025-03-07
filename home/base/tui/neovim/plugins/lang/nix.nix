@@ -7,12 +7,12 @@
 
       conform-nvim.settings = {
         formatters_by_ft = {
-          nix = ["alejandra"];
+          nix = ["nixfmt"];
         };
 
         formatters = {
           alejandra = {
-            command = "${pkgs.alejandra}/bin/alejandra";
+            nixfmt = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
           };
         };
       };

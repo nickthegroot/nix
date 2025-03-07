@@ -1,10 +1,7 @@
 {pkgs, ...}: {
   programs.nixvim = {
     plugins = {
-      markdown-preview = {
-        enable = true;
-        settings.filetypes = ["markdown"];
-      };
+      render-markdown.enable = true;
 
       lint = {
         lintersByFt.md = ["markdownlint"];

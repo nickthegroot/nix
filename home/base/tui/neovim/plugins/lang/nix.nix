@@ -11,8 +11,8 @@
         };
 
         formatters = {
-          alejandra = {
-            nixfmt = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          nixfmt = {
+            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
           };
         };
       };

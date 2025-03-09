@@ -8,8 +8,11 @@ _: {
       mainBar = {
         position = "top";
         layer = "top";
-        modules-left = ["custom/launcher" "hyprland/workspaces"];
-        modules-center = ["custom/playerctl"];
+        modules-left = [
+          "custom/launcher"
+          "hyprland/workspaces"
+        ];
+        modules-center = [ "custom/playerctl" ];
         modules-right = [
           "pulseaudio"
           "battery"
@@ -17,6 +20,7 @@ _: {
           "cpu"
           "network"
           "clock"
+          "idle_inhibitor"
           "tray"
         ];
         "hyprland/workspaces" = {
@@ -89,12 +93,24 @@ _: {
             phone = "";
             portable = "";
             car = "";
-            default = ["" "" ""];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           scroll-step = 5.0;
           on-click = "amixer set Master toggle";
           on-click-right = "pavucontrol";
           smooth-scrolling-threshold = 1;
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "󰅶";
+            deactivated = "󰾪";
+          };
+          tooltip = false;
         };
         tray = {
           icon-size = 15;

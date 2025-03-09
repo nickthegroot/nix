@@ -1,4 +1,5 @@
-{wallpapers, ...}: {
+{ wallpapers, ... }:
+{
   programs.hyprlock = {
     enable = true;
     # https://github.com/justinmdickey/publicdots/blob/main/.config/hypr/hyprlock.conf
@@ -27,7 +28,7 @@
           dots_center = true;
           outer_color = "rgba(0, 0, 0, 0)";
           inner_color = "rgba(0, 0, 0, 0.2)";
-          font_color = "#cdd6f4";
+          font_color = "rgb(205, 214, 244)";
           fade_on_empty = false;
           rounding = -1;
           check_color = "rgb(204, 136, 34)";
@@ -65,9 +66,9 @@
     enable = true;
     settings = {
       general = {
+        lock_cmd = "pidof hyprlock || hyprlock"; # avoid starting multiple instances
+        before_sleep_cmd = "loginctl lock-session"; # lock before suspend
         after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = false;
-        lock_cmd = "hyprlock";
       };
 
       listener = [
@@ -78,7 +79,7 @@
         }
         {
           timeout = 6 * 60; # 6min
-          on-timeout = "hyprlock";
+          on-timeout = "loginctl lock-session";
         }
       ];
     };

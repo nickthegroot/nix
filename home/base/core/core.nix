@@ -1,4 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, nix-index-database, ... }:
+{
+  imports = [ nix-index-database.hmModules.nix-index ];
+
   home.packages = with pkgs; [
     # Misc
     tldr
@@ -12,7 +15,7 @@
     # search for files by name, faster than find
     fd
     # search for files by its content, replacement of grep
-    (ripgrep.override {withPCRE2 = true;})
+    (ripgrep.override { withPCRE2 = true; })
     # better curl
     httpie
 
@@ -40,6 +43,10 @@
       enable = true;
       enableFishIntegration = true;
     };
+
+    # A program runner similar to npx or pipx
+    # Running arbitrary nix-pkgs binaries without installing them
+    nix-index-database.comma.enable = true;
 
     # zoxide is a smarter cd command, inspired by z and autojump.
     # It remembers which directories you use most frequently,

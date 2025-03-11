@@ -2,9 +2,16 @@
 {
   home.packages = with pkgs; [
     heroic
-    mangohud
 
     unnamed-sdvx-clone
     osu-lazer-bin
   ];
+
+  programs.mangohud = {
+    enable = true;
+    settings = {
+      full = true; # show (most) parameters
+      no_display = true; # hide hud by default
+    };
+  };
 }

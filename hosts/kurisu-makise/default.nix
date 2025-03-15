@@ -39,9 +39,11 @@
 # .;;:c:.   ..   ...  ...   ...      .''lOOk::clcc:lk00o.
 #
 # Main Personal Laptop, 2021 M1 MacBook Pro
-_: let
+_:
+let
   hostName = "kurisu-makise";
-in {
+in
+{
   imports = [
     ./personal-apps.nix
   ];

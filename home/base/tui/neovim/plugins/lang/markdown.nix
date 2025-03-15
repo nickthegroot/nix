@@ -1,10 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       render-markdown.enable = true;
 
       lint = {
-        lintersByFt.md = ["markdownlint"];
+        lintersByFt.md = [ "markdownlint" ];
         linters.markdownlint.cmd = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
       };
     };

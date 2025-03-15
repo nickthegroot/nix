@@ -2,7 +2,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   # required for greeting
   home.packages = with pkgs; [
     fortune
@@ -26,7 +27,7 @@
     ];
   };
 
-  home.activation.configure-tide = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  home.activation.configure-tide = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       ${pkgs.fish}/bin/fish -c "tide configure \
     --auto \
     --style=Classic \

@@ -9,7 +9,10 @@
           row = 0.5;
           col = 0.5;
           preview = {
-            scrollchars = ["┃" ""];
+            scrollchars = [
+              "┃"
+              ""
+            ];
           };
         };
       };

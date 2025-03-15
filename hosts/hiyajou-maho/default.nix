@@ -47,9 +47,11 @@
 #           ..,;;;;:clooooooooooooool..lllloooo:
 #
 # Work Laptop, 2021 M1 MacBook Pro
-_: let
+_:
+let
   hostName = "hiyajou-maho";
-in {
+in
+{
   imports = [
     ./work-apps.nix
   ];

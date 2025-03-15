@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       nix.enable = true;
@@ -7,7 +8,7 @@
 
       conform-nvim.settings = {
         formatters_by_ft = {
-          nix = ["nixfmt"];
+          nix = [ "nixfmt" ];
         };
 
         formatters = {
@@ -19,7 +20,7 @@
 
       lint = {
         lintersByFt = {
-          nix = ["statix"];
+          nix = [ "statix" ];
         };
 
         linters = {

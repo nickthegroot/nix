@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          graphql = ["prettierd"];
+          graphql = [ "prettierd" ];
         };
 
         formatters.prettierd = {

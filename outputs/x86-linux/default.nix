@@ -1,9 +1,13 @@
-{lib, ...} @ args: let
+{ lib, ... }@args:
+let
   data = {
-    okabe-rintarou = import ./src/okabe-rintarou.nix args;
+    okabe-rintarou = import ./okabe-rintarou.nix args;
   };
 
   dataWithoutPaths = builtins.attrValues data;
-in {
-  nixosConfigurations = lib.attrsets.mergeAttrsList (map (it: it.nixosConfigurations or {}) dataWithoutPaths);
+in
+{
+  nixosConfigurations = lib.attrsets.mergeAttrsList (
+    map (it: it.nixosConfigurations or { }) dataWithoutPaths
+  );
 }

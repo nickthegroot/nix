@@ -19,7 +19,7 @@
         enable = true;
         settings = {
           sources = {
-            default = ["copilot"];
+            default = [ "copilot" ];
             providers = {
               copilot = {
                 name = "copilot";

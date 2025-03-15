@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     python312Packages.jupytext # nixvim one doesn't activate correctly
   ];
@@ -27,11 +28,11 @@
         enable = true;
         settings = {
           lspFeatures = {
-            languages = ["python"];
+            languages = [ "python" ];
             chunks = "all";
             diagnostics = {
               enabled = true;
-              triggers = ["BufWritePost"];
+              triggers = [ "BufWritePost" ];
             };
             completion = {
               enabled = true;
@@ -45,7 +46,7 @@
       };
       jupytext = {
         enable = true;
-        python3Dependencies = p: []; # see home.packages
+        python3Dependencies = p: [ ]; # see home.packages
         settings = {
           style = "markdown";
           output_extension = "md";

@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   inherit (config.lib.nixvim) mkRaw;
-in {
+in
+{
   programs.nixvim = {
     plugins = {
       lsp = {
@@ -24,7 +26,10 @@ in {
         options.desc = "Hover";
       }
       {
-        mode = ["n" "v"];
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>ca";
         action = mkRaw "vim.lsp.buf.code_action";
         options.desc = "Code Action";

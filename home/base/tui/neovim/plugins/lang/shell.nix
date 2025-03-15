@@ -1,9 +1,10 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          sh = ["shfmt"];
+          sh = [ "shfmt" ];
         };
         formatters = {
           shfmt = {

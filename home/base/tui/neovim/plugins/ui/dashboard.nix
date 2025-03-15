@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   inherit (config.lib.nixvim) mkRaw;
-in {
+in
+{
   programs.nixvim = {
     plugins.snacks = {
       enable = true;
@@ -8,7 +10,7 @@ in {
         dashboard = {
           width = 100;
           sections = [
-            {section = "header";}
+            { section = "header"; }
             {
               icon = " ";
               title = "Keymaps";

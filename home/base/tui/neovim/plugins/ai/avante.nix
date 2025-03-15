@@ -36,36 +36,40 @@
           };
           file_selector = {
             provider = "fzf";
-            provider_opts = {};
+            provider_opts = { };
           };
         };
       };
 
       markdown-preview.settings = {
-        filetypes = ["Avante"];
+        filetypes = [ "Avante" ];
       };
 
       blink-cmp.settings = {
         sources = {
-          default = ["avante_commands" "avante_files" "avante_mentions"];
+          default = [
+            "avante_commands"
+            "avante_files"
+            "avante_mentions"
+          ];
           providers = {
             avante_commands = {
               name = "avante_commands";
               module = "blink.compat.source";
               score_offset = 90;
-              opts = {};
+              opts = { };
             };
             avante_files = {
               name = "avante_files";
               module = "blink.compat.source";
               score_offset = 100;
-              opts = {};
+              opts = { };
             };
             avante_mentions = {
               name = "avante_mentions";
               module = "blink.compat.source";
               score_offset = 1000;
-              opts = {};
+              opts = { };
             };
           };
         };

@@ -1,22 +1,23 @@
-{myvars, ...}: {
+{ myvars, ... }:
+{
   programs.nixvim = {
     plugins.lualine = {
       enable = true;
       settings = {
         options = {
           always_divide_middle = true;
-          ignore_focus = ["neo-tree"];
+          ignore_focus = [ "neo-tree" ];
           globalstatus = true; # have a single statusline at bottom of neovim instead of one for every window
-          disabled_filetypes.statusline = ["snacks_dashboard"];
+          disabled_filetypes.statusline = [ "snacks_dashboard" ];
           section_separators = {
             left = "";
             right = "";
           };
         };
-        extensions = ["fzf"];
+        extensions = [ "fzf" ];
         sections = {
-          lualine_a = ["mode"];
-          lualine_b = ["branch"];
+          lualine_a = [ "mode" ];
+          lualine_b = [ "branch" ];
           lualine_y = [
             "progress"
             {
@@ -30,7 +31,7 @@
               };
             }
           ];
-          lualine_z = [''"${myvars.icons.ui.Time}" .. os.date("%I:%M %p")''];
+          lualine_z = [ ''"${myvars.icons.ui.Time}" .. os.date("%I:%M %p")'' ];
         };
       };
     };

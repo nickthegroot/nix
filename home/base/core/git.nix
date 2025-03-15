@@ -3,12 +3,15 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   opGpgProgram =
-    if pkgs.stdenv.isLinux
-    then "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}"
-    else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-in {
+    if pkgs.stdenv.isLinux then
+      "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}"
+    else
+      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+in
+{
   programs = {
     git = {
       enable = true;
@@ -48,15 +51,12 @@ in {
         };
       };
 
-      # A syntax-highlighting pager in Rust(2019 ~ Now)
       delta = {
         enable = true;
         options = {
           diff-so-fancy = true;
           line-numbers = true;
           true-color = "always";
-          # features => named groups of settings, used to keep related settings organized
-          # features = "";
         };
       };
     };

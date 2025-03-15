@@ -1,4 +1,5 @@
-{pkgs-stable, ...}: {
+{ pkgs-stable, ... }:
+{
   services.yabai = {
     enable = true;
     package = pkgs-stable.yabai;

@@ -2,10 +2,12 @@
   myvars,
   config,
   ...
-}: let
+}:
+let
   icons = myvars.icons;
   mkRaw = config.lib.nixvim.mkRaw;
-in {
+in
+{
   programs.nixvim = {
     plugins.neo-tree = {
       enable = true;

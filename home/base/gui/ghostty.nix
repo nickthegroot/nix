@@ -1,13 +1,13 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   inherit (pkgs) stdenv;
-in {
+in
+{
   programs.ghostty = {
     enable = true;
     package =
       # use brew version on darwin
-      if stdenv.isDarwin
-      then null
-      else pkgs.ghostty;
+      if stdenv.isDarwin then null else pkgs.ghostty;
     settings = {
       font-family = "JetBrainsMono Nerd Font";
 

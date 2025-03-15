@@ -1,4 +1,5 @@
-{wallpapers, ...}: {
+{ wallpapers, ... }:
+{
   services.wpaperd = {
     enable = true;
     settings = {

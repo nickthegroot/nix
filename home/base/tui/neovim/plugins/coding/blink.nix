@@ -4,8 +4,12 @@
       enable = true;
       settings = {
         sources = {
-          default = ["lsp" "path" "buffer"];
-          cmdline = [];
+          default = [
+            "lsp"
+            "path"
+            "buffer"
+          ];
+          cmdline = [ ];
         };
 
         appearance = {
@@ -55,7 +59,7 @@
           };
           menu = {
             draw = {
-              treesitter = ["lsp"];
+              treesitter = [ "lsp" ];
             };
           };
           documentation = {

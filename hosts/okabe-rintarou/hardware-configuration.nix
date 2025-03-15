@@ -4,18 +4,25 @@
 {
   config,
   lib,
-  pkgs,
   modulesPath,
   ...
-}: {
+}:
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
+    ./hardware-nvidia.nix
   ];
 
-  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usbhid" "sd_mod"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-amd"];
-  boot.extraModulePackages = [];
+  boot.initrd.availableKernelModules = [
+    "nvme"
+    "xhci_pci"
+    "ahci"
+    "usbhid"
+    "sd_mod"
+  ];
+  boot.initrd.kernelModules = [ ];
+  boot.kernelModules = [ "kvm-amd" ];
+  boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/91df622a-6986-487b-abae-c8b7e7b068b9";
@@ -25,7 +32,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/EC3C-D865";
     fsType = "vfat";
-    options = ["fmask=0077" "dmask=0077"];
+    options = [
+      "fmask=0077"
+      "dmask=0077"
+    ];
   };
 
   fileSystems."/mnt/hdd" = {
@@ -34,7 +44,7 @@
   };
 
   swapDevices = [
-    {device = "/dev/disk/by-uuid/c924f7f6-23ed-40aa-b537-b31f34dc12d7";}
+    { device = "/dev/disk/by-uuid/c924f7f6-23ed-40aa-b537-b31f34dc12d7"; }
   ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

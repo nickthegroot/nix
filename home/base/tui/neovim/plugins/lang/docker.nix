@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       lsp.servers = {
@@ -8,7 +9,7 @@
 
       lint = {
         lintersByFt = {
-          docker = ["hadolint"];
+          docker = [ "hadolint" ];
         };
 
         linters = {

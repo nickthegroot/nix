@@ -1,10 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          json = ["prettierd"];
-          jsonc = ["prettierd"];
+          json = [ "prettierd" ];
+          jsonc = [ "prettierd" ];
         };
 
         formatters.prettierd = {

@@ -1,15 +1,6 @@
-{pkgs, ...}: {
-  # Adjust the color temperature(& brightness) of your screen according to
-  # your surroundings. This may help your eyes hurt less if you are
-  # working in front of the screen at night.
-  #
-  # works fine with both x11 & wayland(hyprland)
-  #
-  # https://gitlab.com/chinstrap/gammastep
+{
   services.gammastep = {
     enable = true;
-    # add a gammastep icon in the system tray
-    # has problem with wayland, so disable it
     tray = false;
     temperature = {
       day = 5700;

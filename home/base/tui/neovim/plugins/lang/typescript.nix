@@ -1,13 +1,14 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     plugins = {
       conform-nvim.settings = {
         formatters_by_ft = {
-          javascript = ["prettierd"];
-          javascriptreact = ["prettierd"];
-          typescript = ["prettierd"];
-          typescriptreact = ["prettierd"];
-          svelte = ["prettierd"];
+          javascript = [ "prettierd" ];
+          javascriptreact = [ "prettierd" ];
+          typescript = [ "prettierd" ];
+          typescriptreact = [ "prettierd" ];
+          svelte = [ "prettierd" ];
         };
 
         formatters.prettierd = {

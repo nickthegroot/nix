@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     extraPlugins = [
       (pkgs.vimUtils.buildVimPlugin {
@@ -27,10 +28,10 @@
       };
 
       lint = {
-        lintersByFt.python = ["mypy"];
+        lintersByFt.python = [ "mypy" ];
         linters.mypy = {
           cmd = "${pkgs.mypy}/bin/mypy";
-          args = ["--ignore-missing-imports"];
+          args = [ "--ignore-missing-imports" ];
         };
       };
 

@@ -49,12 +49,12 @@
 # https://pcpartpicker.com/user/nbd9/saved/#view=ZJBrmG
 let
   hostName = "okabe-rintarou";
-in {
+in
+{
   imports = [
     ./hardware-configuration.nix
-    ./boot.nix
-    ./nvidia.nix
     ./media-server.nix
+    ./rgb.nix
   ];
 
   networking = {

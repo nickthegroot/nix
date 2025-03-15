@@ -1,20 +1,17 @@
-{pkgs, ...}:
-# media - control and enjoy audio/video
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     # audio control
     playerctl
     pavucontrol # gui for audio io
-    alsa-utils # provides amixer/alsamixer/...
 
     youtube-music
-    gimp
   ];
 
   programs = {
     mpv = {
       enable = true;
-      defaultProfiles = ["gpu-hq"];
+      defaultProfiles = [ "gpu-hq" ];
       config = {
         keep-open = "yes";
       };
@@ -29,9 +26,5 @@
     imv.enable = true;
 
     cava.enable = true;
-  };
-
-  services = {
-    playerctld.enable = true;
   };
 }

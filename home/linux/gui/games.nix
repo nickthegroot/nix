@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     heroic
 
+    prismlauncher
     unnamed-sdvx-clone
     osu-lazer-bin
   ];

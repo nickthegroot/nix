@@ -4,6 +4,10 @@
     awscli2
     ssm-session-manager-plugin # AWS Session Manger Plugin
     google-cloud-sdk
-    azure-cli
+    # Running into a lot of problems getting this working.
+    # For now, will manage through Mise/Brew
+    # azure-cli
+
+    _1password-cli
   ];
 }

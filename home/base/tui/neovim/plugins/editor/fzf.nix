@@ -82,13 +82,13 @@
       {
         mode = "n";
         key = "gd";
-        action = "<cmd>FzfLua lsp_definitions     jump_to_single_result=true ignore_current_line=true<cr>";
+        action = "<cmd>FzfLua lsp_definitions     jump1=true ignore_current_line=true<cr>";
         options.desc = "Goto Definition";
       }
       {
         mode = "n";
         key = "gr";
-        action = "<cmd>FzfLua lsp_references      jump_to_single_result=true ignore_current_line=true<cr>";
+        action = "<cmd>FzfLua lsp_references      jump1=true ignore_current_line=true<cr>";
         options.desc = "Goto References";
       }
     ];

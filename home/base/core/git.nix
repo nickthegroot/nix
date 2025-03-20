@@ -91,6 +91,7 @@ in
     gaa = "git add -A";
     gd = "git diff";
     gdc = "git diff --cached";
+    gctmp = "git commit \"tmp\" --no-verify --no-gpg-sign";
 
     # GitHub
     ghc = "gh pr checkout";

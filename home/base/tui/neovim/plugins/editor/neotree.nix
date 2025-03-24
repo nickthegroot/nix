@@ -4,11 +4,16 @@
   ...
 }:
 let
-  icons = myvars.icons;
-  mkRaw = config.lib.nixvim.mkRaw;
+  inherit (myvars) icons;
+  inherit (config.lib.nixvim) mkRaw;
 in
 {
   programs.nixvim = {
+    extraConfigLua = ''
+      function yank_node(filter)
+        return       end
+    '';
+
     plugins.neo-tree = {
       enable = true;
       closeIfLastWindow = true;
@@ -42,18 +47,53 @@ in
         };
       };
 
-      window.mappings = {
-        "<space>" = "none";
-        "l" = "open";
-        "h" = "close_node";
-        "Y" = mkRaw ''
-          function(state)
-            local node = state.tree:get_node()
-            local path = node:get_id()
-            vim.fn.setreg("+", path, "c")
-          end
-        '';
-      };
+      window.mappings =
+        let
+          yankNode =
+            selector:
+            mkRaw ''
+              function(state)
+                local node = state.tree:get_node()
+                local result = ${selector}
+                vim.fn.setreg('"', result)
+                vim.notify('Copied: ' .. result)
+              end
+            '';
+        in
+        {
+          "<space>" = "none";
+          "l" = "open";
+          "h" = "close_node";
+          "YY" = {
+            command = yankNode ''vim.fn.fnamemodify(node:get_id(), ':.')'';
+            desc = "[Y]ank relative path";
+          };
+
+          "Ya" = {
+            command = yankNode ''node:get_id()'';
+            desc = "[Y]ank [a]bsolute path";
+          };
+          "Yr" = {
+            command = yankNode ''vim.fn.fnamemodify(node:get_id(), ':.')'';
+            desc = "[Y]ank [r]elative path";
+          };
+          "Yh" = {
+            command = yankNode ''vim.fn.fnamemodify(node:get_id(), ':~')'';
+            desc = "[Y]ank path relative to [h]ome";
+          };
+          "Yf" = {
+            command = yankNode ''node.name'';
+            desc = "[Y]ank [f]ilename";
+          };
+          "Yn" = {
+            command = yankNode ''vim.fn.fnamemodify(node.name, ':r')'';
+            desc = "[Y]ank [n]ame without extension";
+          };
+          "Ye" = {
+            command = yankNode ''vim.fn.fnamemodify(node.name, ':e')'';
+            desc = "[Y]ank [e]xtension";
+          };
+        };
     };
 
     keymaps = [

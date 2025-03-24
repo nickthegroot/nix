@@ -14,22 +14,14 @@
             right = "";
           };
         };
-        extensions = [ "fzf" ];
+        extensions = [
+          "fzf"
+          "neo-tree"
+        ];
         sections = {
           lualine_a = [ "mode" ];
           lualine_b = [ "branch" ];
           lualine_y = [
-            "progress"
-            {
-              separator = "";
-            }
-            "location"
-            {
-              padding = {
-                left = 0;
-                right = 1;
-              };
-            }
           ];
           lualine_z = [ ''"${myvars.icons.ui.Time}" .. os.date("%I:%M %p")'' ];
         };

@@ -27,6 +27,7 @@
 
       # common apps
       alt - return: open -a "Ghostty"
+      alt + shift - return: open -a "Zed"
       alt - space: open -a "Arc"
 
       # less common, but still important

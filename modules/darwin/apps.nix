@@ -28,6 +28,7 @@
       "zen-browser"
 
       "visual-studio-code"
+      "zed"
       "ghostty"
       "docker"
 

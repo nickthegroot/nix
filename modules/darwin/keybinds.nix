@@ -32,7 +32,6 @@
 
       # less common, but still important
       meh - m: open -a "YouTube Music"
-      meh - o: open -a "Obsidian"
       meh - s: open -a "Slack"
       meh - n: open -a "Notion"
       meh - c: open -a "Notion Calendar"

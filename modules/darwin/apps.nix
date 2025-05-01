@@ -34,7 +34,6 @@
 
       "notion-calendar"
       "notion"
-      "obsidian"
 
       # Misc
       "iina" # better mpv for macos

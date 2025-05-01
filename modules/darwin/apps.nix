@@ -43,9 +43,5 @@
       "discord"
       "th-ch/youtube-music/youtube-music"
     ];
-
-    masApps = {
-      Xcode = 497799835;
-    };
   };
 }

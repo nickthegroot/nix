@@ -7,7 +7,6 @@
           default = [
             "lsp"
             "path"
-            "buffer"
           ];
           cmdline = [ ];
         };

@@ -80,6 +80,15 @@
         options.desc = "Workspace Diagnostics";
       }
       {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>ca";
+        action = "<cmd>FzfLua lsp_code_actions previewer=codeaction_native<cr>";
+        options.desc = "Code action";
+      }
+      {
         mode = "n";
         key = "gd";
         action = "<cmd>FzfLua lsp_definitions     jump1=true ignore_current_line=true<cr>";

@@ -26,15 +26,6 @@ in
         options.desc = "Hover";
       }
       {
-        mode = [
-          "n"
-          "v"
-        ];
-        key = "<leader>ca";
-        action = mkRaw "vim.lsp.buf.code_action";
-        options.desc = "Code Action";
-      }
-      {
         mode = "n";
         key = "<leader>cr";
         action = mkRaw "vim.lsp.buf.rename";

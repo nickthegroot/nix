@@ -1,17 +1,17 @@
 {
   pkgs,
-  anyrun,
   ...
 }:
 {
-  imports = [ anyrun.homeManagerModules.default ];
   programs.anyrun = {
     enable = true;
+    package = pkgs.anyrun;
     config = {
-      plugins = with anyrun.packages.${pkgs.system}; [
-        applications
-        symbols
-        rink # Calculator / unit converter
+      plugins = [
+        "${pkgs.anyrun}/lib/libapplications.so"
+        "${pkgs.anyrun}/lib/librink.so"
+        "${pkgs.anyrun}/lib/libsymbols.so"
+        "${pkgs.anyrun}/lib/libwebsearch.so"
       ];
 
       width.fraction = 0.3;

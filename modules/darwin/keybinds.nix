@@ -15,20 +15,24 @@
       alt + shift - l: yabai -m window --swap east
 
       # move window to space
-      alt + shift - 1: yabai -m window --space 1 --focus
-      alt + shift - 2: yabai -m window --space 2 --focus
-      alt + shift - 3: yabai -m window --space 3 --focus
-      alt + shift - 4: yabai -m window --space 4 --focus
-      alt + shift - 5: yabai -m window --space 5 --focus
-      alt + shift - 6: yabai -m window --space 6 --focus
-      alt + shift - 7: yabai -m window --space 7 --focus
-      alt + shift - 8: yabai -m window --space 8 --focus
-      alt + shift - 9: yabai -m window --space 9 --focus
+      # DISABLED UNTIL SIP IS RE-DISABLED
+      # alt + shift - 1: yabai -m window --space 1 --focus
+      # alt + shift - 2: yabai -m window --space 2 --focus
+      # alt + shift - 3: yabai -m window --space 3 --focus
+      # alt + shift - 4: yabai -m window --space 4 --focus
+      # alt + shift - 5: yabai -m window --space 5 --focus
+      # alt + shift - 6: yabai -m window --space 6 --focus
+      # alt + shift - 7: yabai -m window --space 7 --focus
+      # alt + shift - 8: yabai -m window --space 8 --focus
+      # alt + shift - 9: yabai -m window --space 9 --focus
+
+      # fullscreen
+      alt + ctrl - f: yabai -m window --toggle zoom-fullscreen
 
       # common apps
       alt - return: open -a "Ghostty"
       alt + shift - return: open -a "Zed"
-      alt - space: open -a "Arc"
+      alt - space: open -a "qutebrowser"
 
       # less common, but still important
       meh - m: open -a "YouTube Music"

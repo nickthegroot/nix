@@ -14,9 +14,9 @@
       auto_balance = "off";
 
       # Animation
-      window_animation_duration = 0.2;
-      window_animation_easing = "ease_out_quint";
-      window_opacity_duration = 0.2;
+      # window_animation_duration = 0.2;
+      # window_animation_easing = "ease_out_quint";
+      # window_opacity_duration = 0.2;
 
       # Opacity
       window_opacity = "on";
@@ -31,11 +31,14 @@
       external_bar = "all:30:0";
     };
 
-    # extraConfig = ''
-    #   # Required until https://github.com/LnL7/nix-darwin/issues/1224 is resolved
-    #   yabai -m signal --add event=dock_did_restart action='sudo yabai --load-sa'
-    #   sudo yabai --load-sa
-    # '';
+    extraConfig = ''
+      # Required until https://github.com/LnL7/nix-darwin/issues/1224 is resolved
+      # yabai -m signal --add event=dock_did_restart action='sudo yabai --load-sa'
+      # sudo yabai --load-sa
+
+      # https://github.com/qutebrowser/qutebrowser/issues/4067
+      yabai -m rule --add app="^qutebrowser$" title!="^$" role="AXWindow" subrole="AXDialog" manage=on
+    '';
   };
 
   services.jankyborders = {

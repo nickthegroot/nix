@@ -42,6 +42,9 @@
     mise = {
       enable = true;
       enableFishIntegration = true;
+      settings = {
+        "idiomatic_version_file_enable_tools" = [ ];
+      };
     };
 
     # A program runner similar to npx or pipx

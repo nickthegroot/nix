@@ -1,6 +1,10 @@
-{ pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    pgcli # Better pgadmin
-  ];
+  programs.pgcli = {
+    enable = true;
+    settings = {
+      main = {
+        vi = true;
+      };
+    };
+  };
 }

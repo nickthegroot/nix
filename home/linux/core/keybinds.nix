@@ -2,11 +2,11 @@
 let
   inherit (pkgs) writeShellScript;
 
-  toggleAnyrun = writeShellScript "toggle-anyrun" ''
-    if [[ ! $(pidof anyrun) ]]; then
-    	anyrun
+  toggleRofi = writeShellScript "toggle-rofi" ''
+    if [[ ! $(pidof rofi) ]]; then
+    	rofi -show drun -show-icons
     else
-    	pkill anyrun
+    	pkill rofi
     fi
   '';
   pickColor = writeShellScript "pick-color" ''
@@ -31,7 +31,8 @@ in
       [
         # Apps
         "SUPER,Return,exec,ghostty"
-        "SUPER,Space,exec,${toggleAnyrun}"
+        "SUPER,Space,exec,${toggleRofi}"
+        "ALT,Space,exec,qutebrowser"
 
         # Hyprland Windows
         "SUPER,Q,killactive"

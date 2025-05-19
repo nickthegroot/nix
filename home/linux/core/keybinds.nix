@@ -4,7 +4,7 @@ let
 
   toggleRofi = writeShellScript "toggle-rofi" ''
     if [[ ! $(pidof rofi) ]]; then
-    	rofi -show drun -show-icons
+    	rofi -show-icons -show "$@"
     else
     	pkill rofi
     fi
@@ -31,7 +31,8 @@ in
       [
         # Apps
         "SUPER,Return,exec,ghostty"
-        "SUPER,Space,exec,${toggleRofi}"
+        "SUPER,Space,exec,${toggleRofi} drun"
+        "SUPERSHIFT,Space,exec,${toggleRofi} clipboard -modi clipboard:${pkgs.cliphist}/bin/cliphist-rofi-img"
         "ALT,Space,exec,qutebrowser"
 
         # Hyprland Windows

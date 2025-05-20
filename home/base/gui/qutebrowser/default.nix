@@ -26,12 +26,13 @@ in
       normal = {
         "tT" = "config-cycle tabs.position top left";
         "tD" = "config-cycle statusbar.show always never";
+        "td" = "config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled false true ;; reload";
       };
     };
     searchEngines = {
       DEFAULT = "https://duckduckgo.com/?q={}";
       g = "https://www.google.com/search?hl=en&amp;q={}";
-      nix = "https://mynixos.com/search?q={}";
+      nx = "https://mynixos.com/search?q={}";
       gh = "https://github.com/search?o=desc&q={}&s=stars";
     };
   };

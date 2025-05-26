@@ -1,7 +1,23 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    heroic
+    # Extra pkgs required for some games, e.g. Hypnospace Outlaw
+    (heroic.override {
+      extraPkgs =
+        pkgs: with pkgs; [
+          speechd
+        ];
+      extraLibraries =
+        pkgs: with pkgs; [
+          nss
+          nspr
+          atk
+          libdrm
+          expat
+          xorg.libXdamage
+          libgbm
+        ];
+    })
 
     prismlauncher
     unnamed-sdvx-clone

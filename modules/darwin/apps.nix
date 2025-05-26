@@ -25,7 +25,7 @@
     # `brew install --cask`
     casks = [
       "arc"
-      "zen"
+      "librewolf"
       "qutebrowser"
 
       "visual-studio-code"

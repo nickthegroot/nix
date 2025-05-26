@@ -34,10 +34,9 @@
       # let `xdg-open` to open the url with the correct application.
       defaultApplications =
         let
-          browser = [ "zen.desktop" ];
+          browser = [ "qutebrowser.desktop" ];
           editor = [
             "nvim.desktop"
-            "code.desktop"
           ];
         in
         {

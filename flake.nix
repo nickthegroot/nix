@@ -38,11 +38,6 @@
     catppuccin.url = "github:catppuccin/nix";
 
     # == App-based ==
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     wallpapers = {
       url = "github:nickthegroot/wallpapers";
       flake = false;

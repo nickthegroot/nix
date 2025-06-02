@@ -21,7 +21,7 @@ in
       # only supported on Linux
       gtk-titlebar = false;
 
-      command = "${pkgs.tmux}/bin/tmux new-session -A -s main";
+      command = "${pkgs.fish}/bin/fish --login --interactive";
     };
   };
 }

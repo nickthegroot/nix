@@ -36,4 +36,11 @@
     set -g status-right "#{E:@catppuccin_status_application}"
     set -ag status-right "#{E:@catppuccin_status_session}"
   '';
+
+  # Auto start tmux on fish interactive shell
+  programs.fish.interactiveShellInit = ''
+    if not set -q TMUX
+        exec ${pkgs.tmux}/bin/tmux new-session -A -s main
+    end
+  '';
 }

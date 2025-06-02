@@ -6,16 +6,7 @@ let
 
   # Add my custom lib, vars, nixpkgs instance, and all the inputs to specialArgs,
   # so that I can use them in all my nixos/home-manager/darwin modules.
-  genSpecialArgs =
-    system:
-    inputs
-    // {
-      inherit mylib myvars;
-      pkgs-stable = import inputs.nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
-    };
+  genSpecialArgs = system: inputs // { inherit mylib myvars; };
 
   args = {
     inherit

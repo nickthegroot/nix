@@ -1,47 +1,69 @@
 {
-  services.skhd = {
-    enable = true;
-    skhdConfig = ''
-      # focus window
-      alt - h: yabai -m window --focus west
-      alt - j: yabai -m window --focus south
-      alt - k: yabai -m window --focus north
-      alt - l: yabai -m window --focus east
+  services.aerospace.settings.mode = {
+    # All possible keys:
+    # - Letters.        a, b, c, ..., z
+    # - Numbers.        0, 1, 2, ..., 9
+    # - Keypad numbers. keypad0, keypad1, keypad2, ..., keypad9
+    # - F-keys.         f1, f2, ..., f20
+    # - Special keys.   minus, equal, period, comma, slash, backslash, quote, semicolon,
+    #                   backtick, leftSquareBracket, rightSquareBracket, space, enter, esc,
+    #                   backspace, tab, pageUp, pageDown, home, end, forwardDelete,
+    #                   sectionSign (ISO keyboards only, european keyboards only)
+    # - Keypad special. keypadClear, keypadDecimalMark, keypadDivide, keypadEnter, keypadEqual,
+    #                   keypadMinus, keypadMultiply, keypadPlus
+    # - Arrows.         left, down, up, right
+    # All possible modifiers: cmd, alt, ctrl, shift
+    # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
+    main.binding =
+      {
+        alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
+        alt-j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down";
+        alt-k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up";
+        alt-l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right";
 
-      # shift window
-      alt + shift - h: yabai -m window --swap west
-      alt + shift - j: yabai -m window --swap south
-      alt + shift - k: yabai -m window --swap north
-      alt + shift - l: yabai -m window --swap east
+        alt-shift-h = "move left";
+        alt-shift-j = "move down";
+        alt-shift-k = "move up";
+        alt-shift-l = "move right";
 
-      # move window to space
-      # DISABLED UNTIL SIP IS RE-DISABLED
-      # alt + shift - 1: yabai -m window --space 1 --focus
-      # alt + shift - 2: yabai -m window --space 2 --focus
-      # alt + shift - 3: yabai -m window --space 3 --focus
-      # alt + shift - 4: yabai -m window --space 4 --focus
-      # alt + shift - 5: yabai -m window --space 5 --focus
-      # alt + shift - 6: yabai -m window --space 6 --focus
-      # alt + shift - 7: yabai -m window --space 7 --focus
-      # alt + shift - 8: yabai -m window --space 8 --focus
-      # alt + shift - 9: yabai -m window --space 9 --focus
+        ctrl-alt-h = "focus-monitor left";
+        ctrl-alt-j = "focus-monitor down";
+        ctrl-alt-k = "focus-monitor up";
+        ctrl-alt-l = "focus-monitor right";
 
-      # fullscreen
-      alt + ctrl - f: yabai -m window --toggle zoom-fullscreen
+        ctrl-alt-shift-h = "move-node-to-monitor left";
+        ctrl-alt-shift-j = "move-node-to-monitor down";
+        ctrl-alt-shift-k = "move-node-to-monitor up";
+        ctrl-alt-shift-l = "move-node-to-monitor right";
 
-      # common apps
-      alt - return: open -a "Ghostty"
-      alt + shift - return: open -a "Zed"
-      alt - space: open -a "qutebrowser"
+        alt-minus = "resize smart -50";
+        alt-equal = "resize smart +50";
+      }
+      // {
+        alt-enter = "exec-and-forget open -a Ghostty";
+        alt-shift-enter = "exec-and-forget open -a Zed";
+        alt-space = "exec-and-forget open -a qutebrowser";
 
-      # less common, but still important
-      meh - m: open -a "YouTube Music"
-      meh - s: open -a "Slack"
-      meh - n: open -a "Notion"
-      meh - c: open -a "Notion Calendar"
-      meh - l: open -a "Linear"
-      meh - x: open -a "Xcode"
-    '';
+        ctrl-alt-shift-m = "exec-and-forget open -a \"YouTube Music\"";
+        ctrl-alt-shift-s = "exec-and-forget open -a Slack";
+        ctrl-alt-shift-n = "exec-and-forget open -a Notion";
+        ctrl-alt-shift-c = "exec-and-forget open -a \"Notion Calendar\"";
+      }
+      // (
+        # workspaces 1-9
+        builtins.foldl' (acc: elem: acc // elem) { } (
+          builtins.genList (
+            i:
+            let
+              ws = toString (i + 1);
+            in
+            {
+              "alt-${ws}" = "workspace ${ws}";
+              "alt-shift-${ws}" = "move-node-to-workspace ${ws} --focus-follows-window";
+            }
+          ) 9
+        )
+      );
   };
 
   system.keyboard = {

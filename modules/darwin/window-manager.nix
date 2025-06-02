@@ -1,55 +1,61 @@
-{ pkgs-stable, ... }:
 {
-  services.yabai = {
-    enable = true;
-    package = pkgs-stable.yabai;
-    enableScriptingAddition = false;
-    config = {
-      mouse_follows_focus = "on";
-      window_placement = "second_child";
-      window_shadow = "float";
-      active_window_opacity = 1.0;
-      normal_window_opacity = 0.9;
-      split_ratio = 0.5;
-      auto_balance = "off";
+  services = {
+    aerospace = {
+      enable = true;
+      settings = {
+        gaps = {
+          outer = {
+            left = 10;
+            bottom = 10;
+            # menu bar is 32px
+            top = [
+              { monitor.built-in = 0; } # account for notch in built in display
+              (32 + 10) # otherwise use menu bar height + 10
+            ];
+            right = 10;
+          };
+          inner = {
+            horizontal = 10;
+            vertical = 10;
+          };
+        };
 
-      # Animation
-      # window_animation_duration = 0.2;
-      # window_animation_easing = "ease_out_quint";
-      # window_opacity_duration = 0.2;
+        workspace-to-monitor-force-assignment = (
+          builtins.foldl' (acc: elem: acc // elem) { } (
+            (
+              # 1-5 on primary
+              builtins.genList (i: { "${toString (i + 1)}" = "primary"; }) 5
+            )
+            ++ (
+              # 6-9 on secondary
+              builtins.genList (i: { "${toString (i + 6)}" = "secondary"; }) 4
+            )
+          )
+        );
 
-      # Opacity
-      window_opacity = "on";
+        on-focus-changed = [ "move-mouse window-lazy-center" ];
 
-      # general space settings
-      layout = "bsp";
-      top_padding = 10;
-      bottom_padding = 10;
-      left_padding = 10;
-      right_padding = 10;
-      window_gap = 10;
-      external_bar = "all:30:0";
+        # Qutebrowser doesn't play nice with window.hide_decoration
+        # https://github.com/nikitabobko/AeroSpace/issues/166
+        on-window-detected = [
+          {
+            "if".app-id = "org.qutebrowser.qutebrowser";
+            run = "layout tiling";
+          }
+        ];
+      };
     };
 
-    extraConfig = ''
-      # Required until https://github.com/LnL7/nix-darwin/issues/1224 is resolved
-      # yabai -m signal --add event=dock_did_restart action='sudo yabai --load-sa'
-      # sudo yabai --load-sa
+    jankyborders = {
+      enable = true;
 
-      # https://github.com/qutebrowser/qutebrowser/issues/4067
-      yabai -m rule --add app="^qutebrowser$" title!="^$" role="AXWindow" subrole="AXDialog" manage=on
-    '';
-  };
+      width = 8.0;
+      active_color = "0xFFB4A1DB";
+      inactive_color = "0xFF343A40";
 
-  services.jankyborders = {
-    enable = true;
-
-    width = 8.0;
-    active_color = "0xFFB4A1DB";
-    inactive_color = "0xFF343A40";
-
-    blacklist = [
-      "Loom"
-    ];
+      blacklist = [
+        "Loom"
+      ];
+    };
   };
 }

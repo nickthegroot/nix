@@ -25,22 +25,21 @@ sketchybar --default updates=when_shown \
 # ~~ left items ~~
 
 # space numbers
-SPACE_ICONS=("1" "2" "3" "4" "5" "6" "7" "8" "9" "10")
-SPACES=()
+sketchybar --add event aerospace_workspace_change
 
-for i in "${!SPACE_ICONS[@]}"; do
-  sid=$(($i + 1))
-  SPACES+=(space.$sid)
-  sketchybar --add space space.$sid left \
-    --set space.$sid associated_space=$sid \
-    icon=${SPACE_ICONS[i]} \
+for sid in $(aerospace list-workspaces --all); do
+  sketchybar --add item space.$sid left \
+    --subscribe space.$sid aerospace_workspace_change \
+    --set space.$sid \
+    icon="$sid" \
     icon.color=$TEXT \
     icon.highlight_color=$RED \
     icon.align=center \
     icon.width=30 \
     label.drawing=off \
-    script='./scripts/space.sh'
-  # click_script="yabai -m space --focus $sid"
+    label="$sid" \
+    click_script="aerospace workspace $sid" \
+    script="./scripts/space.sh $sid"
 done
 
 # consolidate space numbers and add a background

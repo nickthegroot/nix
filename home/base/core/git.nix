@@ -83,6 +83,7 @@ in
     amendp = "amend && git push --force-with-lease";
     gtop = "cd (git rev-parse --show-toplevel)";
     grec = ''git reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | awk ' !x[$0]++' | egrep -v '^[a-f0-9]{40}$' | head -n10'';
+    gcor = "gco (grec | fzf)";
     gbranch = "git rev-parse --abbrev-ref HEAD";
     gst = "git status";
     gl = "git log";

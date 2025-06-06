@@ -4,20 +4,13 @@
   ...
 }:
 {
-  # required for greeting
-  home.packages = with pkgs; [
-    fortune
-    cowsay
-    lolcat
-  ];
-
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
       fish_vi_key_bindings
     '';
     functions = {
-      fish_greeting = "fortune | cowsay | lolcat";
+      fish_greeting = "${pkgs.fortune}/bin/fortune | ${pkgs.cowsay}/bin/cowsay | ${pkgs.lolcat}/bin/lolcat";
     };
     plugins = with pkgs.fishPlugins; [
       {

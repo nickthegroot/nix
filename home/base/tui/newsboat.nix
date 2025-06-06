@@ -14,8 +14,8 @@
       }
     ];
 
-    # https://m-chrzan.xyz/blog/vim-keybindings-for-newsboat.html
     extraConfig = ''
+      # == https://m-chrzan.xyz/blog/vim-keybindings-for-newsboat.html
       # jk - move up/down
       unbind-key j
       unbind-key k
@@ -39,6 +39,10 @@
       # f to follow links (like qutebrowser)
       unbind-key f
       bind-key f goto-url
+
+      # == personal binds
+      unbind-key o
+      bind-key o open-in-browser-and-mark-read
     '';
   };
 }

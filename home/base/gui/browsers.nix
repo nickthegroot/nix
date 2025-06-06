@@ -7,7 +7,7 @@ in
     qutebrowser = {
       enable = true;
       package =
-        # use brew version on darwin
+        # use brew version on darwin (currently not properly installed / recognized by darwin)
         if stdenv.isDarwin then pkgs.emptyDirectory else pkgs.qutebrowser;
       settings = {
         window.hide_decoration = true;
@@ -38,11 +38,6 @@ in
       };
     };
 
-    librewolf = {
-      enable = true;
-      package =
-        # use brew version on darwin
-        if stdenv.isDarwin then null else pkgs.librewolf;
-    };
+    librewolf.enable = true;
   };
 }

@@ -1,13 +1,6 @@
 {
-  # DLNA Server
-  services.minidlna = {
+  services.jellyfin = {
     enable = true;
     openFirewall = true;
-    settings = {
-      friendly_name = "okabe-rintarou";
-      media_dir = [ "V,/mnt/hdd/Videos/" ];
-      inotify = "yes";
-      notify_interval = 30;
-    };
   };
 }

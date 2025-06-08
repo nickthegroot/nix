@@ -34,9 +34,9 @@
 
       # Misc
       "iina" # better mpv for macos
+      "legcord" # better discord client
       "raycast"
       "1password"
-      "discord"
       "th-ch/youtube-music/youtube-music"
     ];
   };

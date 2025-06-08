@@ -57,32 +57,28 @@ in
         "CTRL,PRINT,exec,${screenshot} -m region -o ~/Pictures/Screenshots -- imv"
 
         # Focus
-        "SUPER,left,movefocus,l"
-        "SUPER,right,movefocus,r"
-        "SUPER,up,movefocus,u"
-        "SUPER,down,movefocus,d"
+        "SUPER,h,movefocus,l"
+        "SUPER,j,movefocus,d"
+        "SUPER,k,movefocus,u"
+        "SUPER,l,movefocus,r"
 
         # Move
-        "SUPERSHIFT,left,movewindow,l"
-        "SUPERSHIFT,right,movewindow,r"
-        "SUPERSHIFT,up,movewindow,u"
-        "SUPERSHIFT,down,movewindow,d"
+        "SUPERSHIFT,h,movewindow,l"
+        "SUPERSHIFT,j,movewindow,d"
+        "SUPERSHIFT,k,movewindow,u"
+        "SUPERSHIFT,l,movewindow,r"
 
-        # Resize
-        "SUPERCTRL,left,resizeactive,-20 0"
-        "SUPERCTRL,right,resizeactive,20 0"
-        "SUPERCTRL,up,resizeactive,0 -20"
-        "SUPERCTRL,down,resizeactive,0 20"
+        # Focus Monitor
+        "CTRLSUPER,h,focusmonitor,l"
+        "CTRLSUPER,j,focusmonitor,d"
+        "CTRLSUPER,k,focusmonitor,u"
+        "CTRLSUPER,l,focusmonitor,r"
 
-        # Monitor
-        "SUPER CTRL,l,focusmonitor,r"
-        "SUPER CTRL,h,focusmonitor,l"
-
-        # Send to Monitor
-        "SUPER SHIFT CTRL,h,movecurrentworkspacetomonitor,l"
-        "SUPER SHIFT CTRL,l,movecurrentworkspacetomonitor,r"
-        "SUPER CTRL,l,focusmonitor,r"
-        "SUPER CTRL,h,focusmonitor,l"
+        # Move Node to Monitor
+        "CTRLSUPERSHIFT,h,movewindow,mon:l"
+        "CTRLSUPERSHIFT,j,movewindow,mon:d"
+        "CTRLSUPERSHIFT,k,movewindow,mon:u"
+        "CTRLSUPERSHIFT,l,movewindow,mon:r"
       ]
       ++ (
         # workspaces 1-9

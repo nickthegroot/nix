@@ -53,7 +53,7 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./media-server.nix
+    ./hardware-nvidia.nix
     ./rgb.nix
   ];
 

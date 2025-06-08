@@ -25,11 +25,7 @@
     # `brew install --cask`
     casks = [
       "arc"
-      "librewolf"
-      "qutebrowser"
 
-      "visual-studio-code"
-      "zed"
       "ghostty"
       "docker"
 

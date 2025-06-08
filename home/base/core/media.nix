@@ -1,15 +1,13 @@
 { pkgs, ... }:
-# processing audio/video
 {
   home.packages = with pkgs; [
+    # video
     ffmpeg-full
+    yt-dlp
+    ani-cli
 
     # images
     imagemagick
     graphviz
-
-    yt-dlp
-    ani-cli
-    ani-skip
   ];
 }

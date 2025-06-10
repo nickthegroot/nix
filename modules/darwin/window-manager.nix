@@ -39,7 +39,7 @@
         # https://github.com/nikitabobko/AeroSpace/issues/166
         on-window-detected = [
           {
-            "if".app-id = "org.qutebrowser.qutebrowser";
+            "if".app-name-regex-substring = "qutebrowser";
             run = "layout tiling";
           }
         ];

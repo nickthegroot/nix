@@ -84,6 +84,7 @@ in
     gtop = "cd (git rev-parse --show-toplevel)";
     grec = ''git reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | awk ' !x[$0]++' | egrep -v '^[a-f0-9]{40}$' | head -n10'';
     gbranch = "git rev-parse --abbrev-ref HEAD";
+    gcor = "gco (grec | fzf)";
     gst = "git status";
     gl = "git log";
     gco = "git checkout";

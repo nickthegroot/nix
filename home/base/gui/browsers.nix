@@ -12,6 +12,8 @@
           policy.images = "never";
         };
 
+        content.pdfjs = true; # auto show pdf in pdfjs
+
         auto_save = {
           interval = 10000;
           session = true;
@@ -32,6 +34,7 @@
         ai = "https://duckduckgo.com/?q={}&ia=chat&bang=true";
         aio = "https://chat.openai.com/?q={}";
         nx = "https://mynixos.com/search?q={}";
+        nxv = "https://nix-community.github.io/nixvim/?search={}";
         gh = "https://github.com/search?o=desc&q={}&s=stars";
         wp = "https://en.wikipedia.org/w/index.php?search={}";
         wt = "https://wikitravel.org/en/Special:Search?search={}&go=Go";

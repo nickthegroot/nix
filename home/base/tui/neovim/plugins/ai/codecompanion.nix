@@ -12,7 +12,6 @@
       };
 
       blink-cmp.settings.sources.per_filetype.codecompanion = [ "codecompanion" ];
-      render-markdown.settings.file_types = [ "codecompanion" ];
 
       which-key.settings.spec = [
         {

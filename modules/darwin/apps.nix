@@ -32,6 +32,8 @@
       "notion-calendar"
       "notion"
 
+      "protonvpn"
+
       # Misc
       "iina" # better mpv for macos
       "legcord" # better discord client

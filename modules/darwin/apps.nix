@@ -14,17 +14,17 @@
     onActivation = {
       autoUpdate = true; # Fetch the newest stable branch of Homebrew's git repo
       upgrade = true; # Upgrade outdated casks, formulae, and App Store apps
-      # 'zap': uninstalls all formulae(and related files) not listed in the generated Brewfile
-      cleanup = "zap";
+      # 'uninstall': uninstalls all formulae, but keeps config files
+      # useful for testing nixpkgs versions, and moving back if needed
+      cleanup = "uninstall";
     };
 
     taps = [
       "th-ch/youtube-music"
     ];
 
-    # `brew install --cask`
     casks = [
-      "arc"
+      "qutebrowser"
 
       "ghostty"
       "docker"

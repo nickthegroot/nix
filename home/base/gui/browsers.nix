@@ -1,8 +1,17 @@
 { pkgs, ... }:
+let
+  inherit (pkgs) stdenv;
+in
 {
   programs = {
     qutebrowser = {
       enable = true;
+
+      # Use brew version on darwin
+      # until can set as primary browser (e.g. properly build/register plist)
+      # (also fix .qutebrowser-wrapped popup every launch)
+      package = if stdenv.isDarwin then null else pkgs.qutebrowser;
+
       settings = {
         window.hide_decoration = true;
 

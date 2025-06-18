@@ -58,6 +58,11 @@
             mode = "n";
             group = "+windows";
           }
+          {
+            __unkeyed-1 = "<leader>t";
+            mode = "n";
+            group = "+toggle";
+          }
         ];
       };
     };

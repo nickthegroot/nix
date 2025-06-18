@@ -12,6 +12,18 @@
         url = "https://feeds.npr.org/1002/rss.xml";
         title = "NPR Top Stories";
       }
+      {
+        url = "https://us-east1-ml-feeds.cloudfunctions.net/pwc/trending";
+        title = "Papers with Code - Trending";
+      }
+      {
+        url = "https://overreacted.io/rss.xml";
+        title = "overreacted - Dan Abramov";
+      }
+      {
+        url = "https://registerspill.thorstenball.com/feed";
+        title = "Register Spill - Thorsten Ball";
+      }
     ];
 
     # https://m-chrzan.xyz/blog/vim-keybindings-for-newsboat.html

@@ -39,16 +39,7 @@
 # .;;:c:.   ..   ...  ...   ...      .''lOOk::clcc:lk00o.
 #
 # Main Personal Laptop, 2021 M1 MacBook Pro
-_:
-let
-  hostName = "kurisu-makise";
-in
 {
-  imports = [
-    ./personal-apps.nix
-  ];
-
-  networking.hostName = hostName;
-  networking.computerName = hostName;
-  system.defaults.smb.NetBIOSName = hostName;
+  name = "kurisu-makise";
+  darwin-modules = [ ./personal-apps.nix ];
 }

@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  macosSystem = import ./macosSystem.nix;
+  darwinSystem = import ./darwinSystem.nix;
   nixosSystem = import ./nixosSystem.nix;
 
   # use path relative to the root of the project

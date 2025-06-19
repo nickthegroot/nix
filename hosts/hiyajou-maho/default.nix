@@ -47,16 +47,7 @@
 #           ..,;;;;:clooooooooooooool..lllloooo:
 #
 # Work Laptop, 2021 M1 MacBook Pro
-_:
-let
-  hostName = "hiyajou-maho";
-in
 {
-  imports = [
-    ./work-apps.nix
-  ];
-
-  networking.hostName = hostName;
-  networking.computerName = hostName;
-  system.defaults.smb.NetBIOSName = hostName;
+  name = "hiyajou-maho";
+  darwin-modules = [ ./work-apps.nix ];
 }

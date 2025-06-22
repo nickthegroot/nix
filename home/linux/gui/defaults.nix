@@ -34,7 +34,7 @@
       # let `xdg-open` to open the url with the correct application.
       defaultApplications =
         let
-          browser = [ "qutebrowser.desktop" ];
+          browser = [ "org.qutebrowser.qutebrowser.desktop" ];
           editor = [
             "nvim.desktop"
           ];
@@ -63,10 +63,6 @@
           "x-scheme-handler/ftp" = browser; # open `ftp:` url with `browser`
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
-          # https://github.com/microsoft/vscode/issues/146408
-          "x-scheme-handler/vscode" = [ "code-url-handler.desktop" ]; # open `vscode://` url with `code-url-handler.desktop`
-          # all other unknown schemes will be opened by this default application.
-          # "x-scheme-handler/unknown" = editor;
 
           "audio/*" = [ "mpv.desktop" ];
           "video/*" = [ "mpv.desktop" ];

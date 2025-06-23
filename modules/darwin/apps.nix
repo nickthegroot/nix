@@ -32,11 +32,11 @@
       "notion-calendar"
       "notion"
 
-      "protonvpn"
-
       # Misc
       "iina" # better mpv for macos
       "legcord" # better discord client
+      "jellyfin-media-player" # prebuilt qutebrowser doesn't have proprietary codecs
+      "protonvpn"
       "raycast"
       "1password"
       "th-ch/youtube-music/youtube-music"

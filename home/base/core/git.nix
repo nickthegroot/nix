@@ -63,6 +63,10 @@ in
 
     gh = {
       enable = true;
+
+      settings.git_protocol = "ssh";
+      gitCredentialHelper.enable = false; # just manage via ssh keys
+
       extensions = with pkgs; [
         gh-notify
       ];

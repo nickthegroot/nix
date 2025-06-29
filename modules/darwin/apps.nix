@@ -27,7 +27,7 @@
       "qutebrowser"
 
       "ghostty"
-      "docker"
+      "docker-desktop"
 
       "notion-calendar"
       "notion"

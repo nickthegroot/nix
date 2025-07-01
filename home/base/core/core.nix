@@ -56,5 +56,6 @@
 
   home.shellAliases = {
     cat = "bat";
+    http = "xh";
   };
 }

@@ -7,32 +7,21 @@
       nix-develop.enable = true;
 
       conform-nvim.settings = {
-        formatters_by_ft = {
-          nix = [ "nixfmt" ];
-        };
-
+        formatters_by_ft.nix = [ "nixfmt" ];
         formatters = {
-          nixfmt = {
-            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-          };
+          nixfmt.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
         };
       };
 
       lint = {
-        lintersByFt = {
-          nix = [ "statix" ];
-        };
+        lintersByFt.nix = [ "statix" ];
 
         linters = {
-          statix = {
-            cmd = "${pkgs.statix}/bin/statix";
-          };
+          statix.cmd = "${pkgs.statix}/bin/statix";
         };
       };
 
-      lsp.servers.nixd = {
-        enable = true;
-      };
+      lsp.servers.nixd.enable = true;
     };
 
     extraConfigVim = ''

@@ -14,10 +14,6 @@
             right = "";
           };
         };
-        extensions = [
-          "fzf"
-          "neo-tree"
-        ];
         sections = {
           lualine_a = [ "mode" ];
           lualine_b = [ "branch" ];

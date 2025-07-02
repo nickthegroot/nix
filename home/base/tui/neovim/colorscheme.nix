@@ -6,7 +6,6 @@
         transparent_background = true;
         integrations = {
           blink_cmp = true;
-          fzf = true;
           gitsigns = true;
           mini = true;
           noice = true;

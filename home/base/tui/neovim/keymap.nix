@@ -32,57 +32,6 @@
         options.desc = "Move To Window Right";
       }
 
-      {
-        mode = "n";
-        key = "<leader>wd";
-        action = "<C-W>c";
-        options = {
-          silent = true;
-          desc = "Delete window";
-        };
-      }
-
-      {
-        mode = "n";
-        key = "<leader>\"";
-        action = "<C-W>s";
-        options = {
-          silent = true;
-          desc = "Split window below";
-        };
-      }
-
-      {
-        mode = "n";
-        key = "<leader>\%";
-        action = "<C-W>v";
-        options = {
-          silent = true;
-          desc = "Split window right";
-        };
-      }
-
-      {
-        mode = "n";
-        key = "<C-s>";
-        action = "<cmd>w<cr><esc>";
-        options = {
-          silent = true;
-          desc = "Save file";
-        };
-      }
-
-      # Quit/Session
-      {
-        mode = "n";
-        key = "<leader>qq";
-        action = "<cmd>quitall<cr><esc>";
-        options = {
-          silent = true;
-          desc = "Quit all";
-        };
-      }
-
       # Better up/down
       {
         mode = "n";
@@ -143,16 +92,13 @@
         };
       }
 
-      # Paste stuff without saving the deleted word into the buffer
-      # {
-      #   mode = [
-      #     "n"
-      #     "v"
-      #   ];
-      #   key = "p";
-      #   action = "\"_dP";
-      #   options.desc = "Deletes to void register and paste over";
-      # }
+      # Paste over stuff without saving the deleted word into the buffer
+      {
+        mode = "v";
+        key = "p";
+        action = "\"_dP";
+        options.desc = "Deletes to void register and paste over";
+      }
 
       # Copy stuff to system clipboard with <leader> + y or just y to have it just in vim
       {
@@ -166,15 +112,15 @@
       }
 
       # Delete to void register
-      # {
-      #   mode = [
-      #     "n"
-      #     "v"
-      #   ];
-      #   key = "<leader>D";
-      #   action = "\"_d";
-      #   options.desc = "Delete to void register";
-      # }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>D";
+        action = "\"_d";
+        options.desc = "Delete to void register";
+      }
     ];
   };
 }

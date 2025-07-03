@@ -1,13 +1,11 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # video
+    # Video
     ffmpeg-full
     yt-dlp
-    ani-cli
 
-    # images
+    # Audio
     imagemagick
-    graphviz
   ];
 }

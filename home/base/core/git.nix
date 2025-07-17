@@ -82,25 +82,40 @@ in
   };
 
   home.shellAliases = {
-    # Git
-    amend = "git commit --amend --no-edit";
-    amendp = "amend && git push --force-with-lease";
     gtop = "cd (git rev-parse --show-toplevel)";
     grec = ''git reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | awk ' !x[$0]++' | egrep -v '^[a-f0-9]{40}$' | head -n10'';
     gbranch = "git rev-parse --abbrev-ref HEAD";
-    gcor = "gco (grec | fzf)";
-    gst = "git status";
+    gs = "git status";
     gl = "git log";
-    gco = "git checkout";
-    gcm = "git commit -m";
     gaa = "git add -A";
     gd = "git diff";
     gdc = "git diff --cached";
-    gctmp = "git commit \"tmp\" --no-verify --no-gpg-sign";
 
-    # GitHub
-    ghc = "gh pr checkout";
-    ghp = "gh pr create";
+    # Checkout
+    gco = "git checkout";
+    gcor = "gco (grec | fzf)";
+    gcob = "git checkout -b";
+    gcopr = "gh pr checkout";
+
+    # Stash
+    gst = "git stash save";
+    gstl = ''git stash list | fzf --preview="git stash show -p (string split -f1 ':' {}) | bat --language=diff --color=always"'';
+
+    # Commit
+    gc = "git commit";
+    gcm = "git commit -m";
+    gctmp = "git commit \"tmp\" --no-verify --no-gpg-sign";
+    amend = "git commit --amend --no-edit";
+    amendp = "amend && git push --force-with-lease";
+
+    # Push
+    gp = "git push";
+    gpf = "git push --force-with-lease";
+
+    # PR
+    pr = "gh pr create";
+
+    # GitHub Actions
     gha = "gh workflow run --ref (gbranch)";
 
     # Lazygit

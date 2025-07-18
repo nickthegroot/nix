@@ -9,6 +9,7 @@ in
 {
   programs.ssh = {
     enable = true;
+    includes = [ "~/.ssh/hosts_config" ]; # local & remote servers
     extraConfig = ''
       IdentityAgent ${opPath}
     '';

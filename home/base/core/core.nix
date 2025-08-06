@@ -1,6 +1,6 @@
 { pkgs, nix-index-database, ... }:
 {
-  imports = [ nix-index-database.hmModules.nix-index ];
+  imports = [ nix-index-database.homeModules.nix-index ];
 
   home.packages = with pkgs; [
     # Common tools

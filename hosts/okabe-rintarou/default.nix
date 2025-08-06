@@ -50,6 +50,7 @@
 {
   name = "okabe-rintarou";
   nixos-modules = [
+    ./dual-boot.nix
     ./hardware-configuration.nix
     ./hardware-nvidia.nix
     ./rgb.nix
@@ -58,6 +59,7 @@
     }
   ];
   home-modules = [
-    ./home.nix
+    ./home/ai-server.nix
+    ./home/displays.nix
   ];
 }

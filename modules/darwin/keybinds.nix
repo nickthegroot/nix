@@ -44,10 +44,12 @@
         alt-shift-enter = "exec-and-forget open -a Zed";
         alt-space = "exec-and-forget open -a qutebrowser";
 
-        ctrl-alt-shift-m = "exec-and-forget open -a \"YouTube Music\"";
-        ctrl-alt-shift-s = "exec-and-forget open -a Slack";
-        ctrl-alt-shift-n = "exec-and-forget open -a Notion";
-        ctrl-alt-shift-c = "exec-and-forget open -a \"Notion Calendar\"";
+        ctrl-alt-shift-m = "exec-and-forget open -a \"YouTube Music\""; # (M)usic
+        ctrl-alt-shift-s = "exec-and-forget open -a Slack"; # (S)lack
+        ctrl-alt-shift-n = "exec-and-forget open -a Notion"; # (N)otion
+        ctrl-alt-shift-c = "exec-and-forget open -a \"Notion Calendar\""; # (C)alendar
+        ctrl-alt-shift-p = "exec-and-forget open -a 1Password"; # (P)asswords
+        ctrl-alt-shift-t = "exec-and-forget open -a Linear"; # (T)ickets / (T)asks
       }
       // (
         # workspaces 1-9

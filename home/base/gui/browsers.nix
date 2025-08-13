@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   inherit (pkgs) stdenv;
 in
@@ -33,8 +33,6 @@ in
           "tT" = "config-cycle tabs.position top left";
           "tD" = "config-cycle statusbar.show always never";
           "td" = "config-cycle -p -u *://{url:host}/* colors.webpage.darkmode.enabled false true ;; reload";
-          # some websites (e.g. reddit) block qutebrowser
-          ",l" = "hint links spawn --detach ${pkgs.librewolf}/bin/librewolf --new-tab {hint-url}";
         };
       };
       searchEngines = {
@@ -52,9 +50,19 @@ in
       };
     };
 
-    librewolf = {
+    brave = {
       enable = true;
-      package = pkgs.librewolf;
+
+      # Use brew version on darwin
+      package = if stdenv.isDarwin then null else pkgs.brave;
+
+      extensions = [
+        { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
+        { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)
+        { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # YouTube SponsorBlock
+        { id = "enamippconapkdmgfgjchkhakpfinmaj"; } # DeArray (YouTube Clickbait Remover)
+        { id = "likgccmbimhjbgkjambclfkhldnlhbnn"; } # Yomitan (Popup Dictionary)
+      ];
     };
   };
 }

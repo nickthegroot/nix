@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   inherit (pkgs) stdenv;
 in
@@ -61,7 +61,6 @@ in
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # YouTube SponsorBlock
         { id = "enamippconapkdmgfgjchkhakpfinmaj"; } # DeArray (YouTube Clickbait Remover)
-        { id = "likgccmbimhjbgkjambclfkhldnlhbnn"; } # Yomitan (Popup Dictionary)
       ];
     };
   };

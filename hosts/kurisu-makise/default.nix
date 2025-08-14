@@ -41,5 +41,6 @@
 # Main Personal Laptop, 2021 M1 MacBook Pro
 {
   name = "kurisu-makise";
-  darwin-modules = [ ./personal-apps.nix ];
+  darwin-modules = [ ./language-learning.nix ];
+  home-modules = [ ./home/language-learning.nix ];
 }

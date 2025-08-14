@@ -5,7 +5,7 @@
   myvars,
   # Per-host
   name,
-  darwin-modules,
+  darwin-modules ? [ ],
   home-modules ? [ ],
 }:
 let

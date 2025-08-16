@@ -41,8 +41,8 @@
     // {
       alt-enter = "exec-and-forget open -a Ghostty";
       alt-shift-enter = "exec-and-forget open -a Zed";
-      alt-space = "exec-and-forget open -a qutebrowser";
-      alt-shift-space = "exec-and-forget open -a \"Brave Browser\"";
+      alt-space = "exec-and-forget open -a \"Brave Browser\"";
+      alt-shift-space = "exec-and-forget open -a qutebrowser";
 
       ctrl-alt-shift-m = "exec-and-forget open -a \"YouTube Music\""; # (M)usic
       ctrl-alt-shift-s = "exec-and-forget open -a Slack"; # (S)lack

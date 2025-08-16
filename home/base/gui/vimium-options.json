@@ -1,5 +1,5 @@
 {
-  "keyMappings": "map <c-d> scrollPageDown\nmap <c-u> scrollPageUp\n\nunmap d\nunmap x\nmap d removeTab\n\nunmap u\nmap u restoreTab\n\nunmap co\nmap co closeOtherTabs\nmap cl closeTabsOnRight\nmap ch closeTabsOnLeft",
+  "keyMappings": "map <c-d> scrollPageDown\nmap <c-u> scrollPageUp\n\nunmap d\nunmap x\nmap d removeTab\n\nunmap u\nmap u restoreTab\n\nunmap co\nmap co closeOtherTabs\nmap cl closeTabsOnRight\nmap ch closeTabsOnLeft\n\nunmap K\nunmap J\nmap J nextTab\nmap K previousTab",
   "smoothScroll": false,
   "searchEngines": "g: https://www.google.com/search?hl=en&amp&q=%s Google\nai: https://duckduckgo.com/?q=%s&ia=chat&bang=true AI\naio: https://chat.openai.com/?q=%s ChatGPT\nnx: https://mynixos.com/search?q=%s NixOS\nnxv: https://nix-community.github.io/nixvim/?search=%s NixVim\ngh: https://github.com/search?o=desc&q=%s&s=stars GitHub\nwp: https://en.wikipedia.org/w/index.php?search=%s Wikipedia\nwt: https://wikitravel.org/en/Special:Search?search=%s&go=Go Wikitravel\nso: https://stackoverflow.com/search?q=%s Stack Overflow\nyt: https://www.youtube.com/results?search_query=%s YouTube",
   "settingsVersion": "2.3",

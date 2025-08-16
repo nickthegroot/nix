@@ -47,6 +47,7 @@ in
         wt = "https://wikitravel.org/en/Special:Search?search={}&go=Go";
         so = "https://stackoverflow.com/search?q={}";
         yt = "https://www.youtube.com/results?search_query={}";
+        jp = "https://jisho.org/search/{}";
       };
     };
 

@@ -1,4 +1,4 @@
-_: {
+{
   homebrew.casks = [
     "slack"
     "linear-linear"
@@ -8,5 +8,6 @@ _: {
   ];
   homebrew.brews = [
     "basti"
+    "azure-cli"
   ];
 }

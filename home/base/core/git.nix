@@ -93,7 +93,7 @@ in
 
     # Checkout
     gco = "git checkout";
-    gcor = "gco (grec | fzf)";
+    gcor = ''gco (grec | fzf --preview="git log -p --color=always {} | head -n40 | bat --language=diff --color=always" --preview-window=down:70%)'';
     gcob = "git checkout -b";
     gcopr = "gh pr checkout";
 
@@ -104,7 +104,7 @@ in
     # Commit
     gc = "git commit";
     gcm = "git commit -m";
-    gctmp = "git commit \"tmp\" --no-verify --no-gpg-sign";
+    gctmp = ''gcm "tmp" --no-verify --no-gpg-sign'';
     amend = "git commit --amend --no-edit";
     amendp = "amend && git push --force-with-lease";
 

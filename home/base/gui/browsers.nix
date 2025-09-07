@@ -48,6 +48,7 @@ in
         so = "https://stackoverflow.com/search?q={}";
         yt = "https://www.youtube.com/results?search_query={}";
         jp = "https://jisho.org/search/{}";
+        tr = "https://translate.google.com/?sl=auto&tl=en&text={}&op=translate";
       };
     };
 

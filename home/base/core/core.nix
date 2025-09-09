@@ -18,6 +18,7 @@
     # More specialized tools
     jwt-cli
     pastel
+    graphviz
 
     # Helpers/Misc
     tldr

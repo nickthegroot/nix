@@ -54,8 +54,8 @@ in
       delta = {
         enable = true;
         options = {
-          diff-so-fancy = true;
           line-numbers = true;
+          side-by-side = true;
           true-color = "always";
         };
       };

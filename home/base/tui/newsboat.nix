@@ -13,8 +13,8 @@
         title = "NPR Top Stories";
       }
       {
-        url = "https://us-east1-ml-feeds.cloudfunctions.net/pwc/trending";
-        title = "Papers with Code - Trending";
+        url = "https://papers.takara.ai/api/feed";
+        title = "HuggingFace Papers - Trending";
       }
       {
         url = "https://overreacted.io/rss.xml";

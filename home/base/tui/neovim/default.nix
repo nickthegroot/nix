@@ -5,7 +5,7 @@
   ...
 }:
 {
-  imports = [ nixvim.homeManagerModules.nixvim ] ++ (mylib.scanPaths ./.);
+  imports = [ nixvim.homeModules.nixvim ] ++ (mylib.scanPaths ./.);
 
   programs.nixvim = {
     enable = true;

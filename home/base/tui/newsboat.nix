@@ -13,6 +13,10 @@
         title = "NPR Top Stories";
       }
       {
+        url = "https://xkcd.com/rss.xml";
+        title = "XKCD";
+      }
+      {
         url = "https://papers.takara.ai/api/feed";
         title = "HuggingFace Papers - Trending";
       }

@@ -59,7 +59,6 @@
     }
   ];
   home-modules = [
-    ./home/ai-server.nix
     ./home/displays.nix
   ];
 }

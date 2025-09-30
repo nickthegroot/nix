@@ -6,7 +6,6 @@
     pavucontrol # gui for audio io
 
     youtube-music
-    jellyfin-media-player
   ];
 
   programs = {

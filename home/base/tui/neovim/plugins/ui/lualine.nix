@@ -1,4 +1,3 @@
-{ myvars, ... }:
 {
   programs.nixvim = {
     plugins.lualine = {
@@ -19,7 +18,7 @@
           lualine_b = [ "branch" ];
           lualine_y = [
           ];
-          lualine_z = [ ''"${myvars.icons.ui.Time}" .. os.date("%I:%M %p")'' ];
+          lualine_z = [ ''"" .. os.date("%I:%M %p")'' ];
         };
       };
     };
@@ -73,27 +72,12 @@
         require("lualine").setup({
           sections = {
             lualine_c = {
-              {
-                "diagnostics",
-                symbols = {
-                  error = "${myvars.icons.diagnostics.Error}",
-                  warn  = "${myvars.icons.diagnostics.Warning}",
-                  hint  = "${myvars.icons.diagnostics.Hint}",
-                  info  = "${myvars.icons.diagnostics.BoldInformation}",
-                },
-              },
+              { "diagnostics" },
               { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
               { ui.pretty_path() },
             },
             lualine_x = {
-              {
-                "diff",
-                symbols = {
-                  added = "${myvars.icons.git.LineAdded}",
-                  modified = "${myvars.icons.git.LineModified}",
-                  removed= "${myvars.icons.git.LineRemoved}",
-                },
-              },
+              { "diff" },
             }
           }
       })

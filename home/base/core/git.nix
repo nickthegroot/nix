@@ -17,9 +17,6 @@ in
       enable = true;
       lfs.enable = true;
 
-      userName = myvars.userfullname;
-      userEmail = myvars.useremail;
-
       signing = {
         key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQiodjunhvMZl0GRixXNkML0iFZsXgax3PjmVLV+0AJ";
         signByDefault = true;
@@ -37,7 +34,7 @@ in
         }
       ];
 
-      extraConfig = {
+      settings = {
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
         pull.rebase = true;
@@ -49,15 +46,21 @@ in
         "gpg \"ssh\"" = {
           program = opGpgProgram;
         };
-      };
 
-      delta = {
-        enable = true;
-        options = {
-          line-numbers = true;
-          side-by-side = true;
-          true-color = "always";
+        user = {
+          name = myvars.userfullname;
+          email = myvars.useremail;
         };
+      };
+    };
+
+    delta = {
+      enable = true;
+      enableGitIntegration = true;
+      options = {
+        line-numbers = true;
+        side-by-side = true;
+        true-color = "always";
       };
     };
 

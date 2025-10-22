@@ -32,12 +32,6 @@ in
         options.desc = "Hover Diagnostics";
       }
       {
-        mode = "n";
-        key = "<leader>cr";
-        action = mkRaw ''function() vim.lsp.buf.rename() end'';
-        options.desc = "Code Action";
-      }
-      {
         mode = [
           "n"
           "v"
@@ -45,6 +39,18 @@ in
         key = "<leader>ca";
         action = mkRaw ''function() vim.lsp.buf.code_action() end'';
         options.desc = "Code action";
+      }
+      {
+        mode = "n";
+        key = "<leader>cr";
+        action = mkRaw ''function() vim.lsp.buf.rename() end'';
+        options.desc = "Rename Symbol";
+      }
+      {
+        mode = "n";
+        key = "<leader>cR";
+        action = mkRaw ''function() Snacks.rename.rename_file() end'';
+        options.desc = "Rename File";
       }
       {
         mode = "n";

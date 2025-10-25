@@ -1,22 +1,11 @@
 {
   programs.nixvim = {
+    lsp.servers.copilot.enable = true;
+
     plugins = {
-      copilot-lua = {
-        enable = true;
-        settings = {
-          suggestion.enabled = false;
-          panel.enabled = false;
-          filetypes = {
-            markdown = true;
-            help = true;
-          };
-        };
-      };
-
       blink-copilot.enable = true;
-
+      copilot-lua.enable = false; # auto-enabled by blink-copilot, but lsp version already installed
       blink-cmp = {
-        enable = true;
         settings = {
           sources = {
             default = [ "copilot" ];

@@ -1,9 +1,6 @@
 {
   programs.newsboat = {
-    # Disabled until the following is merged into nixos-unstable
-    # https://github.com/newsboat/newsboat/pull/3185
-    # https://github.com/NixOS/nixpkgs/pull/449525
-    enable = false;
+    enable = true;
 
     autoReload = true;
     urls = [

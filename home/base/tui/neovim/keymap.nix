@@ -55,9 +55,6 @@
         };
       }
 
-      # Move Lines
-      # TODO
-
       # Better indenting
       {
         mode = "v";
@@ -120,6 +117,21 @@
         key = "<leader>D";
         action = "\"_d";
         options.desc = "Delete to void register";
+      }
+
+      # Goto Previous/Next buffer
+      {
+        mode = "n";
+        key = "<S-l>";
+        action = "<cmd>bnext<cr>";
+        options.desc = "Next Buffer";
+      }
+
+      {
+        mode = "n";
+        key = "<S-h>";
+        action = "<cmd>bprevious<cr>";
+        options.desc = "Previous Buffer";
       }
     ];
   };

@@ -4,12 +4,24 @@ let
 in
 {
   programs.nixvim = {
-    plugins.snacks = {
-      enable = true;
-      settings = {
-        lazygit = { };
+    plugins = {
+      snacks = {
+        enable = true;
+        settings = {
+          lazygit = { };
+        };
       };
+
+      which-key.settings.spec = [
+        {
+          __unkeyed-1 = "<leader>g";
+          mode = "n";
+          icon = "";
+          group = "+git";
+        }
+      ];
     };
+
     keymaps = [
       {
         mode = "n";

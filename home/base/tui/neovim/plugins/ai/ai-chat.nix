@@ -15,15 +15,7 @@ in
     };
 
     plugins = {
-      sidekick = {
-        enable = true;
-        settings = {
-          cli.mux = {
-            backend = "tmux";
-            enabled = true;
-          };
-        };
-      };
+      sidekick.enable = true;
 
       which-key.settings.spec = [
         {
@@ -49,11 +41,14 @@ in
             end
           end
         '';
-        options.desc = "Goto/Apply Next Edit Suggestion";
+        options = {
+          desc = "Goto/Apply Next Edit Suggestion";
+          expr = true;
+        };
       }
       {
         key = "<leader>aa";
-        action = mkRaw ''function() require("sidekick.cli").toggle() end'';
+        action = mkRaw ''function() require("sidekick.cli").toggle({ name = "copilot", focus = true }) end'';
         options.desc = "Sidekick Toggle CLI";
       }
       {

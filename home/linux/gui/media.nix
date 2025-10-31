@@ -1,10 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
-    # audio control
-    playerctl
-    pavucontrol # gui for audio io
-
     youtube-music
   ];
 

@@ -17,6 +17,17 @@ in
     plugins = {
       sidekick.enable = true;
 
+      codecompanion = {
+        enable = true;
+        settings = {
+          strategies = {
+            chat.adapter = "copilot";
+            inline.adapter = "copilot";
+          };
+        };
+      };
+      blink-cmp.settings.sources.per_filetype.codecompanion = [ "codecompanion" ];
+
       which-key.settings.spec = [
         {
           __unkeyed-1 = "<leader>a";
@@ -46,61 +57,34 @@ in
           expr = true;
         };
       }
+
       {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<C-a>";
+        action = "<cmd>CodeCompanionActions<cr>";
+        options.desc = "CodeCompanion";
+      }
+
+      {
+        mode = [
+          "n"
+          "v"
+        ];
         key = "<leader>aa";
-        action = mkRaw ''function() require("sidekick.cli").toggle({ name = "copilot", focus = true }) end'';
-        options.desc = "Sidekick Toggle CLI";
+        action = "<cmd>CodeCompanionChat Toggle<cr>";
+        options.desc = "CodeCompanion Chat";
       }
-      {
-        key = "<leader>as";
-        action = mkRaw ''function() require("sidekick.cli").select() end'';
-        options = {
-          desc = "Select CLI";
-        };
-      }
-      {
-        key = "<leader>ad";
-        action = mkRaw ''function() require("sidekick.cli").close() end'';
-        options = {
-          desc = "Detach a CLI Session";
-        };
-      }
+
       {
         mode = [
-          "x"
-          "n"
+          "v"
         ];
-        key = "<leader>at";
-        action = mkRaw ''function() require("sidekick.cli").send({ msg = "{this}" }) end'';
-        options = {
-          desc = "Send This";
-        };
-      }
-      {
-        key = "<leader>af";
-        action = mkRaw ''function() require("sidekick.cli").send({ msg = "{file}" }) end'';
-        options = {
-          desc = "Send File";
-        };
-      }
-      {
-        mode = [ "x" ];
-        key = "<leader>av";
-        action = mkRaw ''function() require("sidekick.cli").send({ msg = "{selection}" }) end'';
-        options = {
-          desc = "Send Visual Selection";
-        };
-      }
-      {
-        mode = [
-          "x"
-          "n"
-        ];
-        key = "<leader>ap";
-        action = mkRaw ''function() require("sidekick.cli").prompt() end'';
-        options = {
-          desc = "Sidekick Select Prompt";
-        };
+        key = "<leader>ai";
+        action = "<cmd>CodeCompanionChat Add<cr>";
+        options.desc = "CodeCompanion Add To Chat";
       }
     ];
   };

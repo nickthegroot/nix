@@ -11,7 +11,7 @@
     (ripgrep.override { withPCRE2 = true; }) # better grep
     fd # better find
     xh # better httpie/curl
-    du-dust # better du
+    dust # better du
     duf # better df
     caligula # better dd
 

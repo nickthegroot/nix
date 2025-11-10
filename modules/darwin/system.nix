@@ -84,7 +84,7 @@
       # icon fonts
       material-design-icons
 
-      noto-fonts-emoji
+      noto-fonts-color-emoji
       source-sans
       source-serif
       source-han-sans # CJK Support

@@ -35,8 +35,8 @@
 
       # Misc
       "iina" # better mpv for macos
-      "legcord" # better discord client
       "jellyfin-media-player" # prebuilt qutebrowser doesn't have proprietary codecs
+      "discord"
       "protonvpn"
       "raycast"
       "1password"

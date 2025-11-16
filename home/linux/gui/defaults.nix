@@ -34,7 +34,7 @@
       # let `xdg-open` to open the url with the correct application.
       defaultApplications =
         let
-          browser = [ "org.qutebrowser.qutebrowser.desktop" ];
+          browser = [ "brave-browser.desktop" ];
           editor = [
             "nvim.desktop"
           ];

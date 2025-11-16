@@ -23,19 +23,16 @@
         "dgop": [
           "dgop"
         ],
-        "dms-cli": [
-          "dms-cli"
-        ],
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1762296203,
-        "narHash": "sha256-cVzni7nzJEYAywRV9EBmCNyLbo3ufZ5OZ14arjnC/ck=",
+        "lastModified": 1763261194,
+        "narHash": "sha256-1xIRqJF2ZiaY6vGEU7F7YLtxO932gKw5BSKvFA3IUmM=",
         "owner": "AvengeMedia",
         "repo": "DankMaterialShell",
-        "rev": "60a791442e34a446bfdf137a689aa043eca74369",
+        "rev": "3916512d66219f83a2e1defa3a92ec865961dd42",
         "type": "github"
       },
       "original": {
@@ -51,36 +48,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1762287411,
-        "narHash": "sha256-ol44//PHYCH6oLrJFuNJ/mJs+fVICgeLQd8LF3GHYuU=",
+        "lastModified": 1762835999,
+        "narHash": "sha256-UykYGrGFOFTmDpKTLNxj1wvd1gbDG4TkqLNSbV0TYwk=",
         "owner": "AvengeMedia",
         "repo": "dgop",
-        "rev": "027f6c4f99473a29e58e35b8ff1a25dccaebea86",
+        "rev": "799301991cd5dcea9b64245f9d500dcc76615653",
         "type": "github"
       },
       "original": {
         "owner": "AvengeMedia",
         "repo": "dgop",
-        "type": "github"
-      }
-    },
-    "dms-cli": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762294626,
-        "narHash": "sha256-P7GQQkXkbnog2pwix0V9rG3KTbQA1AP4xi9LYJsaW70=",
-        "owner": "AvengeMedia",
-        "repo": "danklinux",
-        "rev": "902811825652c916fb4814b875f5d4b3c7a9d44e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "danklinux",
         "type": "github"
       }
     },
@@ -294,7 +271,6 @@
         "catppuccin": "catppuccin",
         "dank-material-shell": "dank-material-shell",
         "dgop": "dgop",
-        "dms-cli": "dms-cli",
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-index-database": "nix-index-database",

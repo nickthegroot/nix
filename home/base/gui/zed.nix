@@ -11,9 +11,19 @@
       relative_line_numbers = true;
       vim_mode = true;
 
-      tab_bar.show = true;
-      scrollbar.show = "never";
-      tabs.show_diagnostics = "errors";
+      tab_size = 2;
+      hard_tabs = false;
+
+      # Visual settings
+      tab_bar = {
+        show = true;
+      };
+      tabs = {
+        show_diagnostics = "errors";
+      };
+      scrollbar = {
+        show = "never";
+      };
       indent_guides = {
         enabled = true;
         coloring = "indent_aware";
@@ -22,27 +32,41 @@
         left_padding = 0.15;
         right_padding = 0.15;
       };
-      git_panel.dock = "right";
-      file_finder.modal_width = "medium";
+
+      # Panel layout matching preferences
       project_panel = {
         button = true;
-        dock = "right";
+        dock = "left";
         git_status = true;
       };
-      outline_panel.dock = "right";
-      collaboration_panel.dock = "left";
-      notification_panel.dock = "left";
-      chat_panel.dock = "left";
-
-      assistant = {
-        default_model = {
-          provider = "copilot_chat";
-          model = "claude-3-7-sonnet";
-        };
-        version = "2";
+      outline_panel = {
+        dock = "right";
+      };
+      git_panel = {
+        dock = "right";
+      };
+      collaboration_panel = {
+        dock = "left";
       };
 
-      inlay_hints.enabled = true;
+      # Search and navigation settings
+      search = {
+        case_sensitive = false;
+        whole_word = false;
+        regex = false;
+      };
+      use_smartcase_search = true;
+
+      # Editor behavior
+      autosave = "off";
+      format_on_save = "off";
+      ensure_final_newline_on_save = true;
+      remove_trailing_whitespace_on_save = true;
+
+      # Inlay hints and language features
+      inlay_hints = {
+        enabled = true;
+      };
       languages = {
         TypeScript = {
           inlay_hints = {
@@ -53,33 +77,31 @@
           };
         };
         Python = {
-          format_on_save = {
-            language_server = {
-              name = "ruff";
-            };
-          };
+          tab_size = 2;
+          format_on_save = "off";
           formatter = {
             language_server = {
               name = "ruff";
             };
           };
-          language_servers = [
-            "pyright"
-            "ruff"
-          ];
+        };
+        Nix = {
+          tab_size = 2;
         };
       };
+
       file_types = {
         Dockerfile = [
           "Dockerfile"
           "Dockerfile.*"
         ];
-        JSON = [
+        JSONC = [
           "json"
           "jsonc"
           "*.code-snippets"
         ];
       };
+
       file_scan_exclusions = [
         "**/.git"
         "**/.svn"
@@ -114,89 +136,139 @@
         leader = "space";
       in
       [
+        # Windows
         {
           bindings = {
-            "ctrl-h" = "workspace::ActivatePaneLeft";
-            "ctrl-l" = "workspace::ActivatePaneRight";
             "ctrl-k" = "workspace::ActivatePaneUp";
             "ctrl-j" = "workspace::ActivatePaneDown";
+            "ctrl-h" = "workspace::ActivatePaneLeft";
+            "ctrl-l" = "workspace::ActivatePaneRight";
           };
         }
+
+        # Buffers
         {
-          context = "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu";
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
           bindings = {
-            "${leader} g h d" = "editor::ToggleSelectedDiffHunks";
-            "${leader} g s" = "git_panel::ToggleFocus";
-            "${leader} t i" = "editor::ToggleInlayHints";
-            "${leader} t w" = "editor::ToggleSoftWrap";
-            "${leader} c z" = "workspace::ToggleCenteredLayout";
-            "${leader} m p" = "markdown::OpenPreview";
-            "${leader} m P" = "markdown::OpenPreviewToTheSide";
-            "${leader} f p" = "projects::OpenRecent";
-            "${leader} s w" = "pane::DeploySearch";
-            "${leader} a a" = "agent::Chat";
-            "${leader} a c" = "agent::NewThread";
+            "shift-l" = "pane::ActivateNextItem";
+            "shift-h" = "pane::ActivatePreviousItem";
           };
         }
+
+        # Code Actions and LSP
         {
           context = "Editor && vim_mode == normal && !VimWaiting && !menu";
           bindings = {
             "${leader} c a" = "editor::ToggleCodeActions";
-            "${leader} ." = "editor::ToggleCodeActions";
             "${leader} c r" = "editor::Rename";
+            "${leader} c f" = "editor::Format";
+            "${leader} c o" = "editor::OrganizeImports";
+          };
+        }
+
+        {
+          context = "Editor && vim_mode == visual && !VimWaiting && !menu";
+          bindings = {
+            "${leader} c a" = "editor::ToggleCodeActions";
+            "${leader} c f" = "editor::Format";
+          };
+        }
+
+        # Toggles
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
+            "${leader} t i" = "editor::ToggleInlayHints";
+          };
+        }
+
+        # Go To / Navigation
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
             "g d" = "editor::GoToDefinition";
-            "g D" = "editor::GoToDefinitionSplit";
-            "g i" = "editor::GoToImplementation";
-            "g I" = "editor::GoToImplementationSplit";
-            "g t" = "editor::GoToTypeDefinition";
-            "g T" = "editor::GoToTypeDefinitionSplit";
             "g r" = "editor::FindAllReferences";
+          };
+        }
+
+        # Diagnostics
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
             "] d" = "editor::GoToDiagnostic";
             "[ d" = "editor::GoToPreviousDiagnostic";
-            "] e" = "editor::GoToDiagnostic";
-            "[ e" = "editor::GoToPreviousDiagnostic";
-            "s s" = "outline::Toggle";
-            "s S" = "project_symbols::Toggle";
-            "${leader} x x" = "diagnostics::Deploy";
+          };
+        }
+
+        # Git
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
             "] h" = "editor::GoToHunk";
             "[ h" = "editor::GoToPreviousHunk";
-            "shift-h" = "pane::ActivatePreviousItem";
-            "shift-l" = "pane::ActivateNextItem";
-            "shift-q" = "pane::CloseActiveItem";
-            "ctrl-q" = "pane::CloseActiveItem";
-            "${leader} b d" = "pane::CloseActiveItem";
-            "${leader} b o" = "pane::CloseInactiveItems";
-            "ctrl-s" = "workspace::Save";
-            "${leader} space" = "file_finder::Toggle";
-            "${leader} /" = "pane::DeploySearch";
-            "${leader} e" = "pane::RevealInProjectPanel";
           };
         }
-        {
-          context = "EmptyPane || SharedScreen";
-          bindings = {
-            "${leader} space" = "file_finder::Toggle";
-            "${leader} f p" = "projects::OpenRecent";
-          };
-        }
+
+        # Comments
         {
           context = "Editor && vim_mode == visual && !VimWaiting && !menu";
           bindings = {
             "g c" = "editor::ToggleComments";
           };
         }
+
+        # Fuzzy Finder
+        {
+          context = "Editor && (vim_mode == normal || vim_mode == visual) && !VimWaiting && !menu";
+          bindings = {
+            "${leader} ${leader}" = "file_finder::Toggle";
+          };
+        }
+
+        # File Explorer
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
+            "${leader} e" = "pane::RevealInProjectPanel";
+          };
+        }
+
+        # Projects
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
+            "${leader} f p" = "projects::OpenRecent";
+          };
+        }
+
+        # Search
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
+            "${leader} /" = "pane::DeploySearch";
+          };
+        }
+
+        # Project Panel
         {
           context = "ProjectPanel && not_editing";
           bindings = {
             "a" = "project_panel::NewFile";
-            "A" = "project_panel::NewDirectory";
+            "shift-a" = "project_panel::NewDirectory";
             "r" = "project_panel::Rename";
             "d" = "project_panel::Delete";
             "x" = "project_panel::Cut";
             "c" = "project_panel::Copy";
             "p" = "project_panel::Paste";
             "q" = "workspace::ToggleRightDock";
-            "${leader} e" = "workspace::ToggleRightDock";
+          };
+        }
+
+        # Save
+        {
+          context = "Editor && vim_mode == normal && !VimWaiting && !menu";
+          bindings = {
+            "ctrl-s" = "workspace::Save";
           };
         }
       ];

@@ -15,25 +15,15 @@
     # All possible modifiers: cmd, alt, ctrl, shift
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
     main.binding = {
-      alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
-      alt-j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down";
-      alt-k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up";
-      alt-l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right";
+      ctrl-alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
+      ctrl-alt-j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down";
+      ctrl-alt-k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up";
+      ctrl-alt-l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right";
 
-      alt-shift-h = "move left";
-      alt-shift-j = "move down";
-      alt-shift-k = "move up";
-      alt-shift-l = "move right";
-
-      ctrl-alt-h = "focus-monitor left";
-      ctrl-alt-j = "focus-monitor down";
-      ctrl-alt-k = "focus-monitor up";
-      ctrl-alt-l = "focus-monitor right";
-
-      ctrl-alt-shift-h = "move-node-to-monitor left";
-      ctrl-alt-shift-j = "move-node-to-monitor down";
-      ctrl-alt-shift-k = "move-node-to-monitor up";
-      ctrl-alt-shift-l = "move-node-to-monitor right";
+      ctrl-alt-shift-h = "move left";
+      ctrl-alt-shift-j = "move down";
+      ctrl-alt-shift-k = "move up";
+      ctrl-alt-shift-l = "move right";
 
       alt-minus = "resize smart -50";
       alt-equal = "resize smart +50";
@@ -60,8 +50,8 @@
             ws = toString (i + 1);
           in
           {
-            "alt-${ws}" = "workspace ${ws}";
-            "alt-shift-${ws}" = "move-node-to-workspace ${ws} --focus-follows-window";
+            "ctrl-alt-${ws}" = "workspace ${ws}";
+            "ctrl-alt-shift-${ws}" = "move-node-to-workspace ${ws} --focus-follows-window";
           }
         ) 9
       )

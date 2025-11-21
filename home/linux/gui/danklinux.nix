@@ -1,8 +1,22 @@
-{ dank-material-shell, wallpapers, ... }:
+{
+  dank-material-shell,
+  wallpapers,
+  quickshell,
+  pkgs,
+  ...
+}:
+let
+  # Required for idle monitoring
+  # Current nixpkgs upstream is reported as "not new enough"
+  quickshellPkg = quickshell.packages.${pkgs.stdenv.hostPlatform.system}.quickshell;
+in
 {
   imports = [ dank-material-shell.homeModules.dankMaterialShell.default ];
 
-  programs.dankMaterialShell.enable = true;
+  programs.dankMaterialShell = {
+    enable = true;
+    quickshell.package = quickshellPkg;
+  };
 
   # https://github.com/AvengeMedia/DankMaterialShell?tab=readme-ov-file#hyprland-integration
   wayland.windowManager.hyprland.settings = {

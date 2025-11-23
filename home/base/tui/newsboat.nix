@@ -28,6 +28,10 @@
         url = "https://registerspill.thorstenball.com/feed";
         title = "Register Spill - Thorsten Ball";
       }
+      {
+        url = "https://asahilinux.org/blog/index.xml";
+        title = "Asahi Linux Blog";
+      }
     ];
 
     # https://m-chrzan.xyz/blog/vim-keybindings-for-newsboat.html

@@ -17,7 +17,7 @@ in
       {
         mode = "n";
         key = "<leader><space>";
-        action = mkRaw ''function() Snacks.picker.smart() end'';
+        action = mkRaw ''function() Snacks.picker.smart({ hidden = true }) end'';
         options.desc = "Find Files";
       }
       {

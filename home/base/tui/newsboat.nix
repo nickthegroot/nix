@@ -29,6 +29,10 @@
         title = "Register Spill - Thorsten Ball";
       }
       {
+        url = "https://world.hey.com/dhh/feed.atom";
+        title = "Hey - DHH";
+      }
+      {
         url = "https://asahilinux.org/blog/index.xml";
         title = "Asahi Linux Blog";
       }

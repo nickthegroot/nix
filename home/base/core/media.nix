@@ -2,7 +2,7 @@
 {
   home.packages = with pkgs; [
     # Video
-    ffmpeg-full
+    ffmpeg
     yt-dlp
 
     # Audio

@@ -55,9 +55,6 @@ in
     brave = {
       enable = true;
 
-      # Use brew version on darwin
-      package = if stdenv.isDarwin then null else pkgs.brave;
-
       extensions = [
         { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)

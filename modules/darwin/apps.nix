@@ -25,7 +25,6 @@
 
     casks = [
       "qutebrowser"
-      "brave-browser"
 
       "ghostty"
       "docker-desktop"

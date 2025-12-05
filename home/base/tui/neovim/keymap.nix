@@ -133,6 +133,38 @@
         action = "<cmd>bprevious<cr>";
         options.desc = "Previous Buffer";
       }
+
+      # Copy file paths
+      {
+        mode = "n";
+        key = "<leader>Yn";
+        action = ''<cmd>let @+ = expand("%:t")<cr>'';
+        options.desc = "Yank file [n]ame to clipboard";
+      }
+      {
+        mode = "n";
+        key = "<leader>Yf";
+        action = ''<cmd>let @+ = expand("%")<cr>'';
+        options.desc = "Yank file relative path to clipboard";
+      }
+      {
+        mode = "n";
+        key = "<leader>YF";
+        action = ''<cmd>let @+ = expand("%:p")<cr>'';
+        options.desc = "Yank file absolute path to clipboard";
+      }
+    ];
+
+    plugins.which-key.settings.spec = [
+      {
+        __unkeyed-1 = "<leader>Y";
+        mode = [
+          "n"
+          "v"
+        ];
+        icon = "";
+        group = "+[Y]ank clipboard";
+      }
     ];
   };
 }

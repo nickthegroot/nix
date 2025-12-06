@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    youtube-music
-  ];
-
   programs = {
     mpv = {
       enable = true;
@@ -19,12 +15,10 @@
         mpris
         modernz
         thumbfast
-        vr-reversal
       ];
     };
 
     imv.enable = true;
-
     cava.enable = true;
   };
 }

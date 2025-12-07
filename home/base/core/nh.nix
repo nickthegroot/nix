@@ -1,14 +1,13 @@
-{ myvars, pkgs, ... }:
-let
-  inherit (pkgs) stdenv;
-in
+{ myvars, ... }:
 {
   programs.nh = {
     enable = true;
-    flake =
-      if stdenv.isDarwin then
-        "/Users/${myvars.username}/.dotfiles/"
-      else
-        "/home/${myvars.username}/.dotfiles/";
+    osFlake = "/home/${myvars.username}/.dotfiles/";
+    darwinFlake = "/Users/${myvars.username}/.dotfiles/";
+
+    clean = {
+      enable = true;
+      dates = "weekly";
+    };
   };
 }

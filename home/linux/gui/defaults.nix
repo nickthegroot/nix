@@ -35,9 +35,8 @@
       defaultApplications =
         let
           browser = [ "brave-browser.desktop" ];
-          editor = [
-            "nvim.desktop"
-          ];
+          editor = [ "nvim.desktop" ];
+          fileManager = [ "org.gnome.Nautilus.desktop" ];
         in
         {
           "application/json" = browser;
@@ -63,6 +62,9 @@
           "x-scheme-handler/ftp" = browser; # open `ftp:` url with `browser`
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
+
+          # file manager
+          "inode/directory" = fileManager;
 
           "audio/*" = [ "mpv.desktop" ];
           "video/*" = [ "mpv.desktop" ];

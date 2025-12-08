@@ -19,12 +19,8 @@
       cleanup = "uninstall";
     };
 
-    taps = [
-      "th-ch/youtube-music"
-    ];
-
     casks = [
-      "qutebrowser"
+      "qutebrowser" # prebuilt qutebrowser doesn't have proprietary codecs
 
       "ghostty"
       "docker-desktop"
@@ -34,12 +30,10 @@
 
       # Misc
       "iina" # better mpv for macos
-      "jellyfin-media-player" # prebuilt qutebrowser doesn't have proprietary codecs
-      "discord"
+      "jellyfin-media-player"
       "protonvpn"
       "raycast"
       "1password"
-      "th-ch/youtube-music/youtube-music"
     ];
   };
 }

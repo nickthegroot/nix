@@ -144,7 +144,7 @@
       {
         mode = "n";
         key = "<leader>Yf";
-        action = ''<cmd>let @+ = expand("%")<cr>'';
+        action = ''<cmd>let @+ = expand("%:~:.")<cr>'';
         options.desc = "Yank file relative path to clipboard";
       }
       {

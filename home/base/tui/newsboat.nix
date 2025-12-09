@@ -17,7 +17,7 @@
         title = "XKCD";
       }
       {
-        url = "https://papers.takara.ai/api/feed";
+        url = "https://raw.githubusercontent.com/huangboming/huggingface-daily-paper-feed/refs/heads/main/feed_weekly.xml";
         title = "HuggingFace Papers - Trending";
       }
       {

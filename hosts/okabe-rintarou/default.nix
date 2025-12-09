@@ -54,11 +54,9 @@
     ./hardware.nix
     ./hardware-configuration.nix
     ./rgb.nix
-    {
-      modules.ssh.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFx8ntzpKZXxqDl+wHSo64qySAetdZeNolJ8I7Hm6KWq";
-    }
   ];
   home-modules = [
     ./home/displays.nix
+    ./home/gpu-monitoring.nix
   ];
 }

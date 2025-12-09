@@ -1,19 +1,21 @@
 #!/bin/bash
 
 BLUE=0xFF89B4FA
-PINK=0xFFF5C2E7
 RED=0xFFF38BA8
 GREEN=0xFFA6E3A1
-
-BACKGROUND=0xEB1E1E2E
 TEXT=0xFFCFD6F1
 
 # main bar & defaults
-sketchybar --bar height=32 \
-  y_offset=2 \
-  padding_left=8 \
-  padding_right=8 \
-  color=0x00000000
+sketchybar --bar height=30 \
+  y_offset=4 \
+  margin=10 \
+  corner_radius=12 \
+  border_width=0 \
+  blur_radius=20 \
+  color=0xcc1e1e2e \
+  padding_left=12 \
+  padding_right=12 \
+  notch_width=188
 
 sketchybar --default updates=when_shown \
   icon.font="JetBrainsMono Nerd Font:Regular:14" \
@@ -44,26 +46,19 @@ done
 
 # consolidate space numbers and add a background
 sketchybar --add bracket spaces '/space\..*/' \
-  --set spaces background.color=$BACKGROUND \
-  background.corner_radius=15 \
-  background.border_width=1 \
-  background.border_color=$PINK \
-  blur_radius=2 \
-  background.height=30
+  --set spaces background.color=0x00000000 \
+  background.border_width=0
 
 # update defaults
 sketchybar --default \
-  background.color=$BACKGROUND \
-  blur_radius=2 \
-  background.corner_radius=15 \
-  background.height=30 \
-  icon.padding_left=12 \
-  icon.padding_right=4 \
+  background.color=0x00000000 \
+  icon.padding_left=10 \
+  icon.padding_right=10 \
   label.padding_left=4 \
-  label.padding_right=12 \
+  label.padding_right=10 \
   label.color=$TEXT \
-  background.padding_left=8 \
-  background.border_width=1
+  background.padding_left=4 \
+  background.border_width=0
 
 # app title
 sketchybar --add event title_change
@@ -75,30 +70,43 @@ sketchybar --add item title left \
   icon.padding_left=0 \
   icon.padding_right=0 \
   script='./scripts/title.sh' \
-  background.border_color=$PINK \
   update_freq=1 \
   label.max_chars=54
-# scroll_texts=on \
-# label.scroll_duration=200
 
 sketchybar --subscribe title title_change
 
-# ~~ right items ~~
+# ~~ center items ~~
 
 # time
-sketchybar --add item time right \
+sketchybar --add item time center \
   --set time icon=󱑎 \
   icon.color=$BLUE \
-  background.border_color=$BLUE \
   label="$(date '+%I:%M %p')" \
   script='./scripts/time.sh' \
   update_freq=1
+
+# weather
+sketchybar --add item weather center \
+  --set weather icon=󰖜 \
+  icon.color=$GREEN \
+  label="...°F" \
+  script='./scripts/weather.sh' \
+  update_freq=300
+
+# ~~ right items ~~
+
+# cpu
+sketchybar --add item cpu right \
+  --set cpu icon= \
+  icon.color=$BLUE \
+  label="--%" \
+  script='./scripts/cpu.sh' \
+  update_freq=2
 
 # date
 sketchybar --add item date right \
   --set date icon=󱨰 \
   icon.color=$GREEN \
-  background.border_color=$GREEN \
   label="$(date '+%a %b %d')" \
   script='./scripts/date.sh' \
   update_freq=60 # every minute
@@ -107,7 +115,6 @@ sketchybar --add item date right \
 sketchybar --add item battery right \
   --set battery icon= \
   icon.color=$RED \
-  background.border_color=$RED \
   label="--%" \
   script='./scripts/battery.sh' \
   update_freq=60 # every minute

@@ -11,7 +11,9 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      # Switch back once https://github.com/nix-community/home-manager/pull/8326 is merged
+      # url = "github:nix-community/home-manager";
+      url = "github:nickthegroot/home-manager/chromium-fix-null-package";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

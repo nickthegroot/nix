@@ -20,7 +20,8 @@
     };
 
     casks = [
-      "qutebrowser" # prebuilt qutebrowser doesn't have proprietary codecs
+      "brave-browser"
+      "qutebrowser"
 
       "ghostty"
       "docker-desktop"
@@ -30,9 +31,6 @@
 
       # Misc
       "iina" # better mpv for macos
-      "jellyfin-media-player"
-      "protonvpn"
-      "raycast"
       "1password"
     ];
   };

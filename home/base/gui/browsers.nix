@@ -55,6 +55,10 @@ in
     brave = {
       enable = true;
 
+      # Use brew version on darwin
+      # until home-manager version supports 1password desktop app integration
+      package = if stdenv.isDarwin then null else pkgs.brave;
+
       extensions = [
         { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)

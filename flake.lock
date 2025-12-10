@@ -91,15 +91,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1764998300,
-        "narHash": "sha256-fZatn/KLfHLDXnF0wy7JxXqGaZmGDTVufT4o/AOlj44=",
-        "owner": "nix-community",
+        "lastModified": 1765401561,
+        "narHash": "sha256-9ceKgwz7WH+7zDP0cwuAR6Z62akB6CP/oexoTrEcEos=",
+        "owner": "nickthegroot",
         "repo": "home-manager",
-        "rev": "27a6182347ccae90a88231ae0dc5dfa7d15815bb",
+        "rev": "6d67670caab32619b20674c00ee173ab4bac5f99",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "nickthegroot",
+        "ref": "chromium-fix-null-package",
         "repo": "home-manager",
         "type": "github"
       }

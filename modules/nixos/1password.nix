@@ -10,4 +10,6 @@
     # require enabling PolKit integration on some desktop environments (e.g. Plasma).
     polkitPolicyOwners = [ myvars.username ];
   };
+
+  security.polkit.enable = true;
 }

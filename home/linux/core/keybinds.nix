@@ -1,43 +1,8 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) lib;
+  inherit (pkgs) lib callPackage;
 
-  hypr-app-open = pkgs.writeShellScriptBin "hypr-app-open" ''
-    client="$1"
-    launcher="$2"
-
-    clients_json=$(hyprctl clients -j)
-    current_id=$(hyprctl activewindow -j | ${pkgs.jq}/bin/jq -r '.address')
-    matching_windows=$(echo "$clients_json" | ${pkgs.jq}/bin/jq --arg c "$client" '[.[] | select(.class == $c)]')
-    count=$(echo "$matching_windows" | ${pkgs.jq}/bin/jq -r 'length')
-
-    if [ "$count" -eq 0 ]; then
-      exec "$launcher" &
-      exit
-    fi
-
-    current_win=$(echo "$clients_json" | ${pkgs.jq}/bin/jq -r --arg id "$current_id" '.[] | select(.address == $id)')
-    current_class=$(echo "$current_win" | ${pkgs.jq}/bin/jq -r '.class // empty')
-
-    if [ "$current_class" = "$client" ]; then
-      # Exclude current window, pick most recent other
-      target=$(echo "$matching_windows" | ${pkgs.jq}/bin/jq -r --arg id "$current_id" '[.[] | select(.address != $id)] | sort_by(-.focusHistoryID) | .[0]')
-    else
-      # Pick most recent
-      target=$(echo "$matching_windows" | ${pkgs.jq}/bin/jq -r 'sort_by(-.focusHistoryID) | .[0]')
-    fi
-
-    target_addr=$(echo "$target" | ${pkgs.jq}/bin/jq -r '.address // empty')
-
-    if [ -n "$target_addr" ]; then
-      hyprctl dispatch focuswindow address:"$target_addr"
-    else
-      exec "$launcher" &
-    fi
-  '';
-
-  screenshot = "${pkgs.hyprshot}/bin/hyprshot";
-
+  hypr-app-open = callPackage ../../../packages/hypr-app-open.nix { };
   meh = "SUPER + SHIFT + CTRL";
 
   # Find window classes with:
@@ -88,6 +53,11 @@ in
       mouse_refocus = false;
     };
 
+    # Note: bind flags `bind[flags]
+    # https://wiki.hypr.land/Configuring/Binds/#bind-flags
+    # l = locked (works during lock screen)
+    # e = repeat enabled (hold key to repeat)
+    # m = mouse
     bind =
       (lib.mapAttrsToList (
         key: val: "${key},exec,${hypr-app-open}/bin/hypr-app-open ${val.client} ${val.launcher}"
@@ -98,11 +68,6 @@ in
         "SUPER,F,fullscreen"
         "SUPERSHIFT,F,togglefloating"
         "SUPERSHIFT,P,pin"
-
-        # Selectors
-        ",PRINT,exec,${screenshot} -m region -o ~/Pictures/Screenshots -- imv"
-        "SUPER,PRINT,exec,${screenshot} -m window -o ~/Pictures/Screenshots -- imv"
-        "CTRL,PRINT,exec,${screenshot} -m output  -o ~/Pictures/Screenshots -- imv"
 
         # Focus
         "SUPER,h,movefocus,l"
@@ -127,6 +92,18 @@ in
         "CTRLSUPERSHIFT,j,movewindow,mon:d"
         "CTRLSUPERSHIFT,k,movewindow,mon:u"
         "CTRLSUPERSHIFT,l,movewindow,mon:r"
+
+        # Selectors
+        ", PRINT, exec, dms screenshot" # Region select
+        "SUPER, PRINT, exec, dms screenshot full" # Focused screen
+        "SUPER, C, exec, dms color pick -a" # Color picker (hex), to clipboard
+
+        "SUPER, Space, exec, dms ipc call spotlight toggle"
+        "SUPER, V, exec, dms ipc call clipboard toggle"
+        "SUPER, N, exec, dms ipc call notifications toggle"
+        "SUPERALT, L, exec, dms ipc call lock lock"
+        # "SUPERSHIFT, /, exec, dms keybinds show hyprland"
+        "SUPERSHIFT, N, exec, dms ipc call night toggle"
       ]
       ++ (
         # workspaces 1-9
@@ -146,6 +123,23 @@ in
         )
       );
 
+    bindl = [
+      ", XF86AudioMute, exec, dms ipc call audio mute"
+      ", XF86AudioMicMute, exec, dms ipc call audio micmute"
+      ", XF86AudioNext, exec, dms ipc call mpris next"
+      ", XF86AudioPrev, exec, dms ipc call mpris previous"
+      ", XF86AudioPlay, exec, dms ipc call mpris playPause"
+      ", XF86AudioStop, exec, dms ipc call mpris stop"
+    ];
+    bindel = [
+      # Audio controls (function keys)
+      ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+      ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+
+      # Brightness controls (function keys)
+      ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
+      ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
+    ];
     bindm = [
       "SUPER,mouse:272,movewindow"
       "SUPER,mouse:273,resizewindow"

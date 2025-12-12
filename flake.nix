@@ -11,9 +11,7 @@
     };
 
     home-manager = {
-      # Switch back once https://github.com/nix-community/home-manager/pull/8326 is merged
-      # url = "github:nix-community/home-manager";
-      url = "github:nickthegroot/home-manager/chromium-fix-null-package";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -32,10 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    quickshell = {
-      url = "github:quickshell-mirror/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     dgop = {
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,12 +40,6 @@
         nixpkgs.follows = "nixpkgs";
         dgop.follows = "dgop";
       };
-    };
-
-    # == App-based ==
-    wallpapers = {
-      url = "github:nickthegroot/wallpapers";
-      flake = false;
     };
   };
 

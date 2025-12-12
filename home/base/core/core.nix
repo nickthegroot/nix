@@ -8,7 +8,6 @@
     gnumake
 
     # Better versions of common tools
-    (ripgrep.override { withPCRE2 = true; }) # better grep
     fd # better find
     xh # better httpie/curl
     dust # better du
@@ -27,6 +26,9 @@
   programs = {
     fzf.enable = true;
     nix-index-database.comma.enable = true;
+
+    # Better grep
+    ripgrep.enable = true;
 
     # Better ls
     eza = {

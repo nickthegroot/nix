@@ -21,4 +21,8 @@
     imv.enable = true;
     cava.enable = true;
   };
+
+  home.packages = with pkgs; [
+    nautilus
+  ];
 }

@@ -1,4 +1,5 @@
 {
+  catppuccin.grub.enable = true;
   boot = {
     loader = {
       timeout = 5;

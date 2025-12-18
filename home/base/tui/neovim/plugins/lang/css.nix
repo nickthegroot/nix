@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}:
+{ pkgs, ... }:
 {
   programs.nixvim = {
     plugins = {
@@ -15,24 +11,11 @@
           command = "${pkgs.prettierd}/bin/prettierd";
         };
       };
+    };
 
-      lsp.servers = {
-        cssls = {
-          enable = true;
-          cmd = [
-            "${pkgs.vscode-langservers-extracted}/bin/vscode-css-language-server"
-            "--stdio"
-          ];
-        };
-
-        tailwindcss = {
-          enable = true;
-          cmd = [
-            (lib.getExe pkgs.tailwindcss-language-server)
-            "--stdio"
-          ];
-        };
-      };
+    lsp.servers = {
+      cssls.enable = true;
+      tailwindcss.enable = true;
     };
   };
 }

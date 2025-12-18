@@ -1,8 +1,8 @@
 {
   programs.nixvim = {
-    plugins.lsp.servers.yamlls = {
+    lsp.servers.yamlls = {
       enable = true;
-      extraOptions = {
+      config = {
         capabilities = {
           textDocument = {
             foldingRange = {

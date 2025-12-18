@@ -15,15 +15,6 @@
         };
       };
 
-      lsp.servers = {
-        rust_analyzer = {
-          enable = true;
-          installCargo = false; # handled per-project
-          installRustc = false; # handled per-project
-          installRustfmt = false; # handled through conform-nvim
-        };
-      };
-
       conform-nvim.settings = {
         formatters_by_ft = {
           rust = [ "rustfmt" ];
@@ -36,5 +27,7 @@
         };
       };
     };
+
+    lsp.servers.rust_analyzer.enable = true;
   };
 }

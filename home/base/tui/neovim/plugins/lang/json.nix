@@ -12,10 +12,8 @@
           command = "${pkgs.prettierd}/bin/prettierd";
         };
       };
-
-      lsp.servers = {
-        jsonls.enable = true;
-      };
     };
+
+    lsp.servers.jsonls.enable = true;
   };
 }

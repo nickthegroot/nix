@@ -20,9 +20,9 @@
           statix.cmd = "${pkgs.statix}/bin/statix";
         };
       };
-
-      lsp.servers.nixd.enable = true;
     };
+
+    lsp.servers.nixd.enable = true;
 
     extraConfigVim = ''
       au BufRead,BufNewFile flake.lock setf json

@@ -23,7 +23,7 @@
       vtsls = {
         enable = true;
 
-        settings = {
+        config = {
           complete_function_calls = true;
           vtsls = {
             enableMoveToFileCodeAction = true;

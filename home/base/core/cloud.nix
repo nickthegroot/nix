@@ -7,7 +7,5 @@
     # Running into a lot of problems getting this working.
     # For now, will manage through Mise/Brew
     # azure-cli
-
-    _1password-cli
   ];
 }

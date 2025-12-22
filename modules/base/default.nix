@@ -1,10 +1,11 @@
 {
   pkgs,
+  mylib,
   myvars,
   ...
 }:
 {
-  imports = [ ./ssh.nix ];
+  imports = mylib.scanPaths ./.;
 
   # auto upgrade nix to the unstable version
   # https://github.com/NixOS/nixpkgs/blob/nixos-unstable/pkgs/tools/package-management/nix/default.nix#L284

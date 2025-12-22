@@ -28,10 +28,6 @@
 
       "notion-calendar"
       "notion"
-
-      # Misc
-      "iina" # better mpv for macos
-      "1password"
     ];
   };
 }

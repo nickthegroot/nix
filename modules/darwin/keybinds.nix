@@ -30,7 +30,7 @@
     }
     // {
       alt-enter = "exec-and-forget open -a Ghostty";
-      alt-shift-enter = "exec-and-forget open -a Zed";
+      alt-shift-enter = "exec-and-forget open -a \"Visual Studio Code\"";
       alt-space = "exec-and-forget open -a \"Brave Browser\"";
       alt-shift-space = "exec-and-forget open -a qutebrowser";
 

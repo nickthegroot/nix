@@ -13,8 +13,8 @@ let
       launcher = "ghostty";
     };
     "SUPERSHIFT,Return" = {
-      client = "dev.zed.Zed";
-      launcher = "zeditor";
+      client = "code-url-handler";
+      launcher = "code";
     };
     "ALT,Space" = {
       client = "brave-browser";

@@ -33,6 +33,10 @@
         title = "Hey - DHH";
       }
       {
+        url = "https://nixos.org/blog/announcements-rss.xml";
+        title = "NixOS Releases";
+      }
+      {
         url = "https://asahilinux.org/blog/index.xml";
         title = "Asahi Linux Blog";
       }

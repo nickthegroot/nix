@@ -5,9 +5,9 @@
   ...
 }:
 {
-  imports = [ dank-material-shell.homeModules.dankMaterialShell.default ];
+  imports = [ dank-material-shell.homeModules.dank-material-shell ];
 
-  programs.dankMaterialShell = {
+  programs.dank-material-shell = {
     enable = true;
     systemd = {
       enable = true; # Systemd service for auto-start

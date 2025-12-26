@@ -6,7 +6,7 @@
 {
   imports = [ dank-material-shell.nixosModules.greeter ];
 
-  programs.dankMaterialShell.greeter = {
+  programs.dank-material-shell.greeter = {
     enable = true;
     compositor.name = "hyprland";
     configHome = "/home/${myvars.username}";

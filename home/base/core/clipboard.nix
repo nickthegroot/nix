@@ -4,7 +4,7 @@ let
 in
 {
   home.shellAliases = {
-    "clipc" = if stdenv.isDarwin then "pbcopy" else "dms cl copy";
-    "clipp" = if stdenv.isDarwin then "pbpaste" else "dms cl paste";
+    "clipc" = if stdenv.isDarwin then "pbcopy" else "wl-copy";
+    "clipp" = if stdenv.isDarwin then "pbpaste" else "wl-paste";
   };
 }

@@ -30,16 +30,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dgop = {
-      url = "github:AvengeMedia/dgop";
+    # Required for some dms-shell features
+    # until the new version is released to nixpkgs
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/quickshell/quickshell?rev=3918290c1bcd93ed81291844d9f1ed146672dbfc";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-    dank-material-shell = {
-      url = "github:AvengeMedia/DankMaterialShell";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        dgop.follows = "dgop";
-      };
     };
   };
 

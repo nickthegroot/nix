@@ -1,25 +1,9 @@
 {
   pkgs,
   config,
-  dank-material-shell,
   ...
 }:
 {
-  imports = [ dank-material-shell.homeModules.dank-material-shell ];
-
-  programs.dank-material-shell = {
-    enable = true;
-    systemd = {
-      enable = true; # Systemd service for auto-start
-      restartIfChanged = true; # Auto-restart dms.service when dankMaterialShell changes
-    };
-
-    # Disable unneeded modules to save resources
-    enableDynamicTheming = false;
-    enableCalendarEvents = false;
-  };
-
-  # https://danklinux.com/docs/dankmaterialshell/compositors#hyprland-configuration
   wayland.windowManager.hyprland.settings = {
     general = {
       gaps_in = 5;

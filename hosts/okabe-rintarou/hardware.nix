@@ -10,7 +10,12 @@
   # https://nixos.wiki/wiki/Nvidia
   hardware.graphics.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.open = true;
+  hardware.nvidia = {
+    open = true;
+
+    # https://wiki.hypr.land/Nvidia/#suspendwakeup-issues
+    powerManagement.enable = true;
+  };
 
   environment.variables = {
     # https://wiki.hyprland.org/Nvidia/#environment-variables

@@ -1,7 +1,3 @@
-# XDG stands for "Cross-Desktop Group", with X used to mean "cross".
-# It's a bunch of specifications from freedesktop.org intended to standardize desktops and
-# other GUI applications on various systems (primarily Unix-like) to be interoperable:
-#   https://www.freedesktop.org/wiki/Specifications/
 {
   config,
   pkgs,
@@ -22,13 +18,6 @@
     dataHome = "${config.home.homeDirectory}/.local/share";
     stateHome = "${config.home.homeDirectory}/.local/state";
 
-    # manage $XDG_CONFIG_HOME/mimeapps.list
-    # xdg search all desktop entries from $XDG_DATA_DIRS, check it by command:
-    #  echo $XDG_DATA_DIRS
-    # the system-level desktop entries can be list by command:
-    #   ls -l /run/current-system/sw/share/applications/
-    # the user-level desktop entries can be list by command(user ryan):
-    #  ls /etc/profiles/per-user/ryan/share/applications/
     mimeApps = {
       enable = true;
       # let `xdg-open` to open the url with the correct application.
@@ -37,14 +26,13 @@
           browser = [ "brave-browser.desktop" ];
           editor = [ "nvim.desktop" ];
           fileManager = [ "org.gnome.Nautilus.desktop" ];
+          videoPlayer = [ "mpv.desktop" ];
+          imageViewer = [ "imv-dir.desktop" ];
         in
         {
-          "application/json" = browser;
-          "application/pdf" = browser; # TODO: pdf viewer
-
           "text/html" = browser;
-          "text/xml" = browser;
-          "text/plain" = editor;
+          "application/json" = browser;
+          "application/pdf" = browser;
           "application/xml" = browser;
           "application/xhtml+xml" = browser;
           "application/xhtml_xml" = browser;
@@ -55,6 +43,9 @@
           "application/x-extension-shtml" = browser;
           "application/x-extension-xht" = browser;
           "application/x-extension-xhtml" = browser;
+
+          "text/plain" = editor;
+          "text/xml" = editor;
           "application/x-wine-extension-ini" = editor;
 
           # define default applications for some url schemes.
@@ -66,13 +57,9 @@
           # file manager
           "inode/directory" = fileManager;
 
-          "audio/*" = [ "mpv.desktop" ];
-          "video/*" = [ "mpv.desktop" ];
-          "image/*" = [ "imv-dir.desktop" ];
-          "image/gif" = [ "imv-dir.desktop" ];
-          "image/jpeg" = [ "imv-dir.desktop" ];
-          "image/png" = [ "imv-dir.desktop" ];
-          "image/webp" = [ "imv-dir.desktop" ];
+          "audio/*" = videoPlayer;
+          "video/*" = videoPlayer;
+          "image/*" = imageViewer;
         };
     };
 

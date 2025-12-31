@@ -19,6 +19,11 @@ nix-darwin.lib.darwinSystem {
   modules = darwin-modules ++ [
     ../modules/darwin
     {
+      system.stateVersion = 5;
+
+      # Required to enable nix on default shell
+      programs.zsh.enable = true;
+
       networking.hostName = name;
       networking.computerName = name;
       system.defaults.smb.NetBIOSName = name;

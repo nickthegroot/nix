@@ -1,7 +1,4 @@
-{
-  myvars,
-  ...
-}:
+{ myvars, ... }:
 {
 
   # Certain features, including CLI integration and system authentication support,

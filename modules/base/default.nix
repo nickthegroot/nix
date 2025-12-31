@@ -1,5 +1,6 @@
 {
   pkgs,
+  lib,
   mylib,
   myvars,
   ...
@@ -46,6 +47,7 @@
     description = myvars.userfullname;
   };
 
+  nixpkgs.config.allowUnfree = lib.mkForce true;
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

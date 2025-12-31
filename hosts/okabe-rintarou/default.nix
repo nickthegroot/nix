@@ -50,7 +50,6 @@
 {
   name = "okabe-rintarou";
   nixos-modules = [
-    ./boot.nix
     ./hardware.nix
     ./hardware-configuration.nix
     ./rgb.nix
@@ -58,5 +57,6 @@
   home-modules = [
     ./home/displays.nix
     ./home/gpu-monitoring.nix
+    { language-learning.enable = true; }
   ];
 }

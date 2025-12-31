@@ -11,6 +11,7 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
+        useOSProber = true; # Windows dual boot support
       };
     };
     tmp = {

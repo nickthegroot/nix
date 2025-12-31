@@ -1,13 +1,5 @@
-{ pkgs, ... }:
 {
-  environment.systemPackages = with pkgs; [
-    git
-    gnugrep # replacee macos's grep
-    gnutar # replacee macos's tar
-  ];
-
   # homebrew need to be installed manually, see https://brew.sh
-  # https://github.com/LnL7/nix-darwin/blob/master/modules/homebrew.nix
   homebrew = {
     enable = true;
 

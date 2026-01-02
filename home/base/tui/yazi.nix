@@ -1,12 +1,10 @@
-{ ... }:
 {
   # terminal file manager
   programs.yazi = {
     enable = true;
-    # Changing working directory when exiting Yazi
     enableFishIntegration = true;
     settings = {
-      manager = {
+      mgr = {
         show_hidden = true;
         sort_dir_first = true;
       };

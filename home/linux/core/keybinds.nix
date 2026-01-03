@@ -26,7 +26,7 @@ let
     };
     "${meh},m" = {
       client = "com.github.th_ch.youtube_music";
-      launcher = "youtube-music";
+      launcher = "pear-desktop";
     };
     "${meh},p" = {
       client = "1password";

@@ -9,7 +9,7 @@ let
 in
 {
   home.packages = with pkgs; [
-    youtube-music
+    pear-desktop # renamed: youtube-music
   ];
 
   xdg.configFile."YouTube Music/CustomThemes/catppuccin".source = youtubeMusicThemeSrc + "/src";

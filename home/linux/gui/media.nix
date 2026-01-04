@@ -23,6 +23,6 @@
   };
 
   home.packages = with pkgs; [
-    nautilus
+    kdePackages.dolphin
   ];
 }

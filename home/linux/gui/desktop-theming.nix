@@ -1,8 +1,5 @@
-{
-  pkgs,
-  config,
-  ...
-}:
+{ pkgs, config, ... }:
+
 {
   wayland.windowManager.hyprland.settings = {
     general = {
@@ -25,37 +22,23 @@
       disable_splash_rendering = true;
     };
 
-    layerrule = [ "noanim, ^(dms)$" ];
     windowrulev2 = [
       # Open DMS windows as floating by default
       "float, class:^(org.quickshell)$"
     ];
   };
 
-  gtk.theme =
+  xdg.dataFile."color-schemes".source =
     let
       cfg = config.catppuccin;
-      size = "standard";
-    in
-    {
-      name = "catppuccin-${cfg.flavor}-${cfg.accent}-${size}";
-      package = pkgs.catppuccin-gtk.override {
-        inherit size;
+      pkg = pkgs.catppuccin-kde.override {
+        flavour = [ cfg.flavor ];
         accents = [ cfg.accent ];
-        variant = cfg.flavor;
       };
-    };
-
-  xdg.configFile =
-    let
-      gtk4Dir = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0";
     in
-    {
-      "gtk-4.0/assets".source = "${gtk4Dir}/assets";
-      "gtk-4.0/gtk.css".source = "${gtk4Dir}/gtk.css";
-      "gtk-4.0/gtk-dark.css".source = "${gtk4Dir}/gtk-dark.css";
-    };
+    "${pkg}/share/color-schemes";
 
+  # Explicitly define (vs. catpuccin.cursors) to reduce size
   home.pointerCursor = {
     size = 24;
     name = "catppuccin-mocha-light-cursors";

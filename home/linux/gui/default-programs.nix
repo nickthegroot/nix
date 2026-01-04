@@ -25,7 +25,7 @@
         let
           browser = [ "brave-browser.desktop" ];
           editor = [ "nvim.desktop" ];
-          fileManager = [ "org.gnome.Nautilus.desktop" ];
+          fileManager = [ "org.kde.dolphin" ];
           videoPlayer = [ "mpv.desktop" ];
           imageViewer = [ "imv-dir.desktop" ];
         in

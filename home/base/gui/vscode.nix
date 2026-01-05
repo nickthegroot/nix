@@ -114,7 +114,7 @@
       };
 
       keybindings = [
-        # Window navigation (replacing vim ctrl keys)
+        # Window navigation (Ctrl+h/j/k/l)
         {
           key = "ctrl+k";
           command = "workbench.action.navigateUp";
@@ -132,126 +132,225 @@
           command = "workbench.action.navigateRight";
         }
 
-        # Buffer navigation
+        # Buffer navigation (Shift+H/L)
         {
           key = "shift+l";
           command = "workbench.action.nextEditor";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
         {
           key = "shift+h";
           command = "workbench.action.previousEditor";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
 
-        # Code actions and LSP
+        # File Explorer (<leader>e)
+        {
+          key = "space e";
+          command = "workbench.files.action.showActiveFileInExplorer";
+          when = "vim.mode == 'Normal'";
+        }
+
+        # Fuzzy Finder (<leader><space>)
+        {
+          key = "space space";
+          command = "workbench.action.quickOpen";
+          when = "vim.mode == 'Normal' || vim.mode == 'Visual'";
+        }
+
+        # Search commands (<leader>s*)
+        {
+          key = "space s g";
+          command = "workbench.action.findInFiles";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space s c";
+          command = "workbench.scm.focus";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space s w";
+          command = "editor.action.addSelectionToNextFindMatch";
+          when = "vim.mode == 'Normal' || vim.mode == 'Visual'";
+        }
+        {
+          key = "space s s";
+          command = "workbench.action.gotoSymbol";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space s shift+s";
+          command = "workbench.action.showAllSymbols";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space s d";
+          command = "workbench.actions.view.problems";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space s shift+d";
+          command = "workbench.panel.markers.view.focus";
+          when = "vim.mode == 'Normal'";
+        }
+
+        # Git commands (<leader>g*)
+        {
+          key = "space g g";
+          command = "workbench.view.scm";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space g o";
+          command = "gitlens.openFileOnRemote";
+          when = "vim.mode == 'Normal' || vim.mode == 'Visual'";
+        }
+        {
+          key = "space g y";
+          command = "gitlens.copyRemoteFileUrlToClipboard";
+          when = "vim.mode == 'Normal' || vim.mode == 'Visual'";
+        }
+
+        # LSP commands (<leader>c*)
+        {
+          key = "space c l";
+          command = "workbench.action.showRuntimeExtensions";
+          when = "vim.mode == 'Normal'";
+        }
         {
           key = "space c a";
           command = "editor.action.quickFix";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal' || vim.mode == 'Visual'";
         }
         {
           key = "space c r";
           command = "editor.action.rename";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space c shift+r";
+          command = "fileutils.renameFile";
+          when = "vim.mode == 'Normal'";
         }
         {
           key = "space c f";
           command = "editor.action.formatDocument";
-          when = "editorTextFocus && vim.mode == 'Normal'";
-        }
-        {
-          key = "space c o";
-          command = "editor.action.organizeImports";
-          when = "editorTextFocus && vim.mode == 'Normal'";
-        }
-        {
-          key = "space c a";
-          command = "editor.action.quickFix";
-          when = "editorTextFocus && vim.mode == 'Visual'";
+          when = "vim.mode == 'Normal'";
         }
         {
           key = "space c f";
           command = "editor.action.formatSelection";
-          when = "editorTextFocus && vim.mode == 'Visual'";
+          when = "vim.mode == 'Visual'";
+        }
+        {
+          key = "space c o";
+          command = "editor.action.organizeImports";
+          when = "vim.mode == 'Normal' || vim.mode == 'Visual'";
+        }
+        {
+          key = "space c v";
+          command = "python.setInterpreter";
+          when = "vim.mode == 'Normal'";
         }
 
-        # Toggles
+        # Toggle commands (<leader>t*)
         {
           key = "space t i";
           command = "editor.action.toggleInlayHints";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space t f";
+          command = "editor.action.formatDocument.none";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space t shift+f";
+          command = "editor.action.formatDocument.none";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "space t t";
+          command = "workbench.action.terminal.toggleTerminal";
+          when = "vim.mode == 'Normal'";
         }
 
-        # Go To / Navigation
+        # Go to commands (g*)
         {
           key = "g d";
           command = "editor.action.revealDefinition";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
         {
           key = "g r";
           command = "editor.action.goToReferences";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
 
-        # Diagnostics
+        # Hover (K and T)
+        {
+          key = "shift+k";
+          command = "editor.action.showHover";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "shift+t";
+          command = "editor.action.showHover";
+          when = "vim.mode == 'Normal'";
+        }
+
+        # Next/Previous reference ([[ and ]])
+        {
+          key = "] ]";
+          command = "editor.action.wordHighlight.next";
+          when = "vim.mode == 'Normal'";
+        }
+        {
+          key = "[ [";
+          command = "editor.action.wordHighlight.prev";
+          when = "vim.mode == 'Normal'";
+        }
+
+        # Diagnostics (]d and [d)
         {
           key = "] d";
           command = "editor.action.marker.nextInFiles";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
         {
           key = "[ d";
           command = "editor.action.marker.prevInFiles";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
 
-        # Git hunks (requires GitLens or similar extension)
+        # Git hunks (]h and [h)
         {
           key = "] h";
           command = "workbench.action.editor.nextChange";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
         {
           key = "[ h";
           command = "workbench.action.editor.previousChange";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          when = "vim.mode == 'Normal'";
         }
 
-        # Comments
+        # Yank commands (<leader>Y*)
         {
-          key = "g c";
-          command = "editor.action.commentLine";
-          when = "editorTextFocus && vim.mode == 'Visual'";
+          key = "space shift+y n";
+          command = "copyRelativeFilePath";
+          when = "vim.mode == 'Normal'";
         }
-
-        # Fuzzy Finder
         {
-          key = "space space";
-          command = "workbench.action.quickOpen";
-          when = "editorTextFocus && (vim.mode == 'Normal' || vim.mode == 'Visual')";
+          key = "space shift+y f";
+          command = "copyRelativeFilePath";
+          when = "vim.mode == 'Normal'";
         }
-
-        # File Explorer
         {
-          key = "space e";
-          command = "workbench.files.action.showActiveFileInExplorer";
-          when = "editorTextFocus && vim.mode == 'Normal'";
-        }
-
-        # Projects
-        {
-          key = "space f p";
-          command = "workbench.action.openRecent";
-          when = "editorTextFocus && vim.mode == 'Normal'";
-        }
-
-        # Search
-        {
-          key = "space /";
-          command = "workbench.action.findInFiles";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          key = "space shift+y shift+f";
+          command = "copyFilePath";
+          when = "vim.mode == 'Normal'";
         }
 
         # File explorer operations (when focus is on explorer)
@@ -290,12 +389,25 @@
           command = "filesExplorer.paste";
           when = "filesExplorerFocus && !inputFocus";
         }
-
-        # Save
         {
-          key = "ctrl+s";
-          command = "workbench.action.files.save";
-          when = "editorTextFocus && vim.mode == 'Normal'";
+          key = "j";
+          command = "list.focusDown";
+          when = "filesExplorerFocus && !inputFocus";
+        }
+        {
+          key = "k";
+          command = "list.focusUp";
+          when = "filesExplorerFocus && !inputFocus";
+        }
+        {
+          key = "h";
+          command = "list.collapse";
+          when = "filesExplorerFocus && !inputFocus";
+        }
+        {
+          key = "l";
+          command = "list.expand";
+          when = "filesExplorerFocus && !inputFocus";
         }
       ];
     };

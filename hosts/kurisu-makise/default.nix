@@ -42,5 +42,7 @@
 {
   name = "kurisu-makise";
   darwin-modules = [ ./apps.nix ];
-  home-modules = [ ];
+  home-modules = [
+    { language-learning.enable = true; }
+  ];
 }

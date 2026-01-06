@@ -41,7 +41,10 @@
   ];
 
   # Install completion scripts
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    useBabelfish = true;
+  };
 
   users.users.${myvars.username} = {
     description = myvars.userfullname;

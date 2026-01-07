@@ -1,6 +1,3 @@
-{ pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    github-copilot-cli
-  ];
+  programs.opencode.enable = true;
 }

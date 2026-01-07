@@ -77,14 +77,6 @@ sketchybar --subscribe title title_change
 
 # ~~ center items ~~
 
-# time
-sketchybar --add item time center \
-  --set time icon=󱑎 \
-  icon.color=$BLUE \
-  label="$(date '+%I:%M %p')" \
-  script='./scripts/time.sh' \
-  update_freq=1
-
 # weather
 sketchybar --add item weather center \
   --set weather icon=󰖜 \
@@ -95,13 +87,13 @@ sketchybar --add item weather center \
 
 # ~~ right items ~~
 
-# cpu
-sketchybar --add item cpu right \
-  --set cpu icon= \
+# time
+sketchybar --add item time right \
+  --set time icon=󱑎 \
   icon.color=$BLUE \
-  label="--%" \
-  script='./scripts/cpu.sh' \
-  update_freq=2
+  label="$(date '+%I:%M %p')" \
+  script='./scripts/time.sh' \
+  update_freq=1
 
 # date
 sketchybar --add item date right \

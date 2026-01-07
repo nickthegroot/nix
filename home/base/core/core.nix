@@ -40,14 +40,14 @@
     # Better cat
     bat.enable = true;
 
-    # Better asdf (.tool-versions)
-    # TODO: look into replacing with nix develop
-    mise = {
+    # Tool version management
+    # (legacy - `nix develop` + direnv is preferred)
+    mise.enable = true;
+
+    # Smart environment management
+    direnv = {
       enable = true;
-      enableFishIntegration = true;
-      settings = {
-        "idiomatic_version_file_enable_tools" = [ ];
-      };
+      nix-direnv.enable = true;
     };
 
     # Smarter cd

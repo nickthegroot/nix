@@ -9,7 +9,7 @@
       conform-nvim.settings = {
         formatters_by_ft.nix = [ "nixfmt" ];
         formatters = {
-          nixfmt.command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          nixfmt.command = "${pkgs.nixfmt}/bin/nixfmt";
         };
       };
 

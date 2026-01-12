@@ -49,5 +49,8 @@
 # Work Laptop, 2021 M1 MacBook Pro
 {
   name = "hiyajou-maho";
-  darwin-modules = [ ./work-apps.nix ];
+  darwin-modules = [ ./brew-apps.nix ];
+  home-modules = [
+    { work-digs.enable = true; }
+  ];
 }

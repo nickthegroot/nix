@@ -19,7 +19,6 @@
       "docker-desktop"
 
       "notion-calendar"
-      "notion"
     ];
   };
 }

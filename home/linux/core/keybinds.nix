@@ -20,10 +20,6 @@ let
       client = "brave-browser";
       launcher = "brave";
     };
-    "ALTSHIFT,Space" = {
-      client = "org.qutebrowser.qutebrowser";
-      launcher = "qutebrowser";
-    };
     "${meh},m" = {
       client = "com.github.th_ch.youtube_music";
       launcher = "pear-desktop";

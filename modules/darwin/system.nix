@@ -57,8 +57,8 @@
 
       _HIHideMenuBar = true; # Autohide menu bar
 
-      InitialKeyRepeat = 15; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
-      KeyRepeat = 2; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
+      InitialKeyRepeat = 13; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
+      KeyRepeat = 1; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)
 
       NSAutomaticCapitalizationEnabled = false;
       NSAutomaticDashSubstitutionEnabled = false;

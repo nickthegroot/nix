@@ -44,6 +44,9 @@ in
       kb_layout = "us";
       kb_options = "caps:swapescape";
 
+      repeat_rate = 50; # hz
+      repeat_delay = 200; # ms
+
       # Mouse focus will not switch to the hovered window unless the mouse crosses a window boundary
       follow_mouse = 1;
       mouse_refocus = false;

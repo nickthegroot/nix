@@ -26,4 +26,5 @@
     "NVD_BACKEND" = "direct";
   };
 
+  programs.xppen.enable = true;
 }

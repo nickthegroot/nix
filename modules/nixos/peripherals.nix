@@ -18,6 +18,5 @@
     bluetooth.enable = true;
     xone.enable = true;
     steam-hardware.enable = true;
-    opentabletdriver.enable = true;
   };
 }

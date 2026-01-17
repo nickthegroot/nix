@@ -29,7 +29,6 @@ in
 
     prismlauncher
     unnamed-sdvx-clone
-    osu-lazer-bin
   ];
 
   xdg.configFile."heroic/CustomThemes/catppuccin".source = heroicThemeSrc + "/themes";

@@ -78,5 +78,15 @@
     extraConfigLua = ''
       require("ts-error-translator").setup({ auto_attach = true })
     '';
+
+    # Upstream Issue: https://github.com/NixOS/nixpkgs/issues/478561
+    # Temporary Fix: https://github.com/nix-community/nixvim/issues/4152#issuecomment-3748297266
+    extraFiles = {
+      "queries/ecma/highlights.scm".source = pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/nvim-treesitter/nvim-treesitter/d19def46c112c26c17adeef88dd1253cc6d623a1/runtime/queries/ecma/highlights.scm";
+        sha256 = "sha256-N4NFR+uqnBYMrYfqvTg4fUcisbQNRLq1TY5x0f7/m54=";
+      };
+    };
+
   };
 }

@@ -1,5 +1,9 @@
-{ pkgs, config, ... }:
-
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   wayland.windowManager.hyprland.settings = {
     general = {
@@ -43,5 +47,22 @@
     size = 24;
     name = "catppuccin-mocha-light-cursors";
     package = pkgs.catppuccin-cursors.mochaLight;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "qtct";
+  }
+  // lib.genAttrs [ "qt5ctSettings" "qt6ctSettings" ] (_: {
+    Appearance.icon_theme = "Papirus-Dark";
+  });
+
+  home.packages = [
+    (pkgs.catppuccin-papirus-folders.override { inherit (config.catppuccin) accent flavor; })
+  ];
+
+  catppuccin = {
+    qt5ct.enable = true;
+    kvantum.enable = false;
   };
 }

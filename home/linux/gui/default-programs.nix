@@ -31,35 +31,38 @@
         in
         {
           "text/html" = browser;
-          "application/json" = browser;
           "application/pdf" = browser;
-          "application/xml" = browser;
-          "application/xhtml+xml" = browser;
-          "application/xhtml_xml" = browser;
-          "application/rdf+xml" = browser;
-          "application/rss+xml" = browser;
-          "application/x-extension-htm" = browser;
-          "application/x-extension-html" = browser;
-          "application/x-extension-shtml" = browser;
-          "application/x-extension-xht" = browser;
-          "application/x-extension-xhtml" = browser;
-
-          "text/plain" = editor;
-          "text/xml" = editor;
-          "application/x-wine-extension-ini" = editor;
-
-          # define default applications for some url schemes.
-          "x-scheme-handler/about" = browser; # open `about:` url with `browser`
-          "x-scheme-handler/ftp" = browser; # open `ftp:` url with `browser`
           "x-scheme-handler/http" = browser;
           "x-scheme-handler/https" = browser;
 
-          # file manager
+          "text/plain" = editor;
+          "text/xml" = editor;
+          "application/json" = editor;
+          "application/xml" = editor;
+
           "inode/directory" = fileManager;
 
-          "audio/*" = videoPlayer;
-          "video/*" = videoPlayer;
-          "image/*" = imageViewer;
+          "audio/mpeg" = videoPlayer;
+          "audio/mp3" = videoPlayer;
+          "audio/ogg" = videoPlayer;
+          "audio/wav" = videoPlayer;
+          "audio/flac" = videoPlayer;
+          "audio/x-wav" = videoPlayer;
+
+          "video/mp4" = videoPlayer;
+          "video/x-matroska" = videoPlayer;
+          "video/webm" = videoPlayer;
+          "video/ogg" = videoPlayer;
+          "video/avi" = videoPlayer;
+          "video/x-msvideo" = videoPlayer;
+          "video/mpeg" = videoPlayer;
+
+          "image/png" = imageViewer;
+          "image/jpeg" = imageViewer;
+          "image/gif" = imageViewer;
+          "image/webp" = imageViewer;
+          "image/bmp" = imageViewer;
+          "image/svg+xml" = imageViewer;
         };
     };
 

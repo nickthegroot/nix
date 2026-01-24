@@ -42,15 +42,6 @@
           # 9 on HDMI-A-1
           "9, monitor:HDMI-A-1"
         ];
-
-      windowrule = [
-        # Start Krita on tablet
-        {
-          name = "krita-tablet";
-          "match:class" = "^(krita)$";
-          workspace = "9";
-        }
-      ];
     };
   };
 }

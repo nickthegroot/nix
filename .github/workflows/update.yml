@@ -24,11 +24,33 @@ jobs:
       - name: Pull nix
         uses: DeterminateSystems/determinate-nix-action@v3
 
+      - name: Get current packages
+        run: |
+          nix eval --json .#nixosConfigurations.okabe-rintarou.config.environment.systemPackages \
+          | jq -r '.[]' \
+          | sed -E 's/^\/nix\/store\/[a-z0-9]{32}-//' \
+          | sort > "$RUNNER_TEMP/pre-update.txt"
+
       - name: Update flake.lock
         run: nix flake update --commit-lock-file
 
       - name: Validate changes
         run: nix flake check
+
+      - name: Get updated packages
+        run: |
+          nix eval --json .#nixosConfigurations.okabe-rintarou.config.environment.systemPackages \
+          | jq -r '.[]' \
+          | sed -E 's/^\/nix\/store\/[a-z0-9]{32}-//' \
+          | sort > "$RUNNER_TEMP/post-update.txt"
+
+      - name: Generate diff
+        run: |
+          echo "## Package Updates (okabe-rintarou)" > "$RUNNER_TEMP/pr_diff.md"
+          echo '```diff' >> "$RUNNER_TEMP/pr_diff.md"
+          # tail to skip the file header (+3 starts at line 3)
+          diff -u "$RUNNER_TEMP/pre-update.txt" "$RUNNER_TEMP/post-update.txt" | tail -n +3 >> "$RUNNER_TEMP/pr_diff.md" || true
+          echo '```' >> "$RUNNER_TEMP/pr_diff.md"
 
       - name: Push changes
         run: |
@@ -36,9 +58,14 @@ jobs:
 
       - name: Create pull request
         run: |
+          # Combine diff and footer into the body file
+          cat "$RUNNER_TEMP/pr_diff.md" > "$RUNNER_TEMP/pr_body.md"
+          echo "" >> "$RUNNER_TEMP/pr_body.md"
+          echo "This PR updates the Nix dependencies in flake.lock to their latest versions. [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})." >> "$RUNNER_TEMP/pr_body.md"
+
           gh pr create \
             --title "chore: update Nix dependencies" \
-            --body "This PR updates the Nix dependencies in flake.lock to their latest versions. [View workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})." \
+            --body-file "$RUNNER_TEMP/pr_body.md" \
             --head update-flake-lock \
             --base ${{ github.ref_name }} || true # ignore error if PR already exists
         env:

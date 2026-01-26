@@ -4,9 +4,11 @@
     enable = true;
 
     profiles.default = {
+      enableUpdateCheck = false;
+      enableExtensionUpdateCheck = false;
+
       extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
-        charliermarsh.ruff
         ms-python.python
         ms-toolsai.jupyter
       ];
@@ -116,11 +118,17 @@
           # Better up/down
           {
             "before" = [ "j" ];
-            "after" = [ "g" "j" ];
+            "after" = [
+              "g"
+              "j"
+            ];
           }
           {
             "before" = [ "k" ];
-            "after" = [ "g" "k" ];
+            "after" = [
+              "g"
+              "k"
+            ];
           }
           # Join lines keeping cursor in place
           {
@@ -136,35 +144,67 @@
           }
           # Copy to system clipboard
           {
-            "before" = [ "<leader>" "y" ];
-            "after" = [ "\"" "+" "y" ];
+            "before" = [
+              "<leader>"
+              "y"
+            ];
+            "after" = [
+              "\""
+              "+"
+              "y"
+            ];
           }
           # Delete to void register
           {
-            "before" = [ "<leader>" "D" ];
-            "after" = [ "\"" "_" "d" ];
+            "before" = [
+              "<leader>"
+              "D"
+            ];
+            "after" = [
+              "\""
+              "_"
+              "d"
+            ];
           }
           # Yank file paths
           {
-            "before" = [ "<leader>" "Y" "n" ];
+            "before" = [
+              "<leader>"
+              "Y"
+              "n"
+            ];
             "commands" = [ "workbench.action.files.copyRelativePath" ];
           }
           {
-            "before" = [ "<leader>" "Y" "f" ];
+            "before" = [
+              "<leader>"
+              "Y"
+              "f"
+            ];
             "commands" = [ "workbench.action.files.copyRelativePath" ];
           }
           {
-            "before" = [ "<leader>" "Y" "F" ];
+            "before" = [
+              "<leader>"
+              "Y"
+              "F"
+            ];
             "commands" = [ "workbench.action.files.copyPath" ];
           }
           # Go to definition
           {
-            "before" = [ "g" "d" ];
+            "before" = [
+              "g"
+              "d"
+            ];
             "commands" = [ "editor.action.revealDefinition" ];
           }
           # Go to references
           {
-            "before" = [ "g" "r" ];
+            "before" = [
+              "g"
+              "r"
+            ];
             "commands" = [ "editor.action.goToReferences" ];
           }
           # Hover
@@ -179,17 +219,29 @@
           }
           # Code action
           {
-            "before" = [ "<leader>" "c" "a" ];
+            "before" = [
+              "<leader>"
+              "c"
+              "a"
+            ];
             "commands" = [ "editor.action.quickFix" ];
           }
           # Rename Symbol
           {
-            "before" = [ "<leader>" "c" "r" ];
+            "before" = [
+              "<leader>"
+              "c"
+              "r"
+            ];
             "commands" = [ "editor.action.rename" ];
           }
           # Rename File
           {
-            "before" = [ "<leader>" "c" "R" ];
+            "before" = [
+              "<leader>"
+              "c"
+              "R"
+            ];
             "commands" = [ "fileutils.renameFile" ];
           }
           # Buffer navigation
@@ -203,63 +255,107 @@
           }
           # Next/Previous reference
           {
-            "before" = [ "]" "]" ];
+            "before" = [
+              "]"
+              "]"
+            ];
             "commands" = [ "editor.action.wordHighlight.next" ];
           }
           {
-            "before" = [ "[" "[" ];
+            "before" = [
+              "["
+              "["
+            ];
             "commands" = [ "editor.action.wordHighlight.prev" ];
           }
           # Diagnostics
           {
-            "before" = [ "]" "d" ];
+            "before" = [
+              "]"
+              "d"
+            ];
             "commands" = [ "editor.action.marker.nextInFiles" ];
           }
           {
-            "before" = [ "[" "d" ];
+            "before" = [
+              "["
+              "d"
+            ];
             "commands" = [ "editor.action.marker.prevInFiles" ];
           }
           # Git hunks
           {
-            "before" = [ "]" "h" ];
+            "before" = [
+              "]"
+              "h"
+            ];
             "commands" = [ "workbench.action.editor.nextChange" ];
           }
           {
-            "before" = [ "[" "h" ];
+            "before" = [
+              "["
+              "h"
+            ];
             "commands" = [ "workbench.action.editor.previousChange" ];
           }
           # File Explorer
           {
-            "before" = [ "<leader>" "e" ];
+            "before" = [
+              "<leader>"
+              "e"
+            ];
             "commands" = [ "workbench.files.action.showActiveFileInExplorer" ];
           }
           # Fuzzy Finder
           {
-            "before" = [ "<leader>" " " ];
+            "before" = [
+              "<leader>"
+              " "
+            ];
             "commands" = [ "workbench.action.quickOpen" ];
           }
           # Search commands
           {
-            "before" = [ "<leader>" "s" "g" ];
+            "before" = [
+              "<leader>"
+              "s"
+              "g"
+            ];
             "commands" = [ "workbench.action.findInFiles" ];
           }
           {
-            "before" = [ "<leader>" "s" "c" ];
+            "before" = [
+              "<leader>"
+              "s"
+              "c"
+            ];
             "commands" = [ "workbench.scm.focus" ];
           }
           # Git commands
           {
-            "before" = [ "<leader>" "g" "g" ];
+            "before" = [
+              "<leader>"
+              "g"
+              "g"
+            ];
             "commands" = [ "workbench.view.scm" ];
           }
           # Format
           {
-            "before" = [ "<leader>" "c" "f" ];
+            "before" = [
+              "<leader>"
+              "c"
+              "f"
+            ];
             "commands" = [ "editor.action.formatDocument" ];
           }
           # Toggle Terminal
           {
-            "before" = [ "<leader>" "t" "t" ];
+            "before" = [
+              "<leader>"
+              "t"
+              "t"
+            ];
             "commands" = [ "workbench.action.terminal.toggleTerminal" ];
           }
         ];
@@ -268,35 +364,70 @@
           # Better indenting
           {
             "before" = [ "<" ];
-            "after" = [ "<" "g" "v" ];
+            "after" = [
+              "<"
+              "g"
+              "v"
+            ];
           }
           {
             "before" = [ ">" ];
-            "after" = [ ">" "g" "v" ];
+            "after" = [
+              ">"
+              "g"
+              "v"
+            ];
           }
           # Paste without losing register
           {
             "before" = [ "p" ];
-            "after" = [ "\"" "_" "d" "P" ];
+            "after" = [
+              "\""
+              "_"
+              "d"
+              "P"
+            ];
           }
           # Copy to system clipboard
           {
-            "before" = [ "<leader>" "y" ];
-            "after" = [ "\"" "+" "y" ];
+            "before" = [
+              "<leader>"
+              "y"
+            ];
+            "after" = [
+              "\""
+              "+"
+              "y"
+            ];
           }
           # Delete to void register
           {
-            "before" = [ "<leader>" "D" ];
-            "after" = [ "\"" "_" "d" ];
+            "before" = [
+              "<leader>"
+              "D"
+            ];
+            "after" = [
+              "\""
+              "_"
+              "d"
+            ];
           }
           # Format Selection
           {
-            "before" = [ "<leader>" "c" "f" ];
+            "before" = [
+              "<leader>"
+              "c"
+              "f"
+            ];
             "commands" = [ "editor.action.formatSelection" ];
           }
           # Code action
           {
-            "before" = [ "<leader>" "c" "a" ];
+            "before" = [
+              "<leader>"
+              "c"
+              "a"
+            ];
             "commands" = [ "editor.action.quickFix" ];
           }
         ];

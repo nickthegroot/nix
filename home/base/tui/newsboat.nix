@@ -1,6 +1,6 @@
 {
   programs.newsboat = {
-    enable = true;
+    enable = false; # Currently broken
 
     autoReload = true;
     urls = [

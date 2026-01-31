@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }:
@@ -14,6 +15,15 @@ in
   config = lib.mkIf cfg.enable {
     programs.anki = {
       enable = true;
+      addons = with pkgs; [
+        (ankiAddons.anki-connect.withConfig {
+          config.webCorsOriginList = [
+            "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn"
+            "https://reader.mokuro.app"
+          ];
+        })
+      ];
+
       sync = {
         url = "http://anki-sync.worldline.local";
         username = "nickthegroot";

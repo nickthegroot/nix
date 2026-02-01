@@ -26,9 +26,12 @@
       disable_splash_rendering = true;
     };
 
-    windowrulev2 = [
-      # Open DMS windows as floating by default
-      "float, class:^(org.quickshell)$"
+    windowrule = [
+      {
+        "name" = "float-dms";
+        "match:class" = "^(org.quickshell)$";
+        float = true;
+      }
     ];
   };
 

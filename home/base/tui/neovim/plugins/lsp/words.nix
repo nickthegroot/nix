@@ -11,6 +11,8 @@ in
       };
     };
 
+    lsp.servers.typos_lsp.enable = true;
+
     keymaps = [
       {
         mode = "n";

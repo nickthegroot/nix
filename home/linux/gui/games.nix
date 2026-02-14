@@ -29,6 +29,7 @@ in
 
     prismlauncher
     unnamed-sdvx-clone
+    owmods-cli
   ];
 
   xdg.configFile."heroic/CustomThemes/catppuccin".source = heroicThemeSrc + "/themes";

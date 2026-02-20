@@ -5,6 +5,7 @@ in
 {
   programs.nixvim = {
     plugins = {
+      lspconfig.enable = true; # default configs
       lint.enable = true;
     };
 

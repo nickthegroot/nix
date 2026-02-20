@@ -64,6 +64,7 @@ in
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)
         { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # YouTube SponsorBlock
         { id = "enamippconapkdmgfgjchkhakpfinmaj"; } # DeArray (YouTube Clickbait Remover)
+        { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7tv (Twitch Emotes)
       ];
     };
   };

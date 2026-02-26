@@ -40,6 +40,10 @@
         url = "https://asahilinux.org/blog/index.xml";
         title = "Asahi Linux Blog";
       }
+      {
+        url = "https://worksinprogress.co/rss.xml";
+        title = "Works in Progress";
+      }
     ];
 
     # https://m-chrzan.xyz/blog/vim-keybindings-for-newsboat.html

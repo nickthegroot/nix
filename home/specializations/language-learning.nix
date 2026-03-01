@@ -24,7 +24,7 @@ in
         })
       ];
 
-      sync = {
+      profiles."User 1".sync = {
         url = "http://anki-sync.worldline.local";
         username = "nickthegroot";
         # TODO: use agenix to manage secrets

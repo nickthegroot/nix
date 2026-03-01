@@ -1,6 +1,8 @@
+{ pkgs, ... }:
 {
   programs.newsboat = {
-    enable = false; # Currently broken
+    # Currently broken on darwin
+    enable = !pkgs.stdenv.isDarwin;
 
     autoReload = true;
     urls = [

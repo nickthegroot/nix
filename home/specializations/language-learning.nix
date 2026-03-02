@@ -19,7 +19,7 @@ in
         (ankiAddons.anki-connect.withConfig {
           config.webCorsOriginList = [
             "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn"
-            "https://reader.mokuro.app"
+            "http://mokuro.worldline.local"
           ];
         })
       ];

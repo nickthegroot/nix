@@ -79,6 +79,7 @@ in
     lazygit = {
       enable = true;
       settings = {
+        git.autoFetch = false;
         promptToReturnFromSubprocess = false;
       };
     };

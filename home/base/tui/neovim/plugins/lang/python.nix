@@ -10,10 +10,22 @@
       };
     };
 
-    lsp.servers = {
-      ty.enable = true;
-      ruff.enable = true;
-    };
+    lsp.servers =
+      let
+        config = {
+          root_markers = [ ".venv" ];
+        };
+      in
+      {
+        ty = {
+          enable = true;
+          inherit config;
+        };
+        ruff = {
+          enable = true;
+          inherit config;
+        };
+      };
 
     keymaps = [
       {

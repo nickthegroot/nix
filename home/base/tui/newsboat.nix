@@ -43,6 +43,10 @@
         title = "Asahi Linux Blog";
       }
       {
+        url = "https://theflyingmoose.substack.com/feed.xml";
+        title = "The Flying Moose";
+      }
+      {
         url = "https://worksinprogress.co/rss.xml";
         title = "Works in Progress";
       }

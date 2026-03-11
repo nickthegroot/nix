@@ -7,7 +7,14 @@ let
 in
 {
   home = {
-    packages = [ newNoteScript ];
+    packages = [
+      # Text Based
+      newNoteScript
+
+      # Handwritten Based
+      pkgs.rnote
+    ];
+
     shellAliases = {
       "todo" = "nvim $HOME/Notes/todo.md";
     };

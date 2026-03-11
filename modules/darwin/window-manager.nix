@@ -50,8 +50,8 @@
       enable = true;
 
       width = 8.0;
-      active_color = "0xFFB4A1DB";
-      inactive_color = "0xFF343A40";
+      active_color = "0xFFCBA6F7"; # Catppuccin Mocha: Mauve
+      inactive_color = "0x40CBA6F7"; # Catppuccin Mocha: Mauve @ ~25% (0x40 / 0xff)
 
       blacklist = [
         "Loom"

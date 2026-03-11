@@ -2,6 +2,7 @@
 {
   programs.newsboat = {
     # Currently broken on darwin
+    # https://github.com/NixOS/nixpkgs/issues/489989
     enable = !pkgs.stdenv.isDarwin;
 
     autoReload = true;

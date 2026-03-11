@@ -10,8 +10,8 @@
       gaps_in = 5;
       gaps_out = 5;
       border_size = 2;
-      "col.active_border" = "0xFFB4A1DB";
-      "col.inactive_border" = "0xFF343A40";
+      "col.active_border" = "$accent";
+      "col.inactive_border" = "rgba($accentAlpha40)";
     };
 
     decoration = {

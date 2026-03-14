@@ -50,8 +50,9 @@
 {
   name = "okabe-rintarou";
   nixos-modules = [
-    ./hardware.nix
+    ./encryption.nix
     ./hardware-configuration.nix
+    ./hardware.nix
     ./rgb.nix
   ];
   home-modules = [

@@ -24,5 +24,8 @@
 
   home.packages = with pkgs; [
     kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.kio-extras # SMB, MTP, and other KIO protocol support
+    kdePackages.kwallet-pam # credential storage for KIO auth
   ];
 }

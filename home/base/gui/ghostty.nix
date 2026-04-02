@@ -9,8 +9,6 @@ in
       # use brew version on darwin (nixpkg currently broken)
       if stdenv.isDarwin then null else pkgs.ghostty;
     settings = {
-      font-family = "JetBrainsMono Nerd Font";
-
       background-opacity = 0.93;
       confirm-close-surface = false;
 

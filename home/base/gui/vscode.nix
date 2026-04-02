@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 {
   programs.vscode = {
     enable = true;
@@ -18,8 +23,8 @@
         "window.closeWhenEmpty" = true;
 
         # Font settings
-        "editor.fontFamily" = "'JetBrainsMono Nerd Font', monospace";
-        "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font'";
+        "editor.fontFamily" = lib.concatStringsSep ", " config.fonts.fontconfig.defaultFonts.monospace;
+        "editor.fontLigatures" = true;
 
         # Line numbers and vim
         "editor.lineNumbers" = "relative";
@@ -51,23 +56,6 @@
         "editor.formatOnSave" = true;
         "files.insertFinalNewline" = true;
         "files.trimTrailingWhitespace" = true;
-
-        # Inlay hints
-        "editor.inlayHints.enabled" = "on";
-        "[typescript]" = {
-          "editor.inlayHints.enabled" = "on";
-        };
-        "typescript.inlayHints.parameterNames.enabled" = "none";
-        "typescript.inlayHints.variableTypes.enabled" = true;
-        "typescript.inlayHints.propertyDeclarationTypes.enabled" = true;
-        "typescript.inlayHints.functionLikeReturnTypes.enabled" = true;
-
-        "github.copilot.nextEditSuggestions.enabled" = true;
-
-        # Language-specific settings
-        "[python]" = {
-          "editor.defaultFormatter" = "charliermarsh.ruff";
-        };
 
         # File associations
         "files.associations" = {

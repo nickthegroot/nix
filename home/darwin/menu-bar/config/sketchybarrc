@@ -18,9 +18,9 @@ sketchybar --bar height=30 \
   notch_width=188
 
 sketchybar --default updates=when_shown \
-  icon.font="JetBrainsMono Nerd Font:Regular:14" \
+  icon.font="Lilex Nerd Font:Regular:14" \
   icon.color=0xFFFFFFFF \
-  label.font="JetBrainsMono Nerd Font:Regular:14" \
+  label.font="Lilex Nerd Font:Regular:14" \
   background.color=0x00000000 \
   y_offset=0
 

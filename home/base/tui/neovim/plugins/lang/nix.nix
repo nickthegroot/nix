@@ -2,8 +2,6 @@
 {
   programs.nixvim = {
     plugins = {
-      hmts.enable = true;
-
       conform-nvim.settings = {
         formatters_by_ft.nix = [ "nixfmt" ];
         formatters = {

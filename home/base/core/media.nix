@@ -5,7 +5,15 @@
     imagemagick
   ];
 
-  # Currently broken on linux
-  # https://github.com/NixOS/nixpkgs/issues/432137
-  programs.sioyek.enable = pkgs.stdenv.isDarwin;
+  programs.sioyek = {
+    enable = true;
+    bindings = {
+      "move_up" = "k";
+      "move_down" = "j";
+      "move_left" = "h";
+      "move_right" = "l";
+      "screen_down" = "<C-d>";
+      "screen_up" = "<C-u>";
+    };
+  };
 }

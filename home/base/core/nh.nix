@@ -3,7 +3,7 @@
     enable = true;
     clean = {
       enable = true;
-      dates = "weekly";
+      dates = "monthly";
     };
   };
 }

@@ -124,5 +124,12 @@ in
 
     # Lazygit
     lg = "lazygit";
+
+    # Codebase diagnostics (https://piechowski.io/post/git-commands-before-reading-code/)
+    git-churn = ''git log --format=format: --name-only --since="1 year ago" | sort | uniq -c | sort -nr | head -20'';
+    git-bus-factor = "git shortlog -sn --no-merges";
+    git-bug-clusters = "git log -i -E --grep=\"fix|bug|broken\" --name-only --format='' | sort | uniq -c | sort -nr | head -20";
+    git-velocity = "git log --format='%ad' --date=format:'%Y-%m' | sort | uniq -c";
+    git-firefighting = "git log --oneline --since=\"1 year ago\" | grep -iE 'revert|hotfix|emergency|rollback'";
   };
 }

@@ -1,16 +1,22 @@
+{ config, ... }:
+let
+  inherit (config.lib.nixvim) mkRaw;
+in
 {
   programs.nixvim = {
+    lsp.servers.copilot.enable = true;
+
+    opts.autoread = true;
+
     plugins = {
-      codecompanion = {
+      opencode.enable = true;
+      snacks = {
         enable = true;
         settings = {
-          strategies = {
-            chat.adapter = "copilot";
-            inline.adapter = "copilot";
-          };
+          input = { };
+          picker = { };
         };
       };
-      blink-cmp.settings.sources.per_filetype.codecompanion = [ "codecompanion" ];
 
       which-key.settings.spec = [
         {
@@ -19,7 +25,7 @@
             "n"
             "v"
           ];
-          icon = "";
+          icon = "";
           group = "+ai";
         }
       ];
@@ -29,30 +35,53 @@
       {
         mode = [
           "n"
-          "v"
+          "x"
         ];
-        key = "<C-a>";
-        action = "<cmd>CodeCompanionActions<cr>";
-        options.desc = "CodeCompanion";
+        key = "<leader>aa";
+        action = mkRaw ''function() require("opencode").ask("@this: ", { submit = true }) end'';
+        options.desc = "[A]sk Opencode...";
       }
-
       {
         mode = [
           "n"
-          "v"
+          "t"
         ];
-        key = "<leader>aa";
-        action = "<cmd>CodeCompanionChat Toggle<cr>";
-        options.desc = "CodeCompanion Chat";
+        key = "<S-C-a>";
+        action = mkRaw ''function() require("opencode").toggle() end'';
+        options.desc = "Toggle Opencode";
       }
-
       {
         mode = [
-          "v"
+          "n"
+          "x"
+        ];
+        key = "<leader>ax";
+        action = mkRaw ''function() require("opencode").select() end'';
+        options.desc = "E[x]ecute Opencode action...";
+      }
+      {
+        mode = [
+          "n"
+          "x"
         ];
         key = "<leader>ai";
-        action = "<cmd>CodeCompanionChat Add<cr>";
-        options.desc = "CodeCompanion Add To Chat";
+        action = mkRaw ''function() return require("opencode").operator("@this ") end'';
+        options = {
+          desc = "[I]nsert range to Opencode";
+          expr = true;
+        };
+      }
+      {
+        mode = "n";
+        key = "<S-C-u>";
+        action = mkRaw ''function() require("opencode").command("session.half.page.up") end'';
+        options.desc = "Scroll Opencode up";
+      }
+      {
+        mode = "n";
+        key = "<S-C-d>";
+        action = mkRaw ''function() require("opencode").command("session.half.page.down") end'';
+        options.desc = "Scroll Opencode down";
       }
     ];
   };

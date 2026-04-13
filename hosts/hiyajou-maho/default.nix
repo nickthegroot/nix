@@ -51,7 +51,5 @@
   name = "hiyajou-maho";
   darwin-modules = [ ./brew-apps.nix ];
   home-modules = [
-    { work-digs.enable = true; }
-    { language-learning.enable = true; }
   ];
 }

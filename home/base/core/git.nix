@@ -38,6 +38,7 @@ in
         init.defaultBranch = "main";
         push.autoSetupRemote = true;
         pull.rebase = true;
+        rebase.updateRefs = true;
 
         gpg = {
           format = "ssh";
@@ -71,6 +72,7 @@ in
       gitCredentialHelper.enable = false; # just manage via ssh keys
 
       extensions = with pkgs; [
+        gh-enhance
         gh-notify
       ];
     };

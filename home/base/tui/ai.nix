@@ -1,7 +1,25 @@
+{ pkgs, ... }:
+let
+  caveman = pkgs.fetchFromGitHub {
+    owner = "JuliusBrussee";
+    repo = "caveman";
+    tag = "v1.5.1";
+    hash = "sha256-gDPgQx1TIhGrJ2EVvEoDY+4MXdlI79zdcx6pL5nMEG4=";
+  };
+in
 {
   programs.opencode = {
     enable = true;
+
+    skills = {
+      caveman = "${caveman}/skills/caveman";
+      caveman-commit = "${caveman}/skills/caveman-commit";
+      caveman-review = "${caveman}/skills/caveman-review";
+    };
+
     settings = {
+      autoupdate = false;
+
       mcp = {
         linear = {
           type = "remote";
@@ -15,7 +33,7 @@
       };
     };
     rules = ''
-      # Code Style
+      ## Code Style
 
       - Focus on writing self-explanatory code with meaningful variable and function names
         - Complex functions should be broken down into smaller, more manageable pieces to enhance readability and maintainability

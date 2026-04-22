@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   programs.nh = {
     enable = true;
@@ -7,8 +6,4 @@
       dates = "monthly";
     };
   };
-
-  home.packages = with pkgs; [
-    agenix-cli
-  ];
 }

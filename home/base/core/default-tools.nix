@@ -6,5 +6,6 @@
     # Node / JavaScript
     nodejs
     yarn
+    pnpm
   ];
 }

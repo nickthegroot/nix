@@ -106,7 +106,9 @@ in
   home.shellAliases = {
     t = "task";
     tt = "taskwarrior-tui";
+
     tw = "task +work";
+    twa = "task add +work";
 
     ta = "task add";
     taw = "task add +work";

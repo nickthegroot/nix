@@ -1,4 +1,20 @@
 { pkgs, nix-index-database, ... }:
+let
+  killport = pkgs.writeShellScriptBin "killport" ''
+    #!/bin/bash
+    if [ -z "$1" ]; then
+      echo "Usage: killport <port>"
+      exit 1
+    fi
+    pids=$(lsof -ti :"$1")
+    if [ -z "$pids" ]; then
+      echo "No processes found on port $1"
+      exit 0
+    fi
+    echo "$pids" | xargs kill -9
+    echo "Killed processes on port $1: $pids"
+  '';
+in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
 
@@ -21,6 +37,7 @@
 
     # Helpers/Misc
     tldr
+    killport
   ];
 
   programs = {

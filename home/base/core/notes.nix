@@ -28,6 +28,8 @@ in
     enable = true;
     package = pkgs.taskwarrior3;
     config = {
+      # https://taskwarrior.org/docs/man/task-sync.5/
+      recurrence = "off"; # use phone (non-nix-managed) as primary client
       sync = {
         # Really not _that_ important to keep secret
         # All traffic either going through wireguard or on LAN

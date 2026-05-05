@@ -38,5 +38,5 @@
     };
   };
 
-  outputs = inputs: import ./hosts inputs;
+  outputs = inputs: (import ./hosts inputs) // (import ./packages inputs);
 }

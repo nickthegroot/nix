@@ -1,4 +1,5 @@
 {
+  self,
   pkgs,
   lib,
   mylib,
@@ -51,6 +52,7 @@
   };
 
   nixpkgs.config.allowUnfree = lib.mkForce true;
+  nixpkgs.overlays = [ self.overlays.default ];
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"

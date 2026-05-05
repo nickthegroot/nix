@@ -1,8 +1,8 @@
 { pkgs, ... }:
 let
-  inherit (pkgs) lib callPackage;
+  inherit (pkgs) lib;
 
-  hypr-app-open = callPackage ../../../packages/hypr-app-open.nix { };
+  hypr-app-open = pkgs.hypr-app-open;
   meh = "SUPER + SHIFT + CTRL";
 
   # Find window classes with:

@@ -99,7 +99,7 @@ in
       themes = [
         {
           enable = true;
-          pkg = pkgs.callPackage ../../../packages/obsidian-catppuccin.nix { };
+          pkg = pkgs.obsidian-catppuccin;
         }
       ];
     };

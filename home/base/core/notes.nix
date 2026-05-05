@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   daily = pkgs.writeShellScriptBin "daily" ''
     #!/bin/bash
@@ -29,7 +29,8 @@ in
     package = pkgs.taskwarrior3;
     config = {
       # https://taskwarrior.org/docs/man/task-sync.5/
-      recurrence = "off"; # use phone (non-nix-managed) as primary client
+      # Recurrence should be set to "on" in most-used host config
+      recurrence = lib.mkDefault "off";
       sync = {
         # Really not _that_ important to keep secret
         # All traffic either going through wireguard or on LAN

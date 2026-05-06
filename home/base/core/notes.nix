@@ -20,7 +20,6 @@ in
     daily
     quicknote
     scratchpad
-    pkgs.rnote
     pkgs.taskwarrior-tui
   ];
 

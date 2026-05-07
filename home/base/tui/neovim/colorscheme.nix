@@ -2,6 +2,7 @@
   programs.nixvim = {
     colorschemes.catppuccin = {
       enable = true;
+      flavour = "mocha";
       settings = {
         transparent_background = true;
         integrations = {
@@ -13,10 +14,11 @@
           render_markdown = true;
           snacks = true;
           which_key = true;
+          lualine = true;
+          octo = true;
+          treesitter_context = true;
         };
       };
     };
-
-    plugins.lualine.settings.options.theme = "catppuccin";
   };
 }

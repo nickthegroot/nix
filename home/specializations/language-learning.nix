@@ -14,7 +14,8 @@ in
 
   config = lib.mkIf cfg.enable {
     programs.anki = {
-      enable = true;
+      # https://github.com/NixOS/nixpkgs/issues/514179
+      enable = !pkgs.stdenv.isDarwin;
       addons = with pkgs; [
         (ankiAddons.anki-connect.withConfig {
           config.webCorsOriginList = [
@@ -35,7 +36,6 @@ in
 
     programs.brave.extensions = [
       { id = "likgccmbimhjbgkjambclfkhldnlhbnn"; } # Yomitan (Popup Dictionary)
-      { id = "hkledmpjpaehamkiehglnbelcpdflcab"; } # asbplayer (Text-Selectable Subtitles + Anki with Screenshots)
     ];
   };
 }

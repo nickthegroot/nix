@@ -58,6 +58,9 @@
   home-modules = [
     ./home/displays.nix
     ./home/gpu-monitoring.nix
-    { language-learning.enable = true; }
+    {
+      language-learning.enable = true;
+      media-player.enable = true;
+    }
   ];
 }

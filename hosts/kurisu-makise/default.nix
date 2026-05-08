@@ -43,6 +43,9 @@
   name = "kurisu-makise";
   darwin-modules = [ ./brew-apps.nix ];
   home-modules = [
-    { language-learning.enable = true; }
+    {
+      language-learning.enable = true;
+      media-player.enable = true;
+    }
   ];
 }

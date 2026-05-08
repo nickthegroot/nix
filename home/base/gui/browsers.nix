@@ -63,10 +63,6 @@ in
         { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)
         { id = "fmkadmapgofadopljbjfkapdkoienihi"; } # React Developer Tools
-        { id = "mnjggcdmjocbbbhaepdhchncahnbgone"; } # YouTube SponsorBlock
-        { id = "enamippconapkdmgfgjchkhakpfinmaj"; } # DeArray (YouTube Clickbait Remover)
-        { id = "khncfooichmfjbepaaaebmommgaepoid"; } # YouTube Unhook (Remove Recommended, Trending, etc.)
-        { id = "ammjkodgmmoknidbanneddgankgfejfh"; } # 7tv (Twitch Emotes)
       ];
     };
   };

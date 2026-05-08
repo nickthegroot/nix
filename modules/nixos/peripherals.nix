@@ -4,6 +4,7 @@
   security.rtkit.enable = true;
 
   services = {
+    playerctld.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;

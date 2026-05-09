@@ -9,8 +9,8 @@ let
   # ╰─ hyprctl clients -j | jq -r '.[].class'
   appBinds = {
     "SUPER,Return" = {
-      client = "com.mitchellh.ghostty";
-      launcher = "ghostty";
+      client = "kitty";
+      launcher = "kitty";
     };
     "SUPERSHIFT,Return" = {
       client = "code-url-handler";

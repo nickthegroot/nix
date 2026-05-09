@@ -28,7 +28,7 @@
       alt-equal = "resize smart +50";
     }
     // {
-      alt-enter = "exec-and-forget open -a Ghostty";
+      alt-enter = "exec-and-forget open -a kitty";
       alt-shift-enter = "exec-and-forget open -a \"Visual Studio Code\"";
       alt-space = "exec-and-forget open -a \"Brave Browser\"";
 

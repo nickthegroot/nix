@@ -15,7 +15,6 @@
       "brave-browser"
       "qutebrowser"
 
-      "ghostty"
       "docker-desktop"
 
       "notion-calendar"

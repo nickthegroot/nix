@@ -5,7 +5,7 @@
     tmuxinator.enable = true;
     keyMode = "vi";
     mouse = true;
-    prefix = "C-c";
+    prefix = "C-S-b";
     baseIndex = 1;
     historyLimit = 50000;
     escapeTime = 0;

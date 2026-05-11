@@ -14,7 +14,6 @@
           render_markdown = true;
           snacks = true;
           which_key = true;
-          lualine = true;
           octo = true;
           treesitter_context = true;
         };

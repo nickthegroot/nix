@@ -16,9 +16,8 @@
         sections = {
           lualine_a = [ "mode" ];
           lualine_b = [ "branch" ];
-          lualine_y = [
-          ];
-          lualine_z = [ ''"" .. os.date("%I:%M %p")'' ];
+          lualine_y = [ ];
+          lualine_z = [ ''" " .. os.date("%I:%M %p")'' ];
         };
       };
     };

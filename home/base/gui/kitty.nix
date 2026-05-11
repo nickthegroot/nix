@@ -1,5 +1,15 @@
 { pkgs, ... }:
+let
+  kitty-icon = pkgs.fetchFromGitHub {
+    owner = "sodapopcan";
+    repo = "kitty-icon";
+    rev = "7496efa44f2f4615580471eebce7333459454731";
+    hash = "sha256-TWLJbIdQf1SHZQA3GfdIjWfsHZ/Dsfpq49nqCRDR16E=";
+  };
+in
 {
+  xdg.configFile."kitty/kitty.app.png".source = "${kitty-icon}/kitty.app.png";
+
   programs.kitty = {
     enable = true;
     settings = {

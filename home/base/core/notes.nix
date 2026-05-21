@@ -95,13 +95,6 @@ in
         textFontFamily = "Source Han Sans";
         monospaceFontFamily = "Lilex Nerd Font";
       };
-
-      themes = [
-        {
-          enable = true;
-          pkg = pkgs.obsidian-catppuccin;
-        }
-      ];
     };
   };
 

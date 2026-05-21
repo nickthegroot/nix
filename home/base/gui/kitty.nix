@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   kitty-icon = pkgs.fetchFromGitHub {
     owner = "sodapopcan";
@@ -20,6 +20,7 @@ in
 
       hide_window_decorations = "yes";
       background_blur = 10;
+      font_family = ''family="${builtins.elemAt config.fonts.fontconfig.defaultFonts.monospace 0}"'';
 
       allow_remote_control = "socket-only";
       listen_on = "unix:/tmp/kitty";

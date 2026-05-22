@@ -61,8 +61,9 @@ in
 
       extensions = [
         { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
-        { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manually need to apply vimium-options.json)
+        { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manual: ./vimium-options.json)
         { id = "fmkadmapgofadopljbjfkapdkoienihi"; } # React Developer Tools
+        { id = "clngdbkpkpeebahjckkjfobafhncgmne"; } # Stylus (manual: https://github.com/catppuccin/userstyles/releases/download/all-userstyles-export/import.json)
       ];
     };
   };

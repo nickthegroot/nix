@@ -11,8 +11,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Pull nix
-        uses: DeterminateSystems/determinate-nix-action@v3
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
 
       - name: Check flake
         run: nix flake check

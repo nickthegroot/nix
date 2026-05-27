@@ -9,9 +9,10 @@
   home-modules ? [ ],
 }:
 let
-  inherit (inputs) home-manager nix-darwin;
+  inherit (inputs) nix-darwin nixpkgs-unstable home-manager;
   specialArgs = inputs // {
     inherit mylib myvars;
+    pkgs-unstable = import nixpkgs-unstable { inherit system; };
   };
 in
 nix-darwin.lib.darwinSystem {

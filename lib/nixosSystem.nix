@@ -9,9 +9,10 @@
   home-modules ? [ ],
 }:
 let
-  inherit (inputs) nixpkgs home-manager;
+  inherit (inputs) nixpkgs nixpkgs-unstable home-manager;
   specialArgs = inputs // {
     inherit mylib myvars;
+    pkgs-unstable = import nixpkgs-unstable { inherit system; };
   };
 in
 nixpkgs.lib.nixosSystem {

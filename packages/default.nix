@@ -14,10 +14,12 @@ let
 in
 {
   packages = lib.genAttrs lib.systems.flakeExposed packagesForSystem;
-  overlays.default = final: prev:
+  overlays.default =
+    final: prev:
     let
       packageDirs = mylib.scanPaths ./.;
       packageNames = map builtins.baseNameOf packageDirs;
     in
     lib.genAttrs packageNames (name: final.callPackage (./. + "/${name}/package.nix") { });
 }
+

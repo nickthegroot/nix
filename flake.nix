@@ -2,8 +2,9 @@
   description = "Nick DeGroot's nix configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-26.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nix-darwin = {
       url = "github:lnl7/nix-darwin";
@@ -11,12 +12,12 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nixvim = {
-      url = "github:nix-community/nixvim";
+      url = "github:nix-community/nixvim/nixos-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -26,14 +27,7 @@
     };
 
     catppuccin = {
-      url = "github:nickthegroot/catppuccin-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # Required for some dms-shell features
-    # until the new version is released to nixpkgs
-    quickshell = {
-      url = "git+https://git.outfoxxed.me/quickshell/quickshell?rev=3918290c1bcd93ed81291844d9f1ed146672dbfc";
+      url = "github:catppuccin/nix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };

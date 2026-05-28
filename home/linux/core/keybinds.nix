@@ -25,8 +25,8 @@ let
       launcher = "pear-desktop";
     };
     "${meh},p" = {
-      client = "1password";
-      launcher = "1password";
+      client = "proton-pass";
+      launcher = "proton-pass";
     };
     "${meh},d" = {
       client = "discord";

@@ -12,7 +12,6 @@
     };
 
     casks = [
-      "brave-browser"
       "qutebrowser"
 
       "docker-desktop"

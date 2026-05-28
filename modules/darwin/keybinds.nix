@@ -1,3 +1,4 @@
+{ myvars, ... }:
 {
   services.aerospace.settings.mode = {
     # All possible keys:
@@ -13,45 +14,52 @@
     # - Arrows.         left, down, up, right
     # All possible modifiers: cmd, alt, ctrl, shift
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
-    main.binding = {
-      ctrl-alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
-      ctrl-alt-j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down";
-      ctrl-alt-k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up";
-      ctrl-alt-l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right";
+    main.binding =
+      let
+        mkHMOpen =
+          name:
+          ''exec-and-forget open -a "/Users/${myvars.username}/Applications/Home Manager Apps/${name}.app"'';
+        mkOpen = name: ''exec-and-forget open -a "${name}"'';
+      in
+      {
+        ctrl-alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
+        ctrl-alt-j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down";
+        ctrl-alt-k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up";
+        ctrl-alt-l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right";
 
-      ctrl-alt-shift-h = "move left";
-      ctrl-alt-shift-j = "move down";
-      ctrl-alt-shift-k = "move up";
-      ctrl-alt-shift-l = "move right";
+        ctrl-alt-shift-h = "move left";
+        ctrl-alt-shift-j = "move down";
+        ctrl-alt-shift-k = "move up";
+        ctrl-alt-shift-l = "move right";
 
-      alt-minus = "resize smart -50";
-      alt-equal = "resize smart +50";
-    }
-    // {
-      alt-enter = "exec-and-forget open -a kitty";
-      alt-shift-enter = "exec-and-forget open -a \"Visual Studio Code\"";
-      alt-space = "exec-and-forget open -a \"Brave Browser\"";
+        alt-minus = "resize smart -50";
+        alt-equal = "resize smart +50";
+      }
+      // {
+        alt-enter = mkHMOpen "kitty";
+        alt-shift-enter = mkHMOpen "Visual Studio Code";
+        alt-space = mkHMOpen "Brave Browser";
 
-      ctrl-alt-shift-m = "exec-and-forget open -a \"YouTube Music\""; # (M)usic
-      ctrl-alt-shift-s = "exec-and-forget open -a Slack"; # (S)lack
-      ctrl-alt-shift-c = "exec-and-forget open -a \"Notion Calendar\""; # (C)alendar
-      ctrl-alt-shift-p = "exec-and-forget open -a 1Password"; # (P)asswords
-    }
-    // (
-      # workspaces 1-9
-      builtins.foldl' (acc: elem: acc // elem) { } (
-        builtins.genList (
-          i:
-          let
-            ws = toString (i + 1);
-          in
-          {
-            "ctrl-alt-${ws}" = "workspace ${ws}";
-            "ctrl-alt-shift-${ws}" = "move-node-to-workspace ${ws} --focus-follows-window";
-          }
-        ) 9
-      )
-    );
+        ctrl-alt-shift-m = mkHMOpen "YouTube Music"; # (M)usic
+        ctrl-alt-shift-s = mkOpen "Slack"; # (S)lack
+        ctrl-alt-shift-c = mkOpen "Notion Calendar"; # (C)alendar
+        ctrl-alt-shift-p = mkHMOpen "Proton Pass"; # (P)assword
+      }
+      // (
+        # workspaces 1-9
+        builtins.foldl' (acc: elem: acc // elem) { } (
+          builtins.genList (
+            i:
+            let
+              ws = toString (i + 1);
+            in
+            {
+              "ctrl-alt-${ws}" = "workspace ${ws}";
+              "ctrl-alt-shift-${ws}" = "move-node-to-workspace ${ws} --focus-follows-window";
+            }
+          ) 9
+        )
+      );
   };
 
   system.keyboard = {

@@ -1,16 +1,8 @@
 {
   myvars,
-  lib,
   pkgs,
   ...
 }:
-let
-  opGpgProgram =
-    if pkgs.stdenv.isLinux then
-      "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}"
-    else
-      "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-in
 {
   programs = {
     git = {
@@ -42,10 +34,6 @@ in
 
         gpg = {
           format = "ssh";
-        };
-
-        "gpg \"ssh\"" = {
-          program = opGpgProgram;
         };
 
         user = {

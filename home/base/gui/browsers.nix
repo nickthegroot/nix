@@ -55,12 +55,7 @@ in
     brave = {
       enable = true;
 
-      # Use brew version on darwin
-      # until home-manager version supports 1password desktop app integration
-      package = if stdenv.isDarwin then null else pkgs.brave;
-
       extensions = [
-        { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manual: ./vimium-options.json)
         { id = "fmkadmapgofadopljbjfkapdkoienihi"; } # React Developer Tools
         { id = "clngdbkpkpeebahjckkjfobafhncgmne"; } # Stylus (manual: https://github.com/catppuccin/userstyles/releases/download/all-userstyles-export/import.json)

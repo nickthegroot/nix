@@ -6,30 +6,31 @@
 }:
 {
   wayland.windowManager.hyprland.settings = {
-    general = {
-      gaps_in = 5;
-      gaps_out = 5;
-      border_size = 2;
-      "col.active_border" = "$accent";
-      "col.inactive_border" = "rgba($accentAlpha40)";
+    config = {
+      general = {
+        gaps_in = 5;
+        gaps_out = 5;
+        border_size = 2;
+        "col.active_border" = lib.generators.mkLuaInline "colors.accent";
+      };
+
+      decoration = {
+        rounding = 8;
+        active_opacity = 1.0;
+        inactive_opacity = 0.9;
+        fullscreen_opacity = 1.0;
+      };
+
+      misc = {
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+      };
     };
 
-    decoration = {
-      rounding = 8;
-      active_opacity = 1.0;
-      inactive_opacity = 0.9;
-      fullscreen_opacity = 1.0;
-    };
-
-    misc = {
-      disable_hyprland_logo = true;
-      disable_splash_rendering = true;
-    };
-
-    windowrule = [
+    window_rule = [
       {
-        "name" = "float-dms";
-        "match:class" = "^(org.quickshell)$";
+        name = "float-dms";
+        match.class = "^(org.quickshell)$";
         float = true;
       }
     ];

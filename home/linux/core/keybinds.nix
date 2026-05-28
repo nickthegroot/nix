@@ -8,31 +8,31 @@ let
   # Find window classes with:
   # ╰─ hyprctl clients -j | jq -r '.[].class'
   appBinds = {
-    "SUPER,Return" = {
+    "SUPER + Return" = {
       client = "kitty";
       launcher = "kitty";
     };
-    "SUPERSHIFT,Return" = {
+    "SUPER + SHIFT + Return" = {
       client = "code-url-handler";
       launcher = "code";
     };
-    "ALT,Space" = {
+    "ALT + Space" = {
       client = "brave-browser";
       launcher = "brave";
     };
-    "${meh},m" = {
+    "${meh} + m" = {
       client = "com.github.th_ch.youtube_music";
       launcher = "pear-desktop";
     };
-    "${meh},p" = {
+    "${meh} + p" = {
       client = "proton-pass";
       launcher = "proton-pass";
     };
-    "${meh},d" = {
+    "${meh} + d" = {
       client = "discord";
       launcher = "discord";
     };
-    "${meh},s" = {
+    "${meh} + s" = {
       client = "steam";
       launcher = "steam";
     };
@@ -40,69 +40,208 @@ let
 in
 {
   wayland.windowManager.hyprland.settings = {
-    input = {
-      kb_layout = "us";
-      kb_options = "caps:swapescape";
+    config = {
+      input = {
+        kb_layout = "us";
+        kb_options = "caps:swapescape";
 
-      repeat_rate = 50; # hz
-      repeat_delay = 200; # ms
+        repeat_rate = 50; # hz
+        repeat_delay = 200; # ms
 
-      # Mouse focus will not switch to the hovered window unless the mouse crosses a window boundary
-      follow_mouse = 1;
-      mouse_refocus = false;
+        # Mouse focus will not switch to the hovered window unless the mouse crosses a window boundary
+        follow_mouse = 1;
+        mouse_refocus = false;
+      };
     };
 
-    # Note: bind flags `bind[flags]
-    # https://wiki.hypr.land/Configuring/Binds/#bind-flags
-    # l = locked (works during lock screen)
-    # e = repeat enabled (hold key to repeat)
-    # m = mouse
     bind =
-      (lib.mapAttrsToList (
-        key: val: "${key},exec,${hypr-app-open}/bin/hypr-app-open ${val.client} ${val.launcher}"
-      ) appBinds)
+      (lib.mapAttrsToList (key: val: {
+        _args = [
+          (lib.replaceStrings [ "," ] [ " + " ] key)
+          (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"${hypr-app-open}/bin/hypr-app-open ${val.client} ${val.launcher}\")")
+        ];
+      }) appBinds)
       ++ [
         # Hyprland Windows
-        "SUPER,Q,killactive"
-        "SUPER,F,fullscreen"
-        "SUPERSHIFT,F,togglefloating"
-        "SUPERSHIFT,P,pin"
+        {
+          _args = [
+            "SUPER + Q"
+            (lib.generators.mkLuaInline "hl.dsp.window.close()")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + F"
+            (lib.generators.mkLuaInline "hl.dsp.window.fullscreen()")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + F"
+            (lib.generators.mkLuaInline "hl.dsp.window.float({ action = \"toggle\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + P"
+            (lib.generators.mkLuaInline "hl.dsp.window.pin()")
+          ];
+        }
 
         # Focus
-        "SUPER,h,movefocus,l"
-        "SUPER,j,movefocus,d"
-        "SUPER,k,movefocus,u"
-        "SUPER,l,movefocus,r"
+        {
+          _args = [
+            "SUPER + h"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"l\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + j"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"d\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + k"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"u\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + l"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ direction = \"r\" })")
+          ];
+        }
 
         # Move
-        "SUPERSHIFT,h,movewindow,l"
-        "SUPERSHIFT,j,movewindow,d"
-        "SUPERSHIFT,k,movewindow,u"
-        "SUPERSHIFT,l,movewindow,r"
+        {
+          _args = [
+            "SUPER + SHIFT + h"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ direction = \"l\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + j"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ direction = \"d\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + k"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ direction = \"u\" })")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + l"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ direction = \"r\" })")
+          ];
+        }
 
         # Focus Monitor
-        "CTRLSUPER,h,focusmonitor,l"
-        "CTRLSUPER,j,focusmonitor,d"
-        "CTRLSUPER,k,focusmonitor,u"
-        "CTRLSUPER,l,focusmonitor,r"
+        {
+          _args = [
+            "CTRL + SUPER + h"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = \"l\" })")
+          ];
+        }
+        {
+          _args = [
+            "CTRL + SUPER + j"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = \"d\" })")
+          ];
+        }
+        {
+          _args = [
+            "CTRL + SUPER + k"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = \"u\" })")
+          ];
+        }
+        {
+          _args = [
+            "CTRL + SUPER + l"
+            (lib.generators.mkLuaInline "hl.dsp.focus({ monitor = \"r\" })")
+          ];
+        }
 
         # Move Node to Monitor
-        "CTRLSUPERSHIFT,h,movewindow,mon:l"
-        "CTRLSUPERSHIFT,j,movewindow,mon:d"
-        "CTRLSUPERSHIFT,k,movewindow,mon:u"
-        "CTRLSUPERSHIFT,l,movewindow,mon:r"
+        {
+          _args = [
+            "CTRL + SUPER + SHIFT + h"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ monitor = \"l\" })")
+          ];
+        }
+        {
+          _args = [
+            "CTRL + SUPER + SHIFT + j"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ monitor = \"d\" })")
+          ];
+        }
+        {
+          _args = [
+            "CTRL + SUPER + SHIFT + k"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ monitor = \"u\" })")
+          ];
+        }
+        {
+          _args = [
+            "CTRL + SUPER + SHIFT + l"
+            (lib.generators.mkLuaInline "hl.dsp.window.move({ monitor = \"r\" })")
+          ];
+        }
 
         # Selectors
-        ", PRINT, exec, dms screenshot" # Region select
-        "SUPER, PRINT, exec, dms screenshot full" # Focused screen
-        "SUPER, C, exec, dms color pick -a" # Color picker (hex), to clipboard
+        {
+          _args = [
+            "PRINT"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms screenshot\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + PRINT"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms screenshot full\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + C"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms color pick -a\")")
+          ];
+        }
 
-        "SUPER, Space, exec, dms ipc call spotlight toggle"
-        "SUPER, V, exec, dms ipc call clipboard toggle"
-        "SUPER, N, exec, dms ipc call notifications toggle"
-        "SUPERALT, L, exec, dms ipc call lock lock"
-        # "SUPERSHIFT, /, exec, dms keybinds show hyprland"
-        "SUPERSHIFT, N, exec, dms ipc call night toggle"
+        {
+          _args = [
+            "SUPER + Space"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call spotlight toggle\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + V"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call clipboard toggle\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + N"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call notifications toggle\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + ALT + L"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call lock lock\")")
+          ];
+        }
+        {
+          _args = [
+            "SUPER + SHIFT + N"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call night toggle\")")
+          ];
+        }
       ]
       ++ (
         # workspaces 1-9
@@ -114,34 +253,126 @@ in
             in
             [
               # Switch to ws
-              "SUPER,${ws},workspace,${ws}"
+              {
+                _args = [
+                  "SUPER + ${ws}"
+                  (lib.generators.mkLuaInline "hl.dsp.focus({ workspace = \"${ws}\" })")
+                ];
+              }
               # Move to ws
-              "SUPERSHIFT,${ws},movetoworkspace,${ws}"
+              {
+                _args = [
+                  "SUPER + SHIFT + ${ws}"
+                  (lib.generators.mkLuaInline "hl.dsp.window.move({ workspace = \"${ws}\" })")
+                ];
+              }
             ]
           ) 9
         )
-      );
+      )
+      ++ [
+        # Locked binds (formerly bindl)
+        {
+          _args = [
+            "XF86AudioMute"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call audio mute\")")
+            { locked = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioMicMute"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call audio micmute\")")
+            { locked = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioNext"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call mpris next\")")
+            { locked = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioPrev"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call mpris previous\")")
+            { locked = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioPlay"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call mpris playPause\")")
+            { locked = true; }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioStop"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call mpris stop\")")
+            { locked = true; }
+          ];
+        }
 
-    bindl = [
-      ", XF86AudioMute, exec, dms ipc call audio mute"
-      ", XF86AudioMicMute, exec, dms ipc call audio micmute"
-      ", XF86AudioNext, exec, dms ipc call mpris next"
-      ", XF86AudioPrev, exec, dms ipc call mpris previous"
-      ", XF86AudioPlay, exec, dms ipc call mpris playPause"
-      ", XF86AudioStop, exec, dms ipc call mpris stop"
-    ];
-    bindel = [
-      # Audio controls (function keys)
-      ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
-      ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+        # Locked + repeating binds (formerly bindel)
+        {
+          _args = [
+            "XF86AudioRaiseVolume"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call audio increment 3\")")
+            {
+              locked = true;
+              repeating = true;
+            }
+          ];
+        }
+        {
+          _args = [
+            "XF86AudioLowerVolume"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call audio decrement 3\")")
+            {
+              locked = true;
+              repeating = true;
+            }
+          ];
+        }
 
-      # Brightness controls (function keys)
-      ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
-      ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
-    ];
-    bindm = [
-      "SUPER,mouse:272,movewindow"
-      "SUPER,mouse:273,resizewindow"
-    ];
+        {
+          _args = [
+            "XF86MonBrightnessUp"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call brightness increment 5\")")
+            {
+              locked = true;
+              repeating = true;
+            }
+          ];
+        }
+        {
+          _args = [
+            "XF86MonBrightnessDown"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"dms ipc call brightness decrement 5\")")
+            {
+              locked = true;
+              repeating = true;
+            }
+          ];
+        }
+
+        # Mouse binds (formerly bindm)
+        {
+          _args = [
+            "SUPER + mouse:272"
+            (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+            { mouse = true; }
+          ];
+        }
+        {
+          _args = [
+            "SUPER + mouse:273"
+            (lib.generators.mkLuaInline "hl.dsp.window.resize()")
+            { mouse = true; }
+          ];
+        }
+      ];
   };
 }

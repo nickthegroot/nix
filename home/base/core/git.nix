@@ -79,7 +79,7 @@
     gtop = "cd (git rev-parse --show-toplevel)";
     grec = ''git reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | awk ' !x[$0]++' | egrep -v '^[a-f0-9]{40}$' | head -n10'';
     gbranch = "git rev-parse --abbrev-ref HEAD";
-    gs = "git status";
+    gstat = "git status";
     gl = "git log";
     gaa = "git add -A";
     gd = "git diff";
@@ -92,8 +92,8 @@
     gcopr = "gh pr checkout";
 
     # Stash
-    gst = "git stash save";
-    gstl = ''git stash list | fzf --preview="git stash show -p (string split -f1 ':' {}) | bat --language=diff --color=always"'';
+    gs = "git stash save";
+    gsl = ''git stash list | fzf --preview="git stash show -p (string split -f1 ':' {}) | bat --language=diff --color=always"'';
 
     # Commit
     gc = "git commit";
@@ -105,6 +105,9 @@
     # Push
     gp = "git push";
     gpf = "git push --force-with-lease";
+
+    # Pull
+    gpl = "git pull";
 
     # PR
     pr = "gh pr create";

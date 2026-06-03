@@ -53,6 +53,8 @@
       };
     };
 
+    difftastic.enable = true;
+
     gh = {
       enable = true;
 
@@ -69,7 +71,10 @@
     lazygit = {
       enable = true;
       settings = {
-        git.autoFetch = false;
+        git = {
+          autoFetch = false;
+          pagers = [ { externalDiffCommand = "difft --color=always"; } ];
+        };
         promptToReturnFromSubprocess = false;
       };
     };

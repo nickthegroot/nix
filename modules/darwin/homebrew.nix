@@ -9,6 +9,9 @@
       # 'uninstall': uninstalls all formulae, but keeps config files
       # useful for testing nixpkgs versions, and moving back if needed
       cleanup = "uninstall";
+
+      # https://github.com/nix-darwin/nix-darwin/issues/1787
+      extraFlags = [ "--force-cleanup" ];
     };
 
     casks = [

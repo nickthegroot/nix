@@ -4,8 +4,6 @@ let
 in
 {
   programs.nixvim = {
-    lsp.servers.copilot.enable = true;
-
     opts.autoread = true;
 
     plugins = {

@@ -22,6 +22,7 @@ in
     # Common tools
     gnupg
     gnumake
+    inetutils
 
     # Better versions of common tools
     fd # better find

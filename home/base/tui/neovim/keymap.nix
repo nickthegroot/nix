@@ -153,6 +153,29 @@
         action = ''<cmd>let @+ = expand("%:p")<cr>'';
         options.desc = "Yank file absolute path to clipboard";
       }
+      {
+        mode = [
+          "n"
+          "v"
+        ];
+        key = "<leader>Yr";
+        action.__raw = ''
+          function()
+            local file = vim.fn.expand("%:p")
+            local start_line = vim.fn.line("v")
+            local end_line = vim.fn.line(".")
+            if start_line > end_line then
+              start_line, end_line = end_line, start_line
+            end
+            if start_line == end_line then
+              vim.fn.setreg("+", file .. ":" .. start_line)
+            else
+              vim.fn.setreg("+", file .. ":" .. start_line .. ":" .. end_line)
+            end
+          end
+        '';
+        options.desc = "Yank absolute path + line reference to clipboard";
+      }
     ];
 
     plugins.which-key.settings.spec = [

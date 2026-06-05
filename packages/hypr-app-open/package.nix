@@ -30,7 +30,7 @@ writeShellScriptBin "hypr-app-open" ''
   target_addr=$(echo "$target" | ${jqBin} -r '.address // empty')
 
   if [ -n "$target_addr" ]; then
-    hyprctl dispatch focuswindow address:"$target_addr"
+    hyprctl dispatch 'hl.dsp.focus({ window = "address:'$target_addr'" })'
   else
     exec "$launcher" &
   fi

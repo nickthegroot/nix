@@ -10,6 +10,7 @@
         "users"
         "networkmanager"
         "wheel"
+        "dialout"
       ];
     };
 

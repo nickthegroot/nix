@@ -17,6 +17,8 @@
     casks = [
       "qutebrowser"
 
+      "discord"
+
       "docker-desktop"
 
       "notion-calendar"

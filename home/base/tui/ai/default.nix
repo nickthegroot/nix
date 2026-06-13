@@ -1,4 +1,4 @@
-{
+{ pkgs, ... }: {
   programs.opencode = {
     enable = true;
 
@@ -7,7 +7,15 @@
       commit = ./skills/commit.md;
     };
 
-    settings.autoupdate = false;
+    settings = {
+      autoupdate = false;
+      mcp = {
+        nix = {
+          type = "local";
+          command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
+        };
+      };
+    };
 
     context = ''
       /caveman

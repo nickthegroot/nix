@@ -7,7 +7,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     nix-darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:lnl7/nix-darwin/nix-darwin-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

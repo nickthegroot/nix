@@ -55,6 +55,9 @@ in
     brave = {
       enable = true;
 
+      # Use brew version on darwin
+      package = if stdenv.isDarwin then null else pkgs.brave;
+
       extensions = [
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manual: ./vimium-options.json)
         { id = "fmkadmapgofadopljbjfkapdkoienihi"; } # React Developer Tools

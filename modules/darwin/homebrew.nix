@@ -16,6 +16,7 @@
 
     casks = [
       "qutebrowser"
+      "brave-browser"
 
       "discord"
 

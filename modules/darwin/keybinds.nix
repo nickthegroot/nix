@@ -38,7 +38,7 @@
       // {
         alt-enter = mkHMOpen "kitty";
         alt-shift-enter = mkHMOpen "Visual Studio Code";
-        alt-space = mkHMOpen "Brave Browser";
+        alt-space = mkOpen "Brave Browser"; # managed via homebrew
 
         ctrl-alt-shift-m = mkHMOpen "YouTube Music"; # (M)usic
         ctrl-alt-shift-s = mkOpen "Slack"; # (S)lack

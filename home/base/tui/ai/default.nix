@@ -10,7 +10,7 @@
     settings = {
       autoupdate = false;
       mcp = {
-        nix = {
+        nixos = {
           type = "local";
           command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
         };
@@ -18,8 +18,6 @@
     };
 
     context = ''
-      /caveman
-
       ## Code Style
 
       - Focus on writing self-explanatory code with meaningful variable and function names

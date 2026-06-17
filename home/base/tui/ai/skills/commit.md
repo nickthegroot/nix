@@ -20,7 +20,7 @@ Write commit messages terse and exact, then commit. Scoped Commits format. No fl
 
 **Body (only if needed):**
 - Skip entirely when subject is self-explanatory
-- Add body only for: non-obvious *why*, breaking changes, migration notes, linked issues
+- Add body only for non-obvious *why*
 - Wrap at 72 chars
 - Bullets `-` not `*`
 - Reference issues/PRs at end: `Closes #42`, `Refs #17`

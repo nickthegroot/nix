@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     astroterm
     cmatrix
+    nms
   ];
 
   programs = {

@@ -15,6 +15,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.anki = {
       # https://github.com/NixOS/nixpkgs/issues/514179
+      # On darwin, the Homebrew cask is installed by modules/darwin/language-learning.nix
       enable = !pkgs.stdenv.isDarwin;
       addons = with pkgs; [
         (ankiAddons.anki-connect.withConfig {

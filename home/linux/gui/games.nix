@@ -12,6 +12,7 @@ in
     heroic
     prismlauncher
     unnamed-sdvx-clone
+    osu-lazer-bin
 
     owmods-cli
     winetricks

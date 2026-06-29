@@ -36,7 +36,7 @@ in
         encryption_secret = "SJaKX1kZHf1Aa2V1RNGIK1cpsX5NHPYQ";
 
         server = {
-          url = "http://taskchampion.worldline.local";
+          url = "https://taskchampion.home.nickthegroot.com";
           client_id = "d929ec73-2b9b-46f4-8358-80c1fbfb8018";
         };
       };

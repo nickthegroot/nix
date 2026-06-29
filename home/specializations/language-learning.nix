@@ -21,13 +21,13 @@ in
         (ankiAddons.anki-connect.withConfig {
           config.webCorsOriginList = [
             "chrome-extension://likgccmbimhjbgkjambclfkhldnlhbnn"
-            "http://mokuro.worldline.local"
+            "https://mokuro.home.nickthegroot.com"
           ];
         })
       ];
 
       profiles."User 1".sync = {
-        url = "http://anki-sync.worldline.local";
+        url = "https://anki-sync.home.nickthegroot.com";
         username = "nickthegroot";
         # TODO: use agenix to manage secrets
         # For now, just create the key file manually

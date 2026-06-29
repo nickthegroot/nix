@@ -83,6 +83,11 @@ in
     '';
   };
 
+  home.shellAliases = {
+    # https://sw.kovidgoyal.net/kitty/kittens/ssh/
+    s = "kitten ssh";
+  };
+
   programs.nixvim = {
     plugins = {
       kitty-navigator.enable = true;

@@ -19,7 +19,8 @@
         mkHMOpen =
           name:
           ''exec-and-forget open -a "/Users/${myvars.username}/Applications/Home Manager Apps/${name}.app"'';
-        mkOpen = name: ''exec-and-forget open -a "${name}"'';
+        # generally managed via homebrew
+        mkNativeOpen = name: ''exec-and-forget open -a "/Applications/${name}.app"'';
       in
       {
         ctrl-alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
@@ -38,11 +39,11 @@
       // {
         alt-enter = mkHMOpen "kitty";
         alt-shift-enter = mkHMOpen "Visual Studio Code";
-        alt-space = mkOpen "Brave Browser"; # managed via homebrew
+        alt-space = mkNativeOpen "Brave Browser";
 
         ctrl-alt-shift-m = mkHMOpen "YouTube Music"; # (M)usic
-        ctrl-alt-shift-s = mkOpen "Slack"; # (S)lack
-        ctrl-alt-shift-c = mkOpen "Notion Calendar"; # (C)alendar
+        ctrl-alt-shift-s = mkNativeOpen "Slack"; # (S)lack
+        ctrl-alt-shift-c = mkNativeOpen "Notion Calendar"; # (C)alendar
         ctrl-alt-shift-p = mkHMOpen "Proton Pass"; # (P)assword
       }
       // (

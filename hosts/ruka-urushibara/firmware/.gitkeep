@@ -1,0 +1,2 @@
+# Copy peripheral firmware here after install so the Asahi support module can
+# extract it. See hosts/ruka-urushibara/apple-silicon.nix for instructions.

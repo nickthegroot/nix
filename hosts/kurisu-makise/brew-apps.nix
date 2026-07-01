@@ -1,6 +1,6 @@
 {
   homebrew.casks = [
-    "jellyfin-media-player"
+    "steam"
     "protonvpn"
   ];
 }

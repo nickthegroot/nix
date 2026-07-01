@@ -7,11 +7,7 @@
           outer = {
             left = 10;
             bottom = 10;
-            # menu bar is 32px
-            top = [
-              { monitor.built-in = 4 + 0 + 8; } # tuck menu bar into notch for built-in display
-              (4 + 30 + 8) # otherwise use menu bar height + padding
-            ];
+            top = 10;
             right = 10;
           };
           inner = {

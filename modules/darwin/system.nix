@@ -55,7 +55,7 @@
 
       AppleSpacesSwitchOnActivate = true; # Auto switch to active application's Space
 
-      _HIHideMenuBar = true; # Autohide menu bar
+      _HIHideMenuBar = false; # Autohide menu bar
 
       InitialKeyRepeat = 13; # normal minimum is 15 (225 ms), maximum is 120 (1800 ms)
       KeyRepeat = 1; # normal minimum is 2 (30 ms), maximum is 120 (1800 ms)

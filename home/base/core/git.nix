@@ -95,6 +95,8 @@
     gcor = ''gco (grec | fzf --preview="git log -p --color=always {} | head -n40 | bat --language=diff --color=always" --preview-window=down:70%)'';
     gcob = "git checkout -b";
     gcopr = "gh pr checkout";
+    gcr = "git reset --hard HEAD";
+    gcro = "git fetch origin && git reset --hard origin/(gbranch)";
 
     # Stash
     gs = "git stash save";
@@ -115,7 +117,7 @@
     gpl = "git pull";
 
     # PR
-    pr = "gh pr create";
+    gpr = "gh pr create";
 
     # GitHub Actions
     gha = "gh workflow run --ref (gbranch)";

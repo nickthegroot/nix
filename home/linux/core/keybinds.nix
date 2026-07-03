@@ -36,6 +36,10 @@ let
       client = "steam";
       launcher = "steam";
     };
+    "${meh} + c" = {
+      client = "com.danklinux.dankcalendar";
+      launcher = "dcal";
+    };
   };
 in
 {

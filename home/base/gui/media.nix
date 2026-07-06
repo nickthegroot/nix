@@ -13,4 +13,6 @@ in
   ];
 
   xdg.configFile."YouTube Music/CustomThemes/catppuccin".source = youtubeMusicThemeSrc + "/src";
+
+  programs.sioyek.enable = true;
 }

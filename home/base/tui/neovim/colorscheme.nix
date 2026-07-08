@@ -2,8 +2,8 @@
   programs.nixvim = {
     colorschemes.catppuccin = {
       enable = true;
-      flavour = "mocha";
       settings = {
+        flavour = "mocha";
         transparent_background = true;
         integrations = {
           blink_cmp = true;

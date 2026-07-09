@@ -20,6 +20,9 @@
       ];
 
       userSettings = {
+        "js/ts.experimental.useTsgo" = true;
+        "js/ts.preferences.importModuleSpecifier" = "non-relative";
+
         # Window behavior
         "window.closeWhenEmpty" = true;
 

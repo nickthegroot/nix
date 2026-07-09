@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 {
   programs.nixvim = {
     plugins = {
@@ -20,9 +20,12 @@
     };
 
     lsp.servers = {
-      vtsls = {
+      tsgo = {
         enable = true;
-        config.settings.typescript.preferences.importModuleSpecifier = "non-relative";
+        package = pkgs-unstable.typescript-go;
+        config.settings = {
+          "js/ts.preferences.importModuleSpecifier" = "non-relative";
+        };
       };
     };
 

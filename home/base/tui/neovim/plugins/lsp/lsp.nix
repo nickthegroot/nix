@@ -1,12 +1,15 @@
-{ config, ... }:
+{ config, pkgs-unstable, ... }:
 let
   inherit (config.lib.nixvim) mkRaw;
 in
 {
   programs.nixvim = {
     plugins = {
-      lspconfig.enable = true; # default configs
       lint.enable = true;
+      lspconfig = {
+        enable = true; # default configs
+        package = pkgs-unstable.vimPlugins.nvim-lspconfig;
+      };
     };
 
     keymaps = [

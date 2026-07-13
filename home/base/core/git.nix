@@ -80,6 +80,8 @@
     };
   };
 
+  home.packages = [ pkgs.ghav ];
+
   home.shellAliases = {
     gtop = "cd (git rev-parse --show-toplevel)";
     grec = ''git reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | awk ' !x[$0]++' | egrep -v '^[a-f0-9]{40}$' | head -n10'';

@@ -18,6 +18,9 @@
         # Smart indent on word wrap
         breakindent = true;
 
+        # Load external changes (that don't have local changes)
+        autoread = true;
+
         # Undo stuff from days ago
         swapfile = false;
         backup = false;

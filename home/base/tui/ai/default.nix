@@ -1,6 +1,7 @@
-{ pkgs, ... }: {
+{ pkgs-unstable, ... }: {
   programs.opencode = {
     enable = true;
+    package = pkgs-unstable.opencode;
 
     skills = {
       caveman = ./skills/caveman.md;
@@ -9,12 +10,6 @@
 
     settings = {
       autoupdate = false;
-      mcp = {
-        nixos = {
-          type = "local";
-          command = [ "${pkgs.mcp-nixos}/bin/mcp-nixos" ];
-        };
-      };
     };
 
     context = ''
@@ -27,4 +22,9 @@
         - All inputs and outputs of functions should always be typed
     '';
   };
+
+  home.packages = with pkgs-unstable; [
+    # TODO: Move to `programs.pi-coding-agent` for 26.11 (or backported to 26.05)
+    pi-coding-agent
+  ];
 }

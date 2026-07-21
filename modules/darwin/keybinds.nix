@@ -40,11 +40,12 @@
         alt-enter = mkHMOpen "kitty";
         alt-shift-enter = mkHMOpen "Visual Studio Code";
         alt-space = mkNativeOpen "Brave Browser";
-
         ctrl-alt-shift-m = mkHMOpen "YouTube Music"; # (M)usic
         ctrl-alt-shift-s = mkNativeOpen "Slack"; # (S)lack
         ctrl-alt-shift-c = mkNativeOpen "Notion Calendar"; # (C)alendar
         ctrl-alt-shift-p = mkHMOpen "Proton Pass"; # (P)assword
+
+        cmd-backtick = "exec-and-forget screencapture -ic"; # screenshot region → clipboard
       }
       // (
         # workspaces 1-9

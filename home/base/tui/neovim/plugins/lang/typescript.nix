@@ -22,7 +22,21 @@
     lsp.servers = {
       tsgo = {
         enable = true;
-        package = pkgs-unstable.typescript-go;
+        package = pkgs-unstable.typescript-go.overrideAttrs (
+          finalAttrs: prevAttrs: {
+            # Use fork until non-relative import code actions work
+            # (Issue claims to have fixed, but still seeing it. Fix in fork is AI generated and I don't have enough go/codebase context to submit for PR.)
+            src = pkgs-unstable.fetchFromGitHub {
+              owner = "nickthegroot";
+              repo = "typescript-go";
+              rev = "b93f2737a50410d330ad50e2e1f2d5ac5b771ecd";
+              hash = "sha256-nUviiG2r52ICs4CCYE/r6FXtEUsGNPDt5MNwbazpiD4=";
+            };
+            vendorHash = "sha256-q6dMb2ab4uZ3GTrcA7v2JzfmOM+ZzBcJN6gKOpLfM/k=";
+
+            version = "7.1.0-dev";
+          }
+        );
         config.settings = {
           "js/ts.preferences.importModuleSpecifier" = "non-relative";
         };

@@ -36,6 +36,7 @@ in
     keybindings = {
       # Tabs
       "ctrl+a>c" = "new_tab_with_cwd";
+      "ctrl+a>shift+c" = "new_tab";
       "ctrl+a>x" = "close_tab";
       "ctrl+a>o" = "close_other_tabs_in_os_window";
       "ctrl+a>comma" = "set_tab_title";

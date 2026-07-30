@@ -64,6 +64,7 @@
       extensions = with pkgs; [
         gh-enhance
         gh-notify
+        gh-stack
       ];
     };
     gh-dash.enable = true;

@@ -45,11 +45,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784905371,
-        "narHash": "sha256-hRABRkQfByVWBsVYu/JT1tgeNhXr6iKti87rbxBsfl0=",
+        "lastModified": 1785510248,
+        "narHash": "sha256-x2nNsBUFEMkZoA6HGJPICEPhwigBDUF/4zaywDUxrXg=",
         "owner": "AvengeMedia",
         "repo": "dankcalendar",
-        "rev": "c236da67fcd5c762c93d5c65a2bcc388005abf40",
+        "rev": "9e29d0c7ff5cc3469a63c83f096011b5b31b7b88",
         "type": "github"
       },
       "original": {

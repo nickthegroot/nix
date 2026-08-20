@@ -96,6 +96,26 @@
         # Telemetry
         "telemetry.telemetryLevel" = "off";
 
+        # Would you like them here or there?
+        # I would not like them here or there.
+        # I would not like them anywhere.
+        # I do not like copilot in code.
+        # I do not like them, Sam-I-Am.
+        "github.copilot.enable" = {
+          "*" = false;
+          "plaintext" = false;
+          "markdown" = false;
+          "scminput" = false;
+        };
+        "chat.commandCenter.enabled" = false;
+        "chat.agent.enabled" = false;
+        "chat.inlineCompletion.enabled" = false;
+        "chat.editing.enabled" = false;
+        "chat.edits2.enabled" = false;
+        "chat.participants.enabled" = false;
+        "chat.editorUtils.enabled" = false;
+        "chat.welcomeView.enabled" = false;
+
         # Vim extension keybindings (requires VSCode Vim extension)
         "vim.leader" = "<space>";
         "vim.useCtrlKeys" = true;

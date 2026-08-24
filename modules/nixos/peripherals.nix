@@ -16,6 +16,7 @@
 
   hardware = {
     bluetooth.enable = true;
+    keyboard.qmk.enable = true;
     xone.enable = true;
     steam-hardware.enable = true;
   };

@@ -78,5 +78,6 @@ in
   home.shellAliases = {
     cat = "bat";
     http = "xh";
+    fp = "realpath";
   };
 }

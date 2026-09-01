@@ -87,6 +87,7 @@ in
   home.shellAliases = {
     # https://sw.kovidgoyal.net/kitty/kittens/ssh/
     s = "kitten ssh";
+    icat = "kitten icat";
   };
 
   programs.nixvim = {

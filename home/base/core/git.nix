@@ -86,7 +86,7 @@
   home.shellAliases = {
     gtop = "cd (git rev-parse --show-toplevel)";
     grec = ''git reflog | egrep -io "moving from ([^[:space:]]+)" | awk '{ print $3 }' | awk ' !x[$0]++' | egrep -v '^[a-f0-9]{40}$' | head -n10'';
-    gbranch = "git rev-parse --abbrev-ref HEAD";
+    gbranch = "git branch --show-current";
     gstat = "git status";
     gl = "git log";
     gaa = "git add -A";

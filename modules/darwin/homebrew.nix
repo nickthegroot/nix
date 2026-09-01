@@ -15,14 +15,14 @@
     };
 
     casks = [
-      "qutebrowser"
       "brave-browser"
-
       "discord"
-
       "docker-desktop"
-
       "notion-calendar"
     ];
+
+    masApps = {
+      "WireGuard" = 1451685025;
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ myvars, ... }:
+{ myvars, pkgs, ... }:
 {
   services.aerospace.settings.mode = {
     # All possible keys:
@@ -21,6 +21,9 @@
           ''exec-and-forget open -a "/Users/${myvars.username}/Applications/Home Manager Apps/${name}.app"'';
         # generally managed via homebrew
         mkNativeOpen = name: ''exec-and-forget open -a "/Applications/${name}.app"'';
+        mkKitten =
+          name:
+          ''exec-and-forget "/Users/${myvars.username}/Applications/Home Manager Apps/kitty.app/Contents/MacOS/kitten" ${name}'';
       in
       {
         ctrl-alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
@@ -38,7 +41,9 @@
       }
       // {
         alt-enter = mkHMOpen "kitty";
-        alt-shift-enter = mkHMOpen "Visual Studio Code";
+        alt-shift-enter = mkKitten "quick-access-terminal";
+
+        ctrl-alt-shift-e = mkHMOpen "Visual Studio Code"; # meh+(e)ditor
         alt-space = mkNativeOpen "Brave Browser";
         ctrl-alt-shift-m = mkHMOpen "YouTube Music"; # (M)usic
         ctrl-alt-shift-s = mkNativeOpen "Slack"; # (S)lack

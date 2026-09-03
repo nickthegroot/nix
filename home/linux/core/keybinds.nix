@@ -12,7 +12,7 @@ let
       client = "kitty";
       launcher = "kitty";
     };
-    "SUPER + SHIFT + Return" = {
+    "${meh} + e" = {
       client = "code-url-handler";
       launcher = "code";
     };
@@ -66,6 +66,14 @@ in
         ];
       }) appBinds)
       ++ [
+        # kitty quick-access-terminal (toggle)
+        {
+          _args = [
+            "SUPER + SHIFT + Return"
+            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"kitten quick-access-terminal\")")
+          ];
+        }
+
         # Hyprland Windows
         {
           _args = [

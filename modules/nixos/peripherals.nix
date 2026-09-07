@@ -14,8 +14,11 @@
     udisks2.enable = true;
   };
 
+  programs.kdeconnect.enable = true;
+
   hardware = {
     bluetooth.enable = true;
+    keyboard.qmk.enable = true;
     xone.enable = true;
     steam-hardware.enable = true;
   };

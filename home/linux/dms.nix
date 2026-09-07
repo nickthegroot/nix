@@ -12,9 +12,13 @@
     enableDynamicTheming = false;
     enableCalendarEvents = false;
 
-    plugins.calculator = {
-      enable = true;
-      settings.calcEngine = "qalc";
+    plugins = {
+      calculator = {
+        enable = true;
+        settings.calcEngine = "qalc";
+      };
+
+      dankKDEConnect.enable = true;
     };
 
     systemd.enable = true;

@@ -47,7 +47,6 @@ in
     config = {
       input = {
         kb_layout = "us";
-        kb_options = "caps:swapescape";
 
         repeat_rate = 50; # hz
         repeat_delay = 200; # ms

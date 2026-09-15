@@ -8,7 +8,18 @@ let
   '';
   quicknote = pkgs.writeShellScriptBin "quicknote" ''
     #!/bin/bash
-    $EDITOR "$HOME/Notes/$(date +%Y%m%d)-''${1:-$(date +%H%M)}.md"
+    arg="''${1:-}"
+    if [[ "$arg" == */ ]]; then
+      folder="''${arg%/}"
+      name=""
+    else
+      folder="$(dirname "$arg")"
+      name="$(basename "$arg")"
+      [ "$folder" = "." ] && folder=""
+    fi
+    [ -z "$name" ] && name="$(date +%H%M)"
+    mkdir -p "$HOME/Notes/$folder"
+    $EDITOR "$HOME/Notes/''${folder:+$folder/}$(date +%Y%m%d)-$name.md"
   '';
   scratchpad = pkgs.writeShellScriptBin "scratchpad" ''
     #!/bin/bash

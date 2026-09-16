@@ -3,6 +3,7 @@ let
   skills = {
     caveman = ./skills/caveman.md;
     commit = ./skills/commit.md;
+    plan = ./skills/plan.md;
   };
 in
 {

@@ -2,8 +2,8 @@
 name: commit
 description: >
   Ultra-compressed commit message generator. Cuts noise from commit messages while preserving
-  intent and reasoning. Scoped Commits format. Subject ≤50 chars, body only when "why"
-  isn't obvious.
+  intent and reasoning. Scoped Commits format. Subject ≤50 chars, body only when explicitly
+  requested.
 ---
 
 Write commit messages terse and exact, then commit. Scoped Commits format. No fluff. Why over what.
@@ -18,12 +18,8 @@ Write commit messages terse and exact, then commit. Scoped Commits format. No fl
 - No trailing period
 - No type prefix (no `feat`, `fix`, `chore`, etc.)
 
-**Body (only if needed):**
-- Skip entirely when subject is self-explanatory
-- Add body only for non-obvious *why*
-- Wrap at 72 chars
-- Bullets `-` not `*`
-- Reference issues/PRs at end: `Closes #42`, `Refs #17`
+**Body:**
+- **Only write a body when the user explicitly asks for one.** Never generate it on your own initiative.
 
 **Ticket number (optional):**
 - In parentheses after scope: `auth (TICKET-123): fix login bug`
@@ -38,6 +34,12 @@ Write commit messages terse and exact, then commit. Scoped Commits format. No fl
 - When code part or all AI-written: `Assisted-by: AGENT_NAME:MODEL_VERSION`
 - AGENT_NAME: name of the AI tool or framework (e.g. `opencode`)
 - MODEL_VERSION: specific model version used (e.g. `claude-3-opus`)
+- **Look up the actual model at commit time — never guess or reuse a
+  remembered value.** Ask the running harness for the model of the
+  current session (e.g. pi exposes `PI_MODEL`/`PI_PROVIDER` env vars;
+  opencode exposes the model in its session/config; check what your
+  harness provides). Normalize the value to a short lowercase id
+  (e.g. `z-ai/glm-5.3-flash` → `glm-5.3-flash`).
 
 **What NEVER goes in:**
 - Type prefixes (`feat:`, `fix:`, `chore:`, etc.) — scope alone is sufficient
@@ -48,22 +50,15 @@ Write commit messages terse and exact, then commit. Scoped Commits format. No fl
 
 ## Examples
 
-Diff: new endpoint for user profile with body explaining the why
+Diff: new endpoint for user profile; body would explain the why, but user didn't ask for one
 - ❌ "feat(api): add GET /users/:id/profile" (Conventional Commits)
-- ✅
-  ```
-  api: add GET /users/:id/profile
-
-  Mobile client needs profile data without the full user payload
-  to reduce LTE bandwidth on cold-launch screens.
-
-  Closes #128
-  ```
+- ❌ "api: add GET /users/:id/profile\n\nMobile client needs profile data without the full user payload…" (unprompted body)
+- ✅ "api: add GET /users/:id/profile"
 
 Diff: multi-package tweak
 - ✅ "client,server: normalize error response format"
 
-Diff: breaking API change
+Diff: breaking API change, user explicitly asked for a body
 - ✅
   ```
   api: rename /v1/orders to /v1/checkout
@@ -72,6 +67,5 @@ Diff: breaking API change
   before 2026-06-01. Old route returns 410 after that date.
   ```
 
-## Auto-Clarity
-
-Always include body for: breaking changes, security fixes, data migrations, anything reverting a prior commit. Never compress these into subject-only — future debuggers need the context.
+Diff: same breaking change, user did NOT ask for a body
+- ✅ "api: rename /v1/orders to /v1/checkout"

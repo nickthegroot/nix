@@ -11,7 +11,7 @@
 let
   inherit (inputs) nixpkgs nixpkgs-unstable home-manager;
   specialArgs = inputs // {
-    inherit mylib myvars;
+    inherit inputs mylib myvars;
     pkgs-unstable = import nixpkgs-unstable { inherit system; };
   };
 in

@@ -1,16 +1,13 @@
-{ myvars, pkgs, ... }:
+{ inputs, myvars, ... }:
 {
   programs.hyprland.enable = true;
 
-  services.greetd = {
+  imports = [ inputs.dank-greeter.nixosModules.default ];
+
+  programs.dms-greeter = {
     enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.hyprland}/bin/start-hyprland";
-        user = myvars.username;
-      };
-      default_session = initial_session;
-    };
+    compositor.name = "hyprland";
+    configHome = "/home/${myvars.username}";
   };
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";

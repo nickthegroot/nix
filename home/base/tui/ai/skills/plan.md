@@ -2,15 +2,19 @@
 name: plan
 description: >
   Investigates how to implement a described action or feature in the current codebase,
-  explores viable approaches, and saves the decided plan to ./PLAN.md. The plan is
-  written to be fully self-contained so a new developer or agent could execute it
-  using only the plan and the files it references.
+  explores viable approaches, and saves the decided plan to
+  ./{YYYYMMDD}-plan-{short-snake-case-description}.md. The plan is written to be fully
+  self-contained so a new developer or agent could execute it using only the plan
+  and the files it references.
 ---
 
 # Plan
 
 Investigate the codebase, decide on an approach, and write a complete implementation
-plan to `./PLAN.md`. The plan must be executable by someone with zero prior context.
+plan to `./{YYYYMMDD}-plan-{short-snake-case-description}.md`. The filename uses
+today's date and a short snake-case summary of the goal (e.g.
+`20240115-plan-add-oauth-login.md`). The plan must be executable by someone with
+zero prior context.
 
 ## Process
 
@@ -31,13 +35,15 @@ For each, note the tradeoffs briefly. Pick one and state why in one sentence. If
 there is genuinely only one sensible approach, say so.
 
 **4. Confirm.** Present the chosen approach (and rejected alternatives) to the user
-in a short summary. Save `PLAN.md` after presenting; do not block on approval unless
-the change is destructive, large-scale, or the user asks to decide first.
+in a short summary. Save the plan file after presenting; do not block on approval
+unless the change is destructive, large-scale, or the user asks to decide first.
 
-**5. Write `./PLAN.md`.** Use the structure below. Every file or directory mentioned
-must use a full path from the repo root (or absolute if outside the repo).
+**5. Write the plan file.** Name it `./{YYYYMMDD}-plan-{short-snake-case-description}.md`
+using today's date and a short snake-case description of the goal. Use the structure
+below. Every file or directory mentioned must use a full path from the repo root
+(or absolute if outside the repo).
 
-## PLAN.md Structure
+## Plan File Structure
 
 ```markdown
 # Plan: <short title>
@@ -82,5 +88,6 @@ implementer.>
 - Ground everything in what you actually read — cite real paths, real names, real commands.
 - If verification commands exist (tests, builds, type checks), use the project's real ones.
 - No filler. Every section must contain information an implementer needs.
-- Overwrite any existing `./PLAN.md`; do not append or version it.
+- Use the date-prefixed filename; do not create a generic `PLAN.md`. If a file with
+the same name already exists, overwrite it; do not append or version it.
 - Keep the plan focused on this one goal; out-of-scope ideas go under Risks & Open Questions.

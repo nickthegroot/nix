@@ -1,4 +1,3 @@
-{ lib, ... }:
 {
   # BIOS defaults to DP-2 as primary (e.g. grub)
   wayland.windowManager.hyprland.settings = {
@@ -24,25 +23,33 @@
       }
     ];
 
-    on = {
-      _args = [
-        "hyprland.start"
-        (lib.generators.mkLuaInline "function()\n  hl.dispatch(hl.dsp.exec_cmd(\"hyprctl dispatch workspace 1\"))\nend")
-      ];
+    config = {
+      cursor = {
+        default_monitor = "DP-2";
+      };
     };
 
     workspace_rule =
       (
         # 1-4 on DP-2
-        builtins.genList (i: { workspace = toString (i + 1); monitor = "DP-2"; }) 4
+        builtins.genList (i: {
+          workspace = toString (i + 1);
+          monitor = "DP-2";
+        }) 4
       )
       ++ (
         # 5-8 on DP-1
-        builtins.genList (i: { workspace = toString (i + 5); monitor = "DP-1"; }) 4
+        builtins.genList (i: {
+          workspace = toString (i + 5);
+          monitor = "DP-1";
+        }) 4
       )
       ++ [
         # 9 on HDMI-A-1
-        { workspace = "9"; monitor = "HDMI-A-1"; }
+        {
+          workspace = "9";
+          monitor = "HDMI-A-1";
+        }
       ];
   };
 }

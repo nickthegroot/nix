@@ -11,9 +11,9 @@ description: >
 # Plan
 
 Investigate the codebase, decide on an approach, and write a complete implementation
-plan to `./{YYYYMMDD}-plan-{short-snake-case-description}.md`. The filename uses
+plan to `./plan-{YYYYMMDD}-{short-snake-case-description}.md`. The filename uses
 today's date and a short snake-case summary of the goal (e.g.
-`20240115-plan-add-oauth-login.md`). The plan must be executable by someone with
+`plan-20240115-add-oauth-login.md`). The plan must be executable by someone with
 zero prior context.
 
 ## Process
@@ -34,14 +34,16 @@ assumptions:
 For each, note the tradeoffs briefly. Pick one and state why in one sentence. If
 there is genuinely only one sensible approach, say so.
 
-**4. Confirm.** Present the chosen approach (and rejected alternatives) to the user
-in a short summary. Save the plan file after presenting; do not block on approval
-unless the change is destructive, large-scale, or the user asks to decide first.
-
-**5. Write the plan file.** Name it `./{YYYYMMDD}-plan-{short-snake-case-description}.md`
+**4. Write the plan file.** Name it `./plan-{YYYYMMDD}-{short-snake-case-description}.md`
 using today's date and a short snake-case description of the goal. Use the structure
 below. Every file or directory mentioned must use a full path from the repo root
 (or absolute if outside the repo).
+
+**5. Summarize and resolve open questions.** Present a high-level summary of the plan
+(the goal, chosen approach, and key steps) and ask the user the follow-on questions
+the plan left open — ambiguous requirements, deferred decisions, and risks from
+Risks & Open Questions. Update the plan file in place as the user answers, then
+repeat until the open questions are resolved or the user is satisfied.
 
 ## Plan File Structure
 

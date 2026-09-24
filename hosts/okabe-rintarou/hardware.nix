@@ -7,6 +7,8 @@
     common-pc-ssd
   ];
 
+  boot.kernelModules = [ "kvm-amd" ];
+
   nvidia.enable = true;
   programs.xppen.enable = true;
 

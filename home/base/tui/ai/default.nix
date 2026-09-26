@@ -34,5 +34,6 @@ in
 
   home.shellAliases = {
     pir = "pi --resume";
+    gcmai = "pi --print --no-session '/skill:commit Generate and create a commit from ONLY the staged changes (git diff --cached). Never stage files (no git add).'";
   };
 }

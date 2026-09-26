@@ -31,4 +31,8 @@ in
   home.packages = with pkgs-unstable; [
     pi-coding-agent
   ];
+
+  home.shellAliases = {
+    pir = "pi --resume";
+  };
 }

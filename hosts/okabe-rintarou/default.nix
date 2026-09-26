@@ -62,6 +62,7 @@
       language-learning.enable = true;
       media-player.enable = true;
       reading.enable = true;
+      vr.enable = true;
     }
   ];
 }

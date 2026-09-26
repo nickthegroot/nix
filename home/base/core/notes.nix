@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 let
   daily = pkgs.writeShellScriptBin "daily" ''
     #!/bin/bash
@@ -31,28 +31,7 @@ in
     daily
     quicknote
     scratchpad
-    pkgs.taskwarrior-tui
   ];
-
-  programs.taskwarrior = {
-    enable = true;
-    package = pkgs.taskwarrior3;
-    config = {
-      # https://taskwarrior.org/docs/man/task-sync.5/
-      # Recurrence should be set to "on" in most-used host config
-      recurrence = lib.mkDefault "off";
-      sync = {
-        # Really not _that_ important to keep secret
-        # All traffic either going through wireguard or on LAN
-        encryption_secret = "SJaKX1kZHf1Aa2V1RNGIK1cpsX5NHPYQ";
-
-        server = {
-          url = "https://taskchampion.home.nickthegroot.com";
-          client_id = "d929ec73-2b9b-46f4-8358-80c1fbfb8018";
-        };
-      };
-    };
-  };
 
   programs.obsidian = {
     enable = true;
@@ -108,16 +87,5 @@ in
         monospaceFontFamily = "Lilex Nerd Font";
       };
     };
-  };
-
-  home.shellAliases = {
-    t = "task";
-    tt = "taskwarrior-tui";
-
-    tw = "task +work";
-    twa = "task add +work";
-
-    ta = "task add";
-    taw = "task add +work";
   };
 }

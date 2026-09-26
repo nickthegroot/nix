@@ -51,7 +51,6 @@
   name = "hiyajou-maho";
   darwin-modules = [ ./brew-apps.nix ];
   home-modules = [
-    ./taskwarrior.nix
     { work.enable = true; }
   ];
 }

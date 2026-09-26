@@ -19,6 +19,8 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  xdg.enable = true;
+
   # Keep legacy behavior for XDG user dirs session variables.
   # See home-manager release-26.05 release notes.
   xdg.userDirs.setSessionVariables = true;

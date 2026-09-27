@@ -14,12 +14,21 @@
     udisks2.enable = true;
   };
 
-  programs.kdeconnect.enable = true;
-
   hardware = {
     bluetooth.enable = true;
     keyboard.qmk.enable = true;
     xone.enable = true;
     steam-hardware.enable = true;
+  };
+
+  # KDE Connect (phone) Ports
+  networking.firewall = rec {
+    allowedTCPPortRanges = [
+      {
+        from = 1714;
+        to = 1764;
+      }
+    ];
+    allowedUDPPortRanges = allowedTCPPortRanges;
   };
 }

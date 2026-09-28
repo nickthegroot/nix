@@ -21,9 +21,6 @@
           ''exec-and-forget open -a "/Users/${myvars.username}/Applications/Home Manager Apps/${name}.app"'';
         # generally managed via homebrew
         mkNativeOpen = name: ''exec-and-forget open -a "/Applications/${name}.app"'';
-        mkKitten =
-          name:
-          ''exec-and-forget "/Users/${myvars.username}/Applications/Home Manager Apps/kitty.app/Contents/MacOS/kitten" ${name}'';
       in
       {
         ctrl-alt-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
@@ -41,7 +38,6 @@
       }
       // {
         alt-enter = mkHMOpen "kitty";
-        alt-shift-enter = mkKitten "quick-access-terminal";
 
         ctrl-alt-shift-e = mkHMOpen "Visual Studio Code"; # meh+(e)ditor
         alt-space = mkNativeOpen "Brave Browser";

@@ -65,14 +65,6 @@ in
         ];
       }) appBinds)
       ++ [
-        # kitty quick-access-terminal (toggle)
-        {
-          _args = [
-            "SUPER + SHIFT + Return"
-            (lib.generators.mkLuaInline "hl.dsp.exec_cmd(\"kitten quick-access-terminal\")")
-          ];
-        }
-
         # Hyprland Windows
         {
           _args = [

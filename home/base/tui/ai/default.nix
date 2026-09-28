@@ -1,4 +1,4 @@
-{ pkgs-unstable, lib, ... }:
+{ pkgs, pkgs-unstable, lib, ... }:
 let
   skills = {
     caveman = ./skills/caveman.md;
@@ -28,8 +28,9 @@ in
     name: source: lib.nameValuePair ".pi/agent/skills/${name}.md" { inherit source; }
   ) skills;
 
-  home.packages = with pkgs-unstable; [
-    pi-coding-agent
+  home.packages = [
+    pkgs-unstable.pi-coding-agent
+    pkgs.pi-acp
   ];
 
   home.shellAliases = {

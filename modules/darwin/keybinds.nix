@@ -45,6 +45,7 @@
         ctrl-alt-shift-s = mkNativeOpen "Slack"; # (S)lack
         ctrl-alt-shift-c = mkNativeOpen "Notion Calendar"; # (C)alendar
         ctrl-alt-shift-p = mkHMOpen "Proton Pass"; # (P)assword
+        ctrl-alt-shift-x = mkNativeOpen "Xcode"; # (X)code
 
         cmd-backtick = "exec-and-forget screencapture -ic"; # screenshot region → clipboard
       }

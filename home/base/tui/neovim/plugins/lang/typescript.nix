@@ -16,6 +16,17 @@
         };
       };
 
+      lint = {
+        lintersByFt = {
+          javascript = [ "eslint_d" ];
+          javascriptreact = [ "eslint_d" ];
+          typescript = [ "eslint_d" ];
+          typescriptreact = [ "eslint_d" ];
+        };
+
+        linters.eslint_d.cmd = "${pkgs.eslint_d}/bin/eslint_d";
+      };
+
       ts-autotag.enable = true;
     };
 

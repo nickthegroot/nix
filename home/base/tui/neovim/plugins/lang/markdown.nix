@@ -11,8 +11,8 @@
       };
 
       lint = {
-        lintersByFt.md = [ "markdownlint" ];
-        linters.markdownlint.cmd = "${pkgs.markdownlint-cli2}/bin/markdownlint-cli2";
+        lintersByFt.md = [ "eslint_d" ];
+        linters.eslint_d.cmd = "${pkgs.eslint_d}/bin/eslint_d";
       };
     };
 

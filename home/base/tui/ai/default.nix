@@ -8,6 +8,7 @@ let
   skills = {
     commit = ./skills/commit.md;
     plan = ./skills/plan.md;
+    pr = ./skills/pr.md;
   };
 in
 {

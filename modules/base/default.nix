@@ -29,6 +29,7 @@
 
     # Text Processing
     jq
+    yq-go
 
     # networking tools
     wget

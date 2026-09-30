@@ -26,7 +26,8 @@ Prefer these over their classic/POSIX equivalents when running shell commands:
 - `fd` instead of `find` for file lookups.
 - `rg` (ripgrep) instead of `grep` for searching file contents.
     - Note flags differ: `rg` is already recursive; never pass `-r`/`--recursive` (= replace) and use `-g` for globs.
-- `jq` for querying/formatting JSON (also `yq` when present for YAML).
+- `jq` for querying/formatting JSON.
+- `yq` for querying/formatting YAML/XML/CSV/TOML
 - `xh` (or `xhs`) instead of `curl` for ad-hoc HTTP requests when readability matters; use `curl` for scripting.
 - `tldr <cmd>` for quick command examples instead of reading full `man` pages.
 

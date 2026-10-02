@@ -18,6 +18,7 @@
       "brave-browser"
       "discord"
       "docker-desktop"
+      "kitty"
       "notion-calendar"
     ];
 

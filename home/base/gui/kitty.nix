@@ -1,5 +1,6 @@
 { pkgs, config, ... }:
 let
+  inherit (pkgs) stdenv;
   kitty-icon = pkgs.fetchFromGitHub {
     owner = "sodapopcan";
     repo = "kitty-icon";
@@ -12,6 +13,11 @@ in
 
   programs.kitty = {
     enable = true;
+
+    # Use brew version on darwin
+    # (nix version wrapper currently breaks aerospace tiling)
+    package = if stdenv.isDarwin then null else pkgs.kitty;
+
     settings = {
       background_opacity = "0.93";
       confirm_os_window_close = 0;

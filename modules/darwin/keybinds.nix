@@ -37,7 +37,7 @@
         alt-equal = "resize smart +50";
       }
       // {
-        alt-enter = mkHMOpen "kitty";
+        alt-enter = mkNativeOpen "kitty";
 
         ctrl-alt-shift-e = mkHMOpen "Visual Studio Code"; # meh+(e)ditor
         alt-space = mkNativeOpen "Brave Browser";

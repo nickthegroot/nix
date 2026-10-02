@@ -2,10 +2,9 @@
 
 - Focus on writing self-explanatory code with meaningful variable and function names
     - Complex functions should be broken down into smaller, more manageable pieces to enhance readability and maintainability
-- Use comments sparingly and only in situations where the code's intent cannot be made clear (e.g. using external services)
-    - Before using comments, first try to isolate the unintuitive portion into its own function with a clear name
-    - If comments are still required, make sure they are SHORT and SUCCINCT
-    - NEVER write comments that merely restate what the identifier or code already says. If the name says it, do not comment.
+- Write no comments. Zero is the expected outcome; a comment is a defect you justify, never a courtesy you extend.
+    - First move the fact into an identifier, a type, a schema, an invariant/assertion, or a cited URL. Mechanism beats prose: if dropping the comment would let a wrong action through, what is missing is a mechanism, not a comment.
+    - Keep one only if you can complete this sentence with a specific reader action: "Without this, <reader> will <do X>, breaking <Y>." "It's not obvious", "they might wonder", "upstream differs", and "it documents provenance" MUST NOT be used to complete it. If <X> already fails loudly — type error, failed test, schema rejection, invariant throw — the sentence fails and the comment MUST be deleted.
 - Make heavy usage of types and interfaces to ensure type safety and make assumptions explicit
     - All inputs and outputs of functions should always be typed
 

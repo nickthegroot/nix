@@ -34,4 +34,5 @@ Prefer these over their classic/POSIX equivalents when running shell commands:
 
 - `gh` — GitHub CLI (PRs, issues, releases). Prefer over REST API calls for GitHub work.
 - `uv` / `uvx` — Python package/runner (fast).
-- `nix`, `nix-shell`, `nh` — Nix tooling.
+- `nh`, `nix`, `nix-shell` — Nix tooling.
+- `tmux` — terminal multiplexer; use it to spawn and manage sub-agents in separate panes or sessions.

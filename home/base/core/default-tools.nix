@@ -5,7 +5,6 @@
   home.packages = with pkgs; [
     # Node / JavaScript
     nodejs
-    yarn
     pnpm
   ];
 }

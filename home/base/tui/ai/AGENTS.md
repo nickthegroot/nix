@@ -1,4 +1,4 @@
-## Code Style
+# Code Style
 
 - Focus on writing self-explanatory code with meaningful variable and function names
     - Complex functions should be broken down into smaller, more manageable pieces to enhance readability and maintainability
@@ -8,17 +8,17 @@
 - Make heavy usage of types and interfaces to ensure type safety and make assumptions explicit
     - All inputs and outputs of functions should always be typed
 
-## Secrets
+# Secrets
 
 Never attempt to read a file that contains secrets. This includes:
 - `.env`
 - `.env.*`
 
-## Python Notebooks
+# Python Notebooks
 
 When asked to create a Python notebook, use `.py` format with `# %%` for cell delimiters.
 
-## Modern CLI Tool Preferences
+# Modern CLI Tool Preferences
 
 Prefer these over their classic/POSIX equivalents when running shell commands:
 
@@ -30,9 +30,17 @@ Prefer these over their classic/POSIX equivalents when running shell commands:
 - `xh` (or `xhs`) instead of `curl` for ad-hoc HTTP requests when readability matters; use `curl` for scripting.
 - `tldr <cmd>` for quick command examples instead of reading full `man` pages.
 
-## Other Available Tools Worth Using
+# Other Available Tools Worth Using
 
 - `gh` — GitHub CLI (PRs, issues, releases). Prefer over REST API calls for GitHub work.
 - `uv` / `uvx` — Python package/runner (fast).
 - `nh`, `nix`, `nix-shell` — Nix tooling.
-- `tmux` — terminal multiplexer; use it to spawn and manage sub-agents in separate panes or sessions.
+
+## tmux
+
+Use tmux to run long-lived background processes (dev servers, watchers, build daemons) and to manage sub-agents.
+
+- Run background processes in a named detached session, not `nohup`/`&`: `tmux new-session -d -s <name> '<command> 2>&1 | tee /tmp/<name>.log'`. The session survives the tool call and can be attached to live.
+- Inspect without attaching using `tmux capture-pane -pt <name>`; interact with `tmux attach -t <name>`.
+- Kill it with `tmux kill-session -t <name>` once the process is no longer needed, and report the session name if leaving it running.
+- Keep sub-agents in separate panes or sessions.

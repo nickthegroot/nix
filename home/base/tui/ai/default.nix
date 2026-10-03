@@ -10,6 +10,9 @@ let
     plan = ./skills/plan.md;
     pr = ./skills/pr.md;
   };
+  extensions = {
+    global-prompt-history = ./extensions/global-prompt-history.ts;
+  };
 in
 {
   home = {
@@ -18,7 +21,10 @@ in
     }
     // lib.mapAttrs' (
       name: source: lib.nameValuePair ".pi/agent/skills/${name}.md" { inherit source; }
-    ) skills;
+    ) skills
+    // lib.mapAttrs' (
+      name: source: lib.nameValuePair ".pi/agent/extensions/${name}.ts" { inherit source; }
+    ) extensions;
 
     packages = [
       pkgs-unstable.pi-coding-agent

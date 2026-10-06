@@ -7,5 +7,6 @@
     accent = "mauve";
     enable = true;
     nvim.enable = false; # use our own custom config
+    vscode.profiles.default.enable = false; # currently using insecure pnpm. disabled until fixed upstream.
   };
 }

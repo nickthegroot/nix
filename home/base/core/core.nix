@@ -14,6 +14,17 @@ let
     echo "$pids" | xargs kill -9
     echo "Killed processes on port $1: $pids"
   '';
+
+  highlight = pkgs.writeShellScriptBin "highlight" ''
+    #!/bin/bash
+    if [ -z "$1" ]; then
+      echo "Usage: highlight <pattern> [file...]"
+      exit 1
+    fi
+    pattern=$1
+    shift
+    exec rg --color=always --passthru -- "$pattern" "$@"
+  '';
 in
 {
   imports = [ nix-index-database.homeModules.nix-index ];
@@ -39,6 +50,7 @@ in
     # Helpers/Misc
     tldr
     killport
+    highlight
   ];
 
   programs = {
@@ -79,5 +91,6 @@ in
     cat = "bat";
     http = "xh";
     fp = "realpath";
+    hl = "highlight";
   };
 }

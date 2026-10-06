@@ -30,6 +30,14 @@ Prefer these over their classic/POSIX equivalents when running shell commands:
 - `xh` (or `xhs`) instead of `curl` for ad-hoc HTTP requests when readability matters; use `curl` for scripting.
 - `tldr <cmd>` for quick command examples instead of reading full `man` pages.
 
+# Search Scope and Command Hygiene
+
+Never search broad roots. A search that walks `$HOME`, `/`, or the whole machine can traverse dependency, cache, and system trees and time out. Search the repo or directory you are working in; if that returns nothing, the next step is a narrower root, not a wider one.
+
+- Exclude dependency and cache trees: `.venv`, `node_modules`, `.git`, `.next`, `dist`, `build`, `target`, `result`, `.cache`, `Library`, `/nix/store`
+- Bound the work: `fd --max-depth N`, `rg --max-filesize`, and `| head` when you only need examples.
+- When several independent lookups are needed, run them as separate scoped commands instead of stacking many broad searches into one call.
+
 # Other Available Tools Worth Using
 
 - `gh` — GitHub CLI (PRs, issues, releases). Prefer over REST API calls for GitHub work.

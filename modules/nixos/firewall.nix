@@ -1,5 +1,4 @@
 { lib, ... }:
 {
-  # Common dev ports
-  networking.firewall.allowedTCPPorts = lib.range 8080 8090;
+  networking.firewall.allowedTCPPorts = [ 3000 ] ++ lib.range 8080 8090;
 }

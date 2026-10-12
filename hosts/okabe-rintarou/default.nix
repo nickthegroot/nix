@@ -60,6 +60,7 @@
     ./home/gpu-monitoring.nix
     {
       language-learning.enable = true;
+      office.enable = true;
       media-player.enable = true;
       reading.enable = true;
       vr.enable = true;

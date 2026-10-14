@@ -16,7 +16,7 @@ in
 
     # Use brew version on darwin
     # (nix version wrapper currently breaks aerospace tiling)
-    package = if stdenv.isDarwin then null else pkgs.kitty;
+    package = if stdenv.hostPlatform.isDarwin then null else pkgs.kitty;
 
     settings = {
       background_opacity = "0.93";

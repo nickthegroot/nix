@@ -64,13 +64,13 @@ let
   '';
 
   clippimg = pkgs.writeShellScriptBin "clippimg" (
-    if stdenv.isDarwin then darwinSave else linuxSave
+    if stdenv.hostPlatform.isDarwin then darwinSave else linuxSave
   );
 in
 {
   home.shellAliases = {
-    "clipc" = if stdenv.isDarwin then "pbcopy" else "dms cl copy";
-    "clipp" = if stdenv.isDarwin then "pbpaste" else "dms cl paste";
+    "clipc" = if stdenv.hostPlatform.isDarwin then "pbcopy" else "dms cl copy";
+    "clipp" = if stdenv.hostPlatform.isDarwin then "pbpaste" else "dms cl paste";
   };
 
   home.packages = [ clippimg ];

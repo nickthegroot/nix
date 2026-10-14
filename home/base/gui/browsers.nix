@@ -8,7 +8,7 @@ in
       enable = true;
 
       # Use brew version on darwin
-      package = if stdenv.isDarwin then null else pkgs.brave;
+      package = if stdenv.hostPlatform.isDarwin then null else pkgs.brave;
 
       extensions = [
         { id = "dbepggeogbaibhgnhhndojpepiihcmeb"; } # Vimium (manual: ./vimium-options.json)

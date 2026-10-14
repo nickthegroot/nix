@@ -13,11 +13,11 @@
 
   # Force DBus keyring for consistent encryption key across interactive shells
   # and the systemd user service. Must match so both can open the same DB.
-  home.sessionVariables = lib.mkIf pkgs.stdenv.isLinux {
+  home.sessionVariables = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     PROTON_PASS_LINUX_KEYRING = "dbus";
   };
 
-  systemd.user.services.proton-pass-agent = lib.mkIf pkgs.stdenv.isLinux {
+  systemd.user.services.proton-pass-agent = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     Unit.After = [ "dbus.service" ];
     Service = {
       Restart = lib.mkForce "always";

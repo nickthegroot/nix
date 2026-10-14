@@ -1,6 +1,14 @@
-{ pkgs, lib, ... }:
 {
-  home.packages = with pkgs; [
+  pkgs,
+  pkgs-unstable,
+  lib,
+  ...
+}:
+let
+  inherit (pkgs-unstable) proton-pass proton-pass-cli;
+in
+{
+  home.packages = [
     proton-pass
     proton-pass-cli
   ];
@@ -9,7 +17,10 @@
     { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
   ];
 
-  services.proton-pass-agent.enable = true;
+  services.proton-pass-agent = {
+    enable = true;
+    package = proton-pass-cli;
+  };
 
   # Force DBus keyring for consistent encryption key across interactive shells
   # and the systemd user service. Must match so both can open the same DB.

@@ -21,6 +21,7 @@ in
     settings = {
       background_opacity = "0.93";
       confirm_os_window_close = 0;
+      remember_window_size = false;
       shell = "${pkgs.fish}/bin/fish --login --interactive";
       macos_show_window_title_in = "none";
 

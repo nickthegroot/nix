@@ -108,8 +108,10 @@
     gcor = ''gco (grec | fzf --preview="git log -p --color=always {} | head -n40 | bat --language=diff --color=always" --preview-window=down:70%)'';
     gcob = "git checkout -b";
     gcopr = "gh pr checkout";
-    gcr = "git reset --hard HEAD";
-    gcro = "git fetch origin && git reset --hard origin/(gbranch)";
+
+    # Reset
+    gr = "git reset --hard HEAD";
+    gro = "git fetch origin && git reset --hard origin/(gbranch)";
 
     # Stash
     gs = "git stash save";

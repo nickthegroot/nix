@@ -31,15 +31,13 @@ Write commit messages terse and exact, then commit. Scoped Commits format. No fl
 - Tree-wide changes: `treewide`, `all`, or `global`
 
 **Sign-off:**
-- When code part or all AI-written: `Assisted-by: AGENT_NAME:MODEL_VERSION`
-- AGENT_NAME: name of the AI tool or framework (e.g. `opencode`)
-- MODEL_VERSION: specific model version used (e.g. `claude-3-opus`)
+- When code part or all AI-written: `Assisted-by: pi:MODEL_ID`
+- AGENT_NAME is always `pi` — this skill ships with pi.
 - **Look up the actual model at commit time — never guess or reuse a
-  remembered value.** Ask the running harness for the model of the
-  current session (e.g. pi exposes `PI_MODEL`/`PI_PROVIDER` env vars;
-  opencode exposes the model in its session/config; check what your
-  harness provides). Normalize the value to a short lowercase id
-  (e.g. `z-ai/glm-5.3-flash` → `glm-5.3-flash`).
+  remembered value.** pi exports `PI_PROVIDER`, `PI_MODEL`, and
+  `PI_SESSION_FILE` into the shell tool's environment for the active
+  session. `PI_MODEL` is already the bare model id, so use it directly
+  (`glm-5.3-flash`), lowercase, without the provider or thinking level.
 
 **What NEVER goes in:**
 - Type prefixes (`feat:`, `fix:`, `chore:`, etc.) — scope alone is sufficient

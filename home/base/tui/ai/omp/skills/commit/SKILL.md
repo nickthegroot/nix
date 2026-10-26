@@ -31,15 +31,14 @@ Write commit messages terse and exact, then commit. Scoped Commits format. No fl
 - Tree-wide changes: `treewide`, `all`, or `global`
 
 **Sign-off:**
-- When code part or all AI-written: `Assisted-by: AGENT_NAME:MODEL_VERSION`
-- AGENT_NAME: name of the AI tool or framework (e.g. `opencode`)
-- MODEL_VERSION: specific model version used (e.g. `claude-3-opus`)
+- When code part or all AI-written: `Assisted-by: omp:MODEL_ID`
+- AGENT_NAME is always `omp` — this skill ships with omp.
 - **Look up the actual model at commit time — never guess or reuse a
-  remembered value.** Ask the running harness for the model of the
-  current session (e.g. pi exposes `PI_MODEL`/`PI_PROVIDER` env vars;
-  opencode exposes the model in its session/config; check what your
-  harness provides). Normalize the value to a short lowercase id
-  (e.g. `z-ai/glm-5.3-flash` → `glm-5.3-flash`).
+  remembered value.** omp states it in the session's runtime context as
+  `Model: <provider>/<model-id>`.
+- Normalize to a short lowercase id: drop provider prefixes and any
+  thinking suffix. `openrouter/deepseek/deepseek-v4.1-flash-1017` →
+  `deepseek-v4.1-flash-1017`; `z-ai/glm-5.3:auto` → `glm-5.3`.
 
 **What NEVER goes in:**
 - Type prefixes (`feat:`, `fix:`, `chore:`, etc.) — scope alone is sufficient

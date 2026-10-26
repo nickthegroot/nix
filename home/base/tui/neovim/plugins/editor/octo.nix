@@ -10,6 +10,7 @@ in
         picker = "snacks";
         enable_builtin = true;
         mappings_disable_default = true;
+        use_local_fs = true;
       };
     };
 

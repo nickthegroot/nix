@@ -1,0 +1,41 @@
+--- a/cap/apps/desktop-gpui/src/updates.rs
++++ b/cap/apps/desktop-gpui/src/updates.rs
+@@ -107,7 +107,18 @@
+     Version::parse(env!("CARGO_PKG_VERSION")).map_err(|error| error.to_string())
+ }
+ 
++const NIX_MANAGED_MESSAGE: &str =
++    "Cap was installed with Nix; update it through your Nix configuration instead of the built-in updater.";
++
++fn managed_by_nix() -> bool {
++    std::env::current_exe()
++        .is_ok_and(|path| path.canonicalize().unwrap_or(path).starts_with("/nix/store"))
++}
++
+ async fn available_release(channel: UpdateChannel) -> Result<Option<Release>, String> {
++    if managed_by_nix() {
++        return Err(NIX_MANAGED_MESSAGE.to_string());
++    }
+     let current = current_version()?;
+     let stable = installer::fetch_release(UpdateChannel::Stable, &current)
+         .await
+@@ -278,7 +289,8 @@
+             .background_executor()
+             .spawn(async { GeneralSettings::load().update_channel })
+             .await;
+-        let mut delay = (!cfg!(debug_assertions)).then(|| first_check_delay(channel));
++        let mut delay =
++            (!cfg!(debug_assertions) && !managed_by_nix()).then(|| first_check_delay(channel));
+         let mut ignored_version: Option<Version> = None;
+ 
+         loop {
+@@ -663,6 +675,9 @@
+ }
+ 
+ fn apply(package: &std::path::Path, kind: ArtifactKind) -> Result<Option<PathBuf>, String> {
++    if managed_by_nix() {
++        return Err(NIX_MANAGED_MESSAGE.to_string());
++    }
+     installer::check_artifact_kind(package, kind)?;
+     apply_package(package, kind)
+ }

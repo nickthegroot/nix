@@ -1,0 +1,151 @@
+--- a/build.rs
++++ b/build.rs
+@@ -63,86 +63,78 @@
+ 
+ fn xc_build(
+     targets: &[&'static str],
+-    sdk: &str,
++    _sdk: &str,
+     arch: &str,
+     configuration: &str,
+     deployment_targets: &DeploymentTargets,
+ ) {
+-    let mut out_lib_dir = PathBuf::from(&env::var("OUT_DIR").unwrap());
+-    let mut env_args = Vec::with_capacity(6);
+-    if !deployment_targets.macos.is_empty() {
+-        env_args.push(deployment_targets.macos.clone());
+-    }
+-    if !deployment_targets.ios.is_empty() {
+-        env_args.push(deployment_targets.ios.clone());
+-    }
+-    if !deployment_targets.tvos.is_empty() {
+-        env_args.push(deployment_targets.tvos.clone());
+-    }
+-    if !deployment_targets.watchos.is_empty() {
+-        env_args.push(deployment_targets.watchos.clone());
+-    }
+-    if !deployment_targets.visionos.is_empty() {
+-        env_args.push(deployment_targets.visionos.clone());
+-    }
+-    env_args.push(format!("SYMROOT={}", out_lib_dir.to_str().unwrap()));
++    let out_lib_dir = PathBuf::from(&env::var("OUT_DIR").unwrap()).join(configuration);
++    std::fs::create_dir_all(&out_lib_dir).unwrap();
+ 
+-    let status = if sdk == "maccatalyst" {
+-        let c = Command::new("xcrun")
+-            .arg("--show-sdk-path")
+-            .output()
+-            .unwrap();
+-        let line = String::from_utf8(c.stdout).unwrap();
+-        let line = line.lines().next().unwrap();
++    let project_dir = PathBuf::from(&env::var("CARGO_MANIFEST_DIR").unwrap()).join("pomace");
++    let sdk_root = env::var("SDKROOT").expect("SDKROOT must point at the macOS SDK");
++    let clang = env::var("CC").unwrap_or_else(|_| "clang".into());
++    let ar = env::var("AR").unwrap_or_else(|_| "ar".into());
++    let deployment = deployment_targets
++        .macos
++        .strip_prefix("MACOSX_DEPLOYMENT_TARGET=")
++        .unwrap_or("12.0");
+ 
+-        println!("cargo:rustc-link-search=system={line}/System/iOSSupport/usr");
+-        println!(
+-            "cargo:rustc-link-search=framework={line}/System/iOSSupport/System/Library/Frameworks"
++    assert_eq!(targets.len() % 2, 0, "target arguments must be -target/name pairs");
++    for pair in targets.chunks_exact(2) {
++        assert_eq!(pair[0], "-target");
++        let target = pair[1];
++        let directory = project_dir.join(target);
++        let mut objects = Vec::new();
++        for entry in std::fs::read_dir(&directory).unwrap() {
++            let source = entry.unwrap().path();
++            if source.extension().and_then(|extension| extension.to_str()) != Some("m") {
++                continue;
++            }
++            let object = out_lib_dir.join(format!(
++                "{}_{}.o",
++                target,
++                source.file_stem().unwrap().to_str().unwrap()
++            ));
++            let status = Command::new(&clang)
++                .arg("-x")
++                .arg("objective-c")
++                .arg("-c")
++                .arg(&source)
++                .arg("-o")
++                .arg(&object)
++                .args(["-fobjc-arc", "-fblocks", "-fmodules"])
++                .arg("-isysroot")
++                .arg(&sdk_root)
++                .arg("-arch")
++                .arg(arch)
++                .arg(format!("-mmacosx-version-min={deployment}"))
++                .arg("-I")
++                .arg(&directory)
++                .arg("-O2")
++                .status()
++                .unwrap();
++            assert!(status.success(), "failed to compile {}", source.display());
++            objects.push(object);
++        }
++        assert!(
++            !objects.is_empty(),
++            "no Objective-C sources for target {target}"
+         );
+-
+-        // -isystem $(MACOSX_SDK_DIR)/System/iOSSupport/usr/include \
+-        // -iframework $(MACOSX_SDK_DIR)/System/iOSSupport/System/Library/Frameworks
+-        Command::new("xcodebuild")
+-            .args(["-project", "./pomace/pomace.xcodeproj"])
+-            .args(["-sdk", "macosx"])
+-            .args(["-arch", arch])
+-            .args(["-configuration", configuration])
+-            // .args(["-derivedDataPath", out_lib_dir.to_str().unwrap()])
+-            .args([
+-                "-destination 'generic/platform=macOS,variant=Mac Catalyst'",
+-                "SUPPORTS_MACCATALYST=YES",
+-            ])
+-            .args(targets)
+-            .arg("build")
+-            .args(env_args)
++        let archive = out_lib_dir.join(format!("lib{target}.a"));
++        let status = Command::new(&ar)
++            .arg("rcs")
++            .arg(&archive)
++            .args(&objects)
+             .status()
+-            .unwrap()
+-    } else {
+-        Command::new("xcodebuild")
+-            .args(["-project", "./pomace/pomace.xcodeproj"])
+-            .args(["-sdk", sdk])
+-            .args(["-arch", arch])
+-            .args(["-configuration", configuration])
+-            .args(targets)
+-            // .args(["-derivedDataPath", out_lib_dir.to_str().unwrap()])
+-            .arg("build")
+-            .args(env_args)
+-            .status()
+-            .unwrap()
+-    };
+-
+-    out_lib_dir.push(configuration);
+-
+-    let mut s = out_lib_dir.to_str().unwrap().to_string();
+-
+-    if sdk != "macosx" {
+-        s.push('-');
+-        s.push_str(sdk);
++            .unwrap();
++        assert!(status.success(), "failed to archive {}", archive.display());
+     }
+ 
+-    println!("cargo:rustc-link-search=native={s}");
+-
+-    assert!(status.success());
++    println!(
++        "cargo:rustc-link-search=native={}",
++        out_lib_dir.to_str().unwrap()
++    );
+ }
+ 
+ fn parse_deployment_targets() -> DeploymentTargets {

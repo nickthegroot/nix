@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Cap
+Comment=Open source Loom alternative
+Exec=Cap
+Icon=so.cap.desktop
+Terminal=false
+Type=Application
+Categories=AudioVideo;Recorder;
+MimeType=application/x-cap-project;
+StartupWMClass=so.cap.desktop

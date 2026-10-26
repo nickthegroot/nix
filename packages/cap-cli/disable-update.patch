@@ -1,0 +1,22 @@
+--- a/apps/cli/src/main.rs
++++ b/apps/cli/src/main.rs
+@@ -24,7 +24,6 @@
+ mod selftest;
+ mod session;
+ mod targets;
+-mod update;
+ mod upload;
+ 
+ use std::{
+@@ -631,7 +630,10 @@
+         Commands::Upload(args) => args.run(json).await,
+         Commands::Update(args) => {
+             let format = resolve_format(json, args.format);
+-            finish_json(format, update::run(format))
++            finish_json(
++                format,
++                Err("Cap was installed with Nix; update it through your Nix configuration instead of `cap update`".to_string()),
++            )
+         }
+         Commands::Auth(args) => match args.command {
+             AuthCommands::Status(args) => {

@@ -30,7 +30,7 @@ in
 
     shellAliases = {
       ompr = "omp --resume";
-      gcmomp = "omp --print --no-session '/skill:commit Generate and create a commit from ONLY the staged changes (git diff --cached). Never stage files (no git add).'";
+      gcmai = "omp --print --no-session '/skill:commit Generate and create a commit from ONLY the staged changes (git diff --cached). Never stage files (no git add).'";
     };
 
     # omp registers a language server only when its binary resolves on $PATH, so mirror nixvim's packages

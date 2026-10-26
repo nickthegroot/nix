@@ -8,19 +8,34 @@
 - Make heavy usage of types and interfaces to ensure type safety and make assumptions explicit
     - All inputs and outputs of functions should always be typed
 - Decompose by volatility, never by function or domain. Group what changes together; separate what changes for different reasons.
-    - Each axis of change — a volatility — is its own component behind a stable interface; a component MUST encapsulate exactly one volatility.
-    - The more volatile a thing, the more strictly it MUST be encapsulated. Volatility MUST NOT leak across an interface.
+    - Each axis of change — a volatility — is its own component behind a stable interface; a component MUST encapsulate exactly one volatility
+    - The more volatile a thing, the more strictly it MUST be encapsulated. Volatility MUST NOT leak across an interface
 - Design the contract before the implementation. An interface is a stable contract; implementations are volatile and MAY vary independently.
-    - Interfaces MUST obey the Liskov Substitution Principle: any implementation MUST be usable wherever the contract is expected.
-    - Consumers MUST depend only on the contract, never on a concrete implementation.
+    - Interfaces MUST obey the Liskov Substitution Principle: any implementation MUST be usable wherever the contract is expected
+    - Consumers MUST depend only on the contract, never on a concrete implementation
 - Keep interaction out of the design. How components call each other is not a design concern; coupling to call order, transport, or orchestration is a defect.
 
 # Testing
 
-- Test behavior at the contract and system level, not the implementation. Unit tests exercise volatile implementation details, so they lock in what should stay free to change and prove nothing about the requirements.
-    - A green unit-test suite is not evidence of correctness; it only confirms the implementation agrees with itself.
-    - Prefer few tests that exercise an interface end to end over many tests of isolated internals.
-- Unit tests MAY be written during development to check that an implementation behaves as expected, but they MUST NOT be committed. Delete them once the implementation is verified — the committed suite is contracts and system-level tests only.
+- Test behavior at the contract and system level, not the implementation. Unit tests exercise volatile implementation details, so they lock in what should stay free to change and prove nothing about the requirements
+    - A green unit-test suite is not evidence of correctness; it only confirms the implementation agrees with itself
+    - Prefer few tests that exercise an interface end to end over many tests of isolated internals
+- Unit tests MAY be written during development to check that an implementation behaves as expected, but they MUST NOT be committed. Delete them once the implementation is verified — the committed suite is contracts and system-level tests only
+
+# Modern CLI Tool Preferences
+
+Prefer these over their classic/POSIX equivalents when running shell commands. Use built-in tools first when available.
+
+- `fd` instead of `find` for file lookups
+- `rg` (ripgrep) instead of `grep` for searching file contents
+    - Note flags differ: `rg` is already recursive; never pass `-r`/`--recursive` (= replace) and use `-g` for globs
+- `jq` for querying/formatting JSON
+- `yq` for querying/formatting YAML/XML/CSV/TOML
+- `xh` (or `xhs`) instead of `curl` for ad-hoc HTTP requests when readability matters; use `curl` for scripting
+- `tldr <cmd>` for quick command examples instead of reading full `man` pages
+- `gh` — GitHub CLI (PRs, issues, releases)
+- `uv` / `uvx` — Python package/runner (fast)
+- `nh`, `nix`, `nix-shell` — Nix tooling
 
 # Search Scope and Command Hygiene
 

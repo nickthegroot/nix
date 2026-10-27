@@ -23,7 +23,7 @@
         let
           browser = [ "brave-browser.desktop" ];
           editor = [ "nvim.desktop" ];
-          fileManager = [ "org.kde.dolphin" ];
+          fileManager = [ "dev.duxlabs.files.desktop" ];
           videoPlayer = [ "mpv.desktop" ];
           imageViewer = [ "imv-dir.desktop" ];
         in

@@ -1,5 +1,7 @@
-{ pkgs, ... }:
+{ dfiles, pkgs, ... }:
 {
+  imports = [ dfiles.homeModules.dux-files ];
+
   programs = {
     mpv = {
       enable = true;
@@ -20,11 +22,10 @@
 
     imv.enable = true;
     cava.enable = true;
-  };
 
-  home.packages = with pkgs; [
-    kdePackages.dolphin
-    kdePackages.dolphin-plugins
-    kdePackages.kio-extras # SMB, MTP, and other KIO protocol support
-  ];
+    dux-files = {
+      enable = true;
+      systemd.enable = true;
+    };
+  };
 }

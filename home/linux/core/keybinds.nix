@@ -37,7 +37,7 @@ let
       launcher = "steam";
     };
     "${meh} + c" = {
-      client = "com.danklinux.dankcalendar";
+      client = "dev.duxlabs.calendar";
       launcher = "dcal";
     };
   };

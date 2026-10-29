@@ -67,7 +67,10 @@
         gh-stack
       ];
     };
-    gh-dash.enable = true;
+    gh-dash = {
+      enable = true;
+      settings.defaults.prApproveComment = "";
+    };
 
     lazygit = {
       enable = true;

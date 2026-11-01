@@ -40,6 +40,10 @@ let
       client = "dev.duxlabs.calendar";
       launcher = "dcal";
     };
+    "${meh} + f" = {
+      client = "dev.duxlabs.files";
+      launcher = "dfiles";
+    };
   };
 in
 {

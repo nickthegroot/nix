@@ -19,6 +19,7 @@
       };
 
       dankKDEConnect.enable = true;
+      emojiLauncher.enable = true;
     };
 
     systemd.enable = true;

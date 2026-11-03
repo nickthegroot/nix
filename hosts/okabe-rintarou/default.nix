@@ -54,6 +54,7 @@
     ./hardware-configuration.nix
     ./hardware.nix
     ./rgb.nix
+    ./greeter.nix
   ];
   home-modules = [
     ./home/displays.nix

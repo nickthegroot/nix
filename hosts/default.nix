@@ -31,7 +31,10 @@ let
     );
 
   nixosHosts = {
-    x86_64-linux = [ ./okabe-rintarou ];
+    x86_64-linux = [
+      ./okabe-rintarou
+      ./urushibara-luka
+    ];
   };
   darwinHosts = {
     aarch64-darwin = [

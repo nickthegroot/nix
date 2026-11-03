@@ -1,12 +1,13 @@
 # AGENTS.md
 
-Nix flake managing 3 hosts (NixOS + nix-darwin + home-manager).
+Nix flake managing 4 hosts (NixOS + nix-darwin + home-manager).
 
 ## Hosts
 
 | Host | Platform | System |
 |---|---|---|
 | `okabe-rintarou` | NixOS desktop | `x86_64-linux` |
+| `urushibara-luka` | NixOS Steam Deck | `x86_64-linux` |
 | `kurisu-makise` | Personal MacBook | `aarch64-darwin` |
 | `hiyajou-maho` | Work MacBook | `aarch64-darwin` |
 

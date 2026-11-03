@@ -19,4 +19,12 @@
         ) (builtins.readDir path)
       )
     );
+
+  scanFiles =
+    path:
+    builtins.map (f: (path + "/${f}")) (
+      builtins.attrNames (
+        lib.attrsets.filterAttrs (_path: type: type == "regular") (builtins.readDir path)
+      )
+    );
 }

@@ -1,15 +1,24 @@
 {
   config,
   lib,
+  mylib,
   oh-my-pi,
   pkgs,
   ...
 }:
 let
-  skills = {
-    commit = ./skills/commit/SKILL.md;
-    pr = ./skills/pr/SKILL.md;
-  };
+  skillFile =
+    skillDir:
+    lib.nameValuePair ".omp/agent/skills/${baseNameOf skillDir}/SKILL.md" {
+      source = skillDir + "/SKILL.md";
+    };
+
+  extensionFile =
+    extension:
+    lib.nameValuePair ".omp/agent/extensions/${baseNameOf extension}" {
+      source = extension;
+    };
+
   enabledLspServers = lib.filterAttrs (
     name: server: name != "*" && server.enable
   ) config.programs.nixvim.lsp.servers;
@@ -20,13 +29,13 @@ in
   programs.omp.enable = true;
 
   home = {
-    file = {
-      ".omp/agent/AGENTS.md".source = ./AGENTS.md;
-      ".omp/agent/RULES.md".source = ./RULES.md;
-    }
-    // lib.mapAttrs' (
-      name: source: lib.nameValuePair ".omp/agent/skills/${name}/SKILL.md" { inherit source; }
-    ) skills;
+    file =
+      {
+        ".omp/agent/AGENTS.md".source = ./AGENTS.md;
+        ".omp/agent/RULES.md".source = ./RULES.md;
+      }
+      // builtins.listToAttrs (map skillFile (mylib.scanPaths ./skills))
+      // builtins.listToAttrs (map extensionFile (mylib.scanFiles ./extensions));
 
     shellAliases = {
       ompr = "omp --resume";

@@ -108,24 +108,14 @@
               end)
             end
 
-            vim.keymap.set(
-              { "n", "x" },
-              "<leader>gcq",
-              toggle_blockquote,
-              { buffer = true, desc = "Toggle blockquote" }
-            )
-            vim.keymap.set(
-              { "n", "x" },
-              "<leader>gcb",
-              toggle_bullet_list,
-              { buffer = true, desc = "Toggle bullet list" }
-            )
-            vim.keymap.set(
-              { "n", "x" },
-              "<leader>gcn",
-              toggle_numbered_list,
-              { buffer = true, desc = "Toggle numbered list" }
-            )
+            for _, toggle in ipairs({
+              { normal = "gcq", visual = "<leader>gq", action = toggle_blockquote, desc = "Toggle blockquote" },
+              { normal = "gcb", visual = "<leader>gb", action = toggle_bullet_list, desc = "Toggle bullet list" },
+              { normal = "gcn", visual = "<leader>gn", action = toggle_numbered_list, desc = "Toggle numbered list" },
+            }) do
+              vim.keymap.set("n", toggle.normal, toggle.action, { buffer = true, desc = toggle.desc })
+              vim.keymap.set("x", toggle.visual, toggle.action, { buffer = true, desc = toggle.desc })
+            end
           end
         '';
       }

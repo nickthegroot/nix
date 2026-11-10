@@ -7,6 +7,21 @@ let
     rev = "7496efa44f2f4615580471eebce7333459454731";
     hash = "sha256-TWLJbIdQf1SHZQA3GfdIjWfsHZ/Dsfpq49nqCRDR16E=";
   };
+  closeTabsRight = pkgs.writeShellScript "kitty-close-tabs-right" ''
+    set -euo pipefail
+
+    for index in $(
+      kitten @ ls | ${pkgs.jq}/bin/jq -r '
+        .[]
+        | select(.is_focused)
+        | .tabs
+        | (map(.is_active) | index(true)) as $active
+        | range(length - 1; $active; -1)
+      '
+    ); do
+      kitten @ close-tab --match "index:$index"
+    done
+  '';
 in
 {
   xdg.configFile."kitty/kitty.app.png".source = "${kitty-icon}/kitty.app.png";
@@ -45,6 +60,7 @@ in
       "ctrl+a>c" = "new_tab_with_cwd";
       "ctrl+a>shift+c" = "new_tab";
       "ctrl+a>x" = "close_tab";
+      "ctrl+a>r" = "launch --type=background --allow-remote-control ${closeTabsRight}";
       "ctrl+a>o" = "close_other_tabs_in_os_window";
       "ctrl+a>comma" = "set_tab_title";
 

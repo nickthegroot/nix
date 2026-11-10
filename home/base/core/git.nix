@@ -84,9 +84,10 @@
     };
   };
 
-  home.packages = [
-    pkgs.ghav
-    pkgs.ghpr
+  home.packages = with pkgs; [
+    ghav
+    ghpr
+    diffnav
   ];
 
   home.shellAliases = {

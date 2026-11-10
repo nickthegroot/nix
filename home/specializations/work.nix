@@ -15,5 +15,8 @@ in
     programs.brave.extensions = [
       { id = "aeblfdkhhhdcdjpifhhbdiojplfjncoa"; } # 1Password
     ];
+
+    # Required for SkyPilot
+    programs.ssh.includes = [ "~/.sky/generated/ssh/*" ];
   };
 }

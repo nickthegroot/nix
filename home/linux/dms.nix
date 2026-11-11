@@ -18,7 +18,7 @@
         settings.calcEngine = "qalc";
       };
 
-      dankKDEConnect.enable = true;
+      dcalUpcoming.enable = true;
       emojiLauncher.enable = true;
     };
 

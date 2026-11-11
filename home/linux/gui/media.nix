@@ -26,6 +26,11 @@
     dux-files = {
       enable = true;
       systemd.enable = true;
+
+      portal = {
+        enable = true;
+        preferred = true;
+      };
     };
   };
 }

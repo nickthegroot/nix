@@ -22,11 +22,23 @@ let
   enabledLspServers = lib.filterAttrs (
     name: server: name != "*" && server.enable
   ) config.programs.nixvim.lsp.servers;
+
+  ompPackage = oh-my-pi.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
   imports = [ oh-my-pi.homeManagerModules.default ];
 
-  programs.omp.enable = true;
+  programs.omp = {
+    enable = true;
+    package =
+      if pkgs.stdenv.hostPlatform.isLinux then
+        pkgs.runCommand "omp-linux-browser" { nativeBuildInputs = [ pkgs.makeWrapper ]; } ''
+          makeWrapper ${ompPackage}/bin/omp $out/bin/omp \
+            --set-default PUPPETEER_EXECUTABLE_PATH ${pkgs.chromium}/bin/chromium
+        ''
+      else
+        ompPackage;
+  };
 
   home = {
     file =

@@ -1,0 +1,53 @@
+name: Update flake inputs
+
+on:
+  schedule:
+    - cron: "0 16 * * 6"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: flake-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Install nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Configure git identity
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Update flake inputs
+        id: update
+        run: |
+          before="$(git rev-parse HEAD)"
+          nix flake update --commit-lock-file
+          if [ "$before" = "$(git rev-parse HEAD)" ] && [ -z "$(git status --porcelain)" ]; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check flake
+        if: steps.update.outputs.changed == 'true'
+        run: nix flake check
+
+      - name: Push to main
+        if: steps.update.outputs.changed == 'true'
+        run: git push origin HEAD:main
+
+      - name: Report updated inputs
+        if: steps.update.outputs.changed == 'true'
+        run: git show --stat --format='%s' HEAD

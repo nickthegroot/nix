@@ -77,7 +77,12 @@
       settings = {
         git = {
           autoFetch = false;
-          pagers = [ { externalDiffCommand = "difft --color=always"; } ];
+          diffRenderers = [
+            {
+              type = "extDiff";
+              command = "difft --color=always";
+            }
+          ];
         };
         promptToReturnFromSubprocess = false;
       };

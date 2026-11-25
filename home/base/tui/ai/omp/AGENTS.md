@@ -3,7 +3,7 @@
 - Prioritize code correctness and clarity. Speed and efficiency are secondary priorities unless otherwise specified.
 - Focus on writing self-explanatory code with meaningful variable and function names
     - Complex functions should be broken down into smaller, more manageable pieces to enhance readability and maintainability
-* Use full words for variable names (no abbreviations like "q" for "queue")
+- Use full words for variable names (no abbreviations like "q" for "queue")
 - Write no comments. Zero is the expected outcome; a comment is a defect you justify, never a courtesy you extend.
     - First move the fact into an identifier, a type, a schema, an invariant/assertion, or a cited URL. Mechanism beats prose: if dropping the comment would let a wrong action through, what is missing is a mechanism, not a comment.
     - Keep one only if you can complete this sentence with a specific reader action: "Without this, <reader> will <do X>, breaking <Y>." "It's not obvious", "they might wonder", "upstream differs", and "it documents provenance" MUST NOT be used to complete it. If <X> already fails loudly — type error, failed test, schema rejection, invariant throw — the sentence fails and the comment MUST be deleted.
@@ -24,26 +24,35 @@
 
 - Test behavior at the contract and system level, not the implementation. Unit tests only lock-in volatile implementation details and prove nothing.
 - Prefer few tests that exercise an interface end to end over many tests of isolated internals
-- Unit tests MAY be written during development to check that an implementation behaves as expected, but they MUST NOT be committed. Delete them once the implementation is verified — the committed suite is contracts and system-level tests only
-    - When using development unit tests, ensure that both the expected POSITIVE and NEGATIVE cases are tested. For example: `assert(1 + 1 = 2)` AND `assert(1 + 1 != 3)`.
+- Unit tests SHOULD be written during development to check that an implementation behaves as expected, but they MUST NOT be committed. Delete them once the implementation is verified — the committed suite is contracts and system-level tests only.
+    - Development unit tests MUST test both the expected POSITIVE and NEGATIVE cases. For example: `assert(1 + 1 = 2)` AND `assert(1 + 1 != 3)`.
 
-# Modern CLI Tool Preferences
+# User Impersoniation
 
-Prefer these over their classic/POSIX equivalents when running shell commands. Use built-in tools first when available.
+You MUST NOT act as the user. All actions taken on the user's behalf MUST be formally approved by the user before running. Actions include:
 
-- `fd` instead of `find` for file lookups
-- `rg` instead of `grep` for searching file contents
-    - Flags differ from POSIX: `rg` is already recursive; never pass `-r`/`--recursive` (= replace). Use `-g` for globs.
-- `jq` for querying/formatting JSON, `yq` for YAML/TOML
-- `xh` (or `xhs`) instead of `curl` for ad-hoc HTTP requests when readability matters; use `curl` for scripting
-- `tldr <cmd>` for quick command examples instead of reading full `man` pages
-- `gh` — GitHub CLI (PRs, issues, releases)
-- `uv` / `uvx` — Python package/runner (fast)
-- `nh`, `nix`, `nix-shell` — Nix tooling
+- Posting a message in Slack
+- Adding or responding to a PR comment
+- Submitting a PR (in draft OR ready)
+
+# Tool Calling
+
+Use tools in the following order:
+
+1. Native tool calls (e.g. `read`, `write`, `grep`)
+2. Modern CLI tools:
+    - `jq` for querying/formatting JSON, `yq` for YAML/TOML
+    - `gh` — GitHub CLI (PRs, issues, releases)
+    - `uv` / `uvx` — Python package/runner (fast)
+    - `pnpm` - Node package manager (fast)
+    - `nh`, `nix`, `nix-shell` — Nix tooling
+3. Classic POSIX tooling:
+    - `curl`
+    - `cat`
 
 # Search Scope and Command Hygiene
 
-Never search broad roots. A search that walks `$HOME`, `/`, or the whole machine WILL time out. Limit searches to the repo or directory you are working in; if that returns nothing, the next step is a narrower root, not a wider one.
+You MUST NOT search broad roots (`$HOME`, `/`, etc.). Limit searches to the repo or directory you are working in; if that returns nothing, the next step is a narrower root, not a wider one.
 
 - Exclude dependency and cache trees: `.venv`, `node_modules`, `.git`, `.next`, `dist`, `build`, `target`, `result`, `.cache`, `Library`, `/nix/store`
 - Bound the work: `fd --max-depth N`, `rg --max-filesize`, and `| head` when you only need examples.
